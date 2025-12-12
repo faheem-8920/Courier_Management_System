@@ -33,6 +33,14 @@ Route::get('/testimonial', function () {
     return view('testimonial');
 });
 
+Route::get('/addcourier', function () {
+    return view('addcourier');
+});
+
+Route::get('/addrider', function () {
+    return view('addrider');
+});
+
 
 
 
