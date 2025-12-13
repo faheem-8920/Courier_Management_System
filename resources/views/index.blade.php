@@ -714,6 +714,6 @@
 </div>
 
     <!-- Testimonial End -->
-
+ @endsection
 
     
