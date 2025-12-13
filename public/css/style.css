@@ -22,7 +22,6 @@
     z-index: 99;
 }
 
-
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -36,7 +35,6 @@
     visibility: visible;
     opacity: 1;
 }
-
 
 /*** Button ***/
 .btn {
@@ -130,7 +128,6 @@
     transition: .5s;
 } */
 
-
 @media (min-width: 992px) {
     .navbar-light .navbar-nav .nav-link::before {
         position: absolute;
@@ -170,7 +167,6 @@
         opacity: 1;
     }
 }
-
 
 /*** Header ***/
 @media (max-width: 768px) {
@@ -238,7 +234,6 @@
     color: var(--light);
 }
 
-
 /*** About ***/
 @media (min-width: 992px) {
     .container.about {
@@ -262,7 +257,6 @@
     }
 }
 
-
 /*** Feature ***/
 @media (min-width: 992px) {
     .container.feature {
@@ -285,7 +279,6 @@
         padding-left: calc(((100% - 1320px) / 2) + .75rem);
     }
 }
-
 
 /*** Service, Price & Team ***/
 .service-item,
@@ -367,7 +360,6 @@
     background: var(--secondary);
 }
 
-
 /*** Testimonial ***/
 .testimonial-carousel .owl-item .testimonial-item {
     position: relative;
@@ -402,7 +394,6 @@
     border-color: var(--primary);
 }
 
-
 /*** Contact ***/
 @media (min-width: 992px) {
     .container.contact-page {
@@ -425,7 +416,6 @@
         padding-left: calc(((100% - 1320px) / 2) + .75rem);
     }
 }
-
 
 /*** Footer ***/
 .footer {
@@ -484,4 +474,5 @@
 .footer .copyright a {
     color: var(--light);
 }
+
 
