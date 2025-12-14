@@ -14,7 +14,7 @@
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Smart Courier Management System</h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Send parcels anywhere in Pakistan with real-time tracking, fast pickup, and secure delivery.</p>
-                                <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a> -->
+                                
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Track Parcel</a>
                             </div>
                         </div>
@@ -39,6 +39,10 @@
             </div>
         </div>
     </div>
+
+    
+
+
     <!-- Carousel End -->
 
 
