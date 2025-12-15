@@ -8,9 +8,6 @@ Route::get('/', function () {
 Route::get('/feature', function () {
     return view('feature');
 });
-// Route::get('/index', function () {
-//     return view('index');
-// });
 Route::get('/about', function () {
     return view('about');
 });
@@ -43,6 +40,28 @@ Route::get('/addrider', function () {
 Route::get('/index', function () {
     return view('admin.index');
 });
+
+// Rider routes 
+
+Route::get('/rider', function () {
+    return view('Rider.index');
+});
+Route::get('/delivery', function () {
+    return view('Rider.delivery');
+});
+Route::get('/earning', function () {
+    return view('Rider.earning');
+});
+Route::get('/pickup', function () {
+    return view('Rider.pickup');
+});
+Route::get('/profile', function () {
+    return view('Rider.profile');
+});
+Route::get('/support', function () {
+    return view('Rider.support');
+});
+
 
 
 
