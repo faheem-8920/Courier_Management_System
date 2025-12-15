@@ -6,7 +6,7 @@
     <div class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative mb-5">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                <img class="img-fluid" src="img/carousel-4.png" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -14,7 +14,7 @@
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Smart Courier Management System</h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Send parcels anywhere in Pakistan with real-time tracking, fast pickup, and secure delivery.</p>
-                                <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a> -->
+                                
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Track Parcel</a>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                <img class="img-fluid" src="img/carousel-5.png" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -39,6 +39,10 @@
             </div>
         </div>
     </div>
+
+    
+
+
     <!-- Carousel End -->
 
 
