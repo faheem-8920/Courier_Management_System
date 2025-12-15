@@ -6,11 +6,10 @@
     <div class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative mb-5">
             <div class="owl-carousel-item position-relative">
-<<<<<<< HEAD
+
                 <img class="img-fluid" src="img/carousal-3.jpg" alt="">
-=======
-                <img class="img-fluid" src="img/carousel-4.png" alt="">
->>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
+
+              
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -27,11 +26,9 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-<<<<<<< HEAD
                 <img class="img-fluid" src="img/image-4.avif" alt="">
-=======
-                <img class="img-fluid" src="img/carousel-5.png" alt="">
->>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
+
+               
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -61,11 +58,10 @@
             <div class="row g-5 mx-lg-0">
                 <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-<<<<<<< HEAD
+
                         <img class="position-absolute img-fluid w-100 h-100" src="img/about-2.jpg" style="object-fit: cover;" alt="">
-=======
-                        <img class="position-absolute img-fluid w-100 h-100" src="img/parcel.1.jpeg" style="object-fit: cover;" alt="">
->>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
+
+
                     </div>
                 </div>
                 <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
@@ -734,10 +730,6 @@
     <!-- Testimonial End -->
  @endsection
 
-<<<<<<< HEAD
-@endsection
 
-    
-=======
      
->>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
+
