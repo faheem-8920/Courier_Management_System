@@ -1,4 +1,8 @@
 /********** Template CSS **********/
+#ser_img{
+    Width: 500 px;
+    Height: 300 px
+}
 :root {
     --primary: #FF3E41;
     --secondary: #51CFED;
@@ -480,3 +484,4 @@
 .footer .copyright a {
     color: var(--light);
 }
+
