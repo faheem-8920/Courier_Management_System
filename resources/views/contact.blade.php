@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+@extends('layout')
+@section('content')
+>>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
 
 @extends('layout')
 @section('content')
@@ -73,6 +78,7 @@
     </div>
     <!-- Contact End -->
 
+<<<<<<< HEAD
 
    
 
@@ -95,3 +101,6 @@
 
 </html>
 @endsection
+=======
+ @endsection
+>>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5

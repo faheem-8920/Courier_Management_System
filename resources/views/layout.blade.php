@@ -59,14 +59,14 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-up m-0">
-                        <a href="{{ url('/Pricing Plan') }}" class="dropdown-item">Pricing Plan</a>
+                        <a href="{{ url('/price') }}" class="dropdown-item">Pricing Plan</a>
                         <a href="{{ url('/feature') }}" class="dropdown-item">Features</a>
-                        <a href="{{ url('/qoute') }}" class="dropdown-item">Free Quote</a>
+                        <a href="{{ url('/quote') }}" class="dropdown-item">Free Quote</a>
                         <a href="{{ url('/team') }}" class="dropdown-item">Our Team</a>
                         <a href="{{ url('/testimonial') }}" class="dropdown-item">Testimonial</a>
                     </div>
                 </div>
-                <a href="contact.blade.php" class="nav-item nav-link">Contact</a>
+                <a href="contact" class="nav-item nav-link">Contact</a>
             </div>
             <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
         </div>

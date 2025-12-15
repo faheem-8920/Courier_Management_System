@@ -1,6 +1,9 @@
 @extends('layout')
 @section('content')
+<<<<<<< HEAD
 
+=======
+>>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
 
 
     <!-- Page Header Start -->
@@ -143,6 +146,7 @@
     <!-- Quote End -->
         
 
+<<<<<<< HEAD
 
 
     <!-- Back to Top -->
@@ -164,3 +168,6 @@
 
 </html>
 @endsection
+=======
+    @endsection
+>>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
