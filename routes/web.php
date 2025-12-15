@@ -40,7 +40,9 @@ Route::get('/addcourier', function () {
 Route::get('/addrider', function () {
     return view('addrider');
 });
-
+Route::get('/index', function () {
+    return view('admin.index');
+});
 
 
 
