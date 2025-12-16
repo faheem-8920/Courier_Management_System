@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('index'); // ya jo aapka main homepage hai
 });
+
 Route::get('/feature', function () {
     return view('feature');
 });
@@ -38,7 +39,7 @@ Route::get('/addrider', function () {
     return view('addrider');
 });
 Route::get('/index', function () {
-    return view('admin.index');
+    return view('admin.riders');
 });
 
 // Rider routes 
@@ -62,8 +63,22 @@ Route::get('/support', function () {
     return view('Rider.support');
 });
 
+//admin panel routes
+Route::get('/admindashboard', function () {
+    return view('admin.dashboard');
+});
 
+Route::get('/riders', function () {
+    return view('admin.riders');
+});
 
+Route::get('/shipments', function () {
+    return view('admin.shipments');
+});
+
+Route::get('/users', function () {
+    return view('admin.users');
+});
 
 Route::middleware([
     'auth:sanctum',
