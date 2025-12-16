@@ -1,18 +1,21 @@
-
 @extends('layout')
 @section('content')
-
+ 
     <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative mb-5">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-4.png" alt="">
+
+                <img class="img-fluid" src="img/carousal-3.jpg" alt="">
+
+              
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Smart Courier Management System</h5>
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
+                                <h1 class="display-6 display-md-4 display-lg-3 text-white animated slideInDown mb-4">
+                                  Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Send parcels anywhere in Pakistan with real-time tracking, fast pickup, and secure delivery.</p>
                                 
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Track Parcel</a>
@@ -22,7 +25,9 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-5.png" alt="">
+                <img class="img-fluid" src="img/image-4.avif" alt="">
+
+               
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -52,7 +57,10 @@
             <div class="row g-5 mx-lg-0">
                 <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="img/about.jpg" style="object-fit: cover;" alt="">
+
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/parcel.1.jpeg" style="object-fit: cover;" alt="">
+
+
                     </div>
                 </div>
                 <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
@@ -313,7 +321,7 @@
                 </div>
                 <div class="col-lg-6 pe-lg-0 wow fadeInRight" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="img/feature.jpg" style="object-fit: cover;" alt="">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/reliable-courier.jpeg" style="object-fit: cover;" alt="">
                     </div>
                 </div>
             </div>
@@ -519,10 +527,9 @@
         </div>
     </div> -->
     <section class="quote-section" style="padding:60px 0;">
-    <div style="max-width:1300px; margin:auto; display:flex; align-items:center; gap:40px;">
-        
-       
-        <div style="flex:1;">
+    <div class="container">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-6 col-12">
             <h5 style="color:#00AEEF; font-size:14px; letter-spacing:1px;">REQUEST A CALLBACK</h5>
             <h2 style="font-size:38px; font-weight:800; margin-bottom:20px;">
                 We will contact in<br> the shortest time.
@@ -543,14 +550,16 @@
         </div>
 
         
-        <div style="flex:1; background:#F8F3F1; padding:40px; border-radius:6px;">
+        <div class="col-lg-6 col-12 bg-light p-4 rounded">
             <form>
-                <div style="display:flex; gap:20px; margin-bottom:20px;">
-                    <input type="text" placeholder="Name" 
-                        style="width:100%; padding:14px; border:1px solid #ddd; border-radius:4px;">
-                    <input type="email" placeholder="Email" 
-                        style="width:100%; padding:14px; border:1px solid #ddd; border-radius:4px;">
-                </div>
+               <div class="row g-3 mb-3">
+    <div class="col-md-6 col-12">
+        <input type="text" class="form-control" placeholder="Name">
+    </div>
+    <div class="col-md-6 col-12">
+        <input type="email" class="form-control" placeholder="Email">
+    </div>
+</div>
 
                 <div style="margin-bottom:20px;">
                     <textarea placeholder="Message" 
@@ -581,7 +590,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item p-4">
                         <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            <img class="img-fluid" src="img/teams-1.jpg" alt="">
                         </div>
                         <h5 class="mb-0">Delivery Team</h5>
                         <p>Fast and secure parcel delivery across all locations.</p>
@@ -598,7 +607,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item p-4">
                         <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
+                            <img class="img-fluid" src="img/teams-2.jpg" alt="">
                         </div>
                         <h5 class="mb-0">Operations Team</h5>
                         <p>Manages routes, dispatching, scheduling, and daily workflow.</p>
@@ -615,7 +624,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item p-4">
                         <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
+                            <img class="img-fluid" src="img/teams-3.jpg" alt="">
                         </div>
                         <h5 class="mb-0">Logistics Team</h5>
                         <p>Handles parcel movement, sorting, and shipment coordination.</p>
@@ -632,7 +641,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
                     <div class="team-item p-4">
                         <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            <img class="img-fluid" src="img/teams-4.jpg" alt="">
                         </div>
                         <h5 class="mb-0">Support Team</h5>
                         <p>Assists customers with tracking, queries, and delivery updates.</p>
@@ -720,4 +729,6 @@
     <!-- Testimonial End -->
  @endsection
 
-    
+
+     
+
