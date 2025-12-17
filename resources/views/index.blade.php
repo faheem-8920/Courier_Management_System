@@ -14,7 +14,7 @@
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Smart Courier Management System</h5>
-                                <h1 class="display-6 display-md-4 display-lg-3 text-white animated slideInDown mb-4">
+                                <h1 class="display-6 display-lg-4 text-white animated slideInDown mb-4">
                                   Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Send parcels anywhere in Pakistan with real-time tracking, fast pickup, and secure delivery.</p>
                                 

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('index'); // ya jo aapka main homepage hai
+});
 
 Route::get('/feature', function () {
     return view('feature');
@@ -41,9 +44,9 @@ Route::get('/index', function () {
 
 // Rider routes 
 
-Route::get('/rider', function () {
-    return view('Rider.index');
-});
+// Route::get('/rider', function () {
+//     return view('Rider.index');
+// });
 Route::get('/delivery', function () {
     return view('Rider.delivery');
 });
@@ -85,4 +88,23 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+
+Route::middleware([Adminmiddleware::class])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+});
+
+Route::middleware([Usermiddleware::class])->group(function () {
+    Route::get('/user', function () {
+        return view('index');
+    })->name('index');
+});
+
+Route::middleware([Employ_middleware::class])->group(function () {
+    Route::get('/rider', function () {
+        return view('Rider.index');
+    })->name('Rider.index');
 });
