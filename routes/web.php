@@ -1,6 +1,20 @@
 <?php
-
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+//controller routes
+Route::post('/uploadcourier',[AdminController::class,'savecourier']);
+
+Route::post('/saverider',[AdminController::class,'saverider']);
+
+Route::get('/riders',[AdminController::class,'showriders']);
+
+Route::get('/shipments', [AdminController::class,'showshipments']);
+
+Route::get('/users',[AdminController::class,'showuserrecords']);
+
+
+
+
 
 Route::get('/', function () {
     return view('index'); // ya jo aapka main homepage hai
@@ -68,17 +82,10 @@ Route::get('/admindashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/riders', function () {
-    return view('admin.riders');
-});
 
-Route::get('/shipments', function () {
-    return view('admin.shipments');
-});
 
-Route::get('/users', function () {
-    return view('admin.users');
-});
+
+
 
 Route::middleware([
     'auth:sanctum',
