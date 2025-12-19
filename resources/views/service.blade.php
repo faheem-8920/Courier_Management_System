@@ -34,7 +34,7 @@
                             <img class="img-fluid" src="img/service-1.jpg" alt="">
                         </div>
                         <h4 class="mb-3">Air Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                      <p>Fast and reliable air freight services to deliver your shipments safely and on time worldwide.</p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                             <img class="img-fluid" src="img/service-2.jpg" alt="">
                         </div>
                         <h4 class="mb-3">Ocean Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                       <p>Cost-effective ocean freight solutions for large and heavy cargo with global coverage.</p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             <img class="img-fluid" src="img/service-3.jpg" alt="">
                         </div>
                         <h4 class="mb-3">Road Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+<p>Efficient road transportation services ensuring timely delivery across cities and borders.</p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                             <img class="img-fluid" src="img/service-4.jpg" alt="">
                         </div>
                         <h4 class="mb-3">Train Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+<p>Secure and economical rail freight services for long-distance cargo transportation.</p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                             <img class="img-fluid" src="img/service-5.jpg" alt="">
                         </div>
                         <h4 class="mb-3">Customs Clearance</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+<p>Hassle-free customs clearance services to ensure smooth import and export operations.</p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             <img class="img-fluid" src="img/service-6.jpg" alt="">
                         </div>
                         <h4 class="mb-3">Warehouse Solutions</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+<p>Modern warehousing solutions offering safe storage, inventory management, and distribution.</p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>
                 </div>
