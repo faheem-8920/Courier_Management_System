@@ -1,3 +1,4 @@
+
 @extends('layout')
 @section('content')
 
@@ -92,4 +93,5 @@
 
 </html>
 @endsection
+
 
