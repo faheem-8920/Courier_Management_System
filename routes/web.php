@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Adminmiddleware;
+use App\Http\Middleware\Ridermiddleware;
+use App\Http\Middleware\Usermiddleware;
 
 Route::get('/', function () {
     return view('index'); // ya jo aapka main homepage hai
@@ -64,9 +67,7 @@ Route::get('/support', function () {
 });
 
 //admin panel routes
-Route::get('/admindashboard', function () {
-    return view('admin.dashboard');
-});
+
 
 Route::get('/riders', function () {
     return view('admin.riders');
@@ -95,6 +96,9 @@ Route::middleware([Adminmiddleware::class])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+    Route::get('/admindashboard', function () {
+    return view('admin.dashboard');
+});
 });
 
 Route::middleware([Usermiddleware::class])->group(function () {
@@ -103,7 +107,7 @@ Route::middleware([Usermiddleware::class])->group(function () {
     })->name('index');
 });
 
-Route::middleware([Employ_middleware::class])->group(function () {
+Route::middleware([Ridermiddleware::class])->group(function () {
     Route::get('/rider', function () {
         return view('Rider.index');
     })->name('Rider.index');
