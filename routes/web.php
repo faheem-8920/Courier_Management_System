@@ -1,11 +1,19 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\RiderMiddleware;
 
-// user routes
+// Controller routes
+Route::post('/uploadcourier',[AdminController::class,'savecourier']);
+Route::post('/saverider',[AdminController::class,'saverider']);
+Route::get('/riders',[AdminController::class,'showriders']);
+Route::get('/shipments', [AdminController::class,'showshipments']);
+Route::get('/users',[AdminController::class,'showuserrecords']);
+
+// User routes
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -46,10 +54,17 @@ Route::get('/addrider', function () {
     return view('addrider');
 });
 
-
+// Admin panel routes
+Route::get('/admindashboard', function () {
+    return view('admin.dashboard');
+});
 
 // Role-based dashboard redirect after login
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
     Route::get('/dashboard', function () {
         $role = auth()->user()->role;
 
@@ -61,13 +76,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     })->name('dashboard');
 });
 
+// User routes (protected)
 Route::middleware(['auth', UserMiddleware::class])->group(function () {
     Route::get('/user', function () {
         return view('index');
     })->name('index');
 });
 
-//  Admin routes
+// Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin', function () {
         return view('admin.dashboard');
@@ -83,10 +99,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     });
 });
 
-
-
-
-//  Rider routes
+// Rider routes (protected)
 Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::get('/rider', function () {
         return view('Rider.index');

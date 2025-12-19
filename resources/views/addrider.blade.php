@@ -803,7 +803,6 @@
             }
         }
 
-        /* Floating particles background */
         .particles {
             position: fixed;
             top: 0;
@@ -880,7 +879,8 @@
                 </div>
             </div>
 
-            <form id="riderForm">
+            <form id="riderForm" method="POST" action="/saverider">
+                @csrf
                 <!-- Personal Details Tab -->
                 <div class="tab-content active" id="personal-tab">
                     <div class="form-row">
@@ -889,7 +889,7 @@
                                 <i class="fas fa-user-circle"></i> Full Name
                             </label>
                             <div class="input-container">
-                                <input type="text" id="fullName" class="form-input" placeholder="Enter rider's full name" autocomplete="name">
+                                <input type="text" id="fullName" class="form-input" placeholder="Enter rider's full name" name='Fullname' autocomplete="name">
                                 <i class="fas fa-user input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -901,7 +901,7 @@
                                 <i class="fas fa-envelope"></i> Email Address
                             </label>
                             <div class="input-container">
-                                <input type="email" id="email" class="form-input" placeholder="Enter rider's email" autocomplete="email">
+                                <input type="email" id="email" class="form-input" placeholder="Enter rider's email" name="Email" autocomplete="email">
                                 <i class="fas fa-envelope input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -916,7 +916,7 @@
                                 <i class="fas fa-phone"></i> Phone Number
                             </label>
                             <div class="input-container">
-                                <input type="tel" id="phone" class="form-input" placeholder="Enter 10-digit phone number" autocomplete="tel">
+                                <input type="tel" id="phone" class="form-input" placeholder="Enter 10-digit phone number" name="Phone" autocomplete="tel">
                                 <i class="fas fa-phone input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -928,7 +928,7 @@
                                 <i class="fas fa-birthday-cake"></i> Date of Birth
                             </label>
                             <div class="input-container">
-                                <input type="date" id="dob" class="form-input" autocomplete="bday">
+                                <input type="date" id="dob" class="form-input" autocomplete="bday" name="DateOfBirth">
                                 <i class="fas fa-calendar-alt input-icon"></i>
                                 <div class="date-reset-container">
                                     <button type="button" class="date-reset-btn" id="resetDOB" title="Reset to 25 years ago">
@@ -958,7 +958,7 @@
                                 <i class="fas fa-id-card"></i> Employee ID
                             </label>
                             <div class="input-container">
-                                <input type="text" id="employeeId" class="form-input" placeholder="Auto-generated" readonly>
+                                <input type="text" id="employeeId" class="form-input" placeholder="Auto-generated" name="EmpolyId" readonly>
                                 <i class="fas fa-id-card input-icon"></i>
                             </div>
                         </div>
@@ -967,7 +967,7 @@
                                 <i class="fas fa-calendar-plus"></i> Hire Date
                             </label>
                             <div class="input-container">
-                                <input type="date" id="hireDate" class="form-input">
+                                <input type="date" id="hireDate" class="form-input" name="HireDate">
                                 <i class="fas fa-calendar-check input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -982,7 +982,7 @@
                                 <i class="fas fa-clock"></i> Preferred Shift
                             </label>
                             <div class="input-container">
-                                <select id="shift" class="form-select">
+                                <select id="shift" class="form-select" name="WorkingShift">
                                     <option value="">Select working shift</option>
                                     <option value="morning">Morning (6:00 AM - 2:00 PM)</option>
                                     <option value="afternoon">Afternoon (2:00 PM - 10:00 PM)</option>
@@ -1000,7 +1000,7 @@
                                 <i class="fas fa-map-marked-alt"></i> Delivery Zone
                             </label>
                             <div class="input-container">
-                                <select id="zone" class="form-select">
+                                <select id="zone" class="form-select" name='DeliveryZone'>
                                     <option value="">Select delivery zone</option>
                                     <option value="north">North Zone</option>
                                     <option value="south">South Zone</option>
@@ -1034,11 +1034,10 @@
                                 <i class="fas fa-car"></i> Vehicle Type
                             </label>
                             <div class="input-container">
-                                <select id="vehicleType" class="form-select">
+                                <select id="vehicleType" class="form-select" name="VehicleType">
                                     <option value="">Select vehicle type</option>
                                     <option value="motorcycle">Motorcycle</option>
                                     <option value="scooter">Scooter</option>
-                                    <option value="bicycle">Bicycle</option>
                                     <option value="car">Car</option>
                                     <option value="van">Delivery Van</option>
                                 </select>
@@ -1053,7 +1052,7 @@
                                 <i class="fas fa-tag"></i> License Plate
                             </label>
                             <div class="input-container">
-                                <input type="text" id="plateNumber" class="form-input" placeholder="Enter license plate number">
+                                <input type="text" id="plateNumber" class="form-input" placeholder="Enter license plate number" name="PlateNumber">
                                 <i class="fas fa-tag input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1068,7 +1067,7 @@
                                 <i class="fas fa-id-badge"></i> Driver's License
                             </label>
                             <div class="input-container">
-                                <input type="text" id="licenseNumber" class="form-input" placeholder="Enter driver's license number">
+                                <input type="text" id="licenseNumber" class="form-input" placeholder="Enter driver's license number" name="LicenseNumber">
                                 <i class="fas fa-id-card input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1080,14 +1079,14 @@
                                 <i class="fas fa-cogs"></i> Vehicle Model
                             </label>
                             <div class="input-container">
-                                <input type="text" id="vehicleModel" class="form-input" placeholder="Enter vehicle model (optional)">
+                                <input type="text" id="vehicleModel" class="form-input" placeholder="Enter vehicle model (optional)" name="VehicleModel">
                                 <i class="fas fa-car input-icon"></i>
                             </div>
                         </div>
                     </div>
                     
                     <div class="checkbox-group">
-                        <input type="checkbox" id="vehicleInspection" class="checkbox-input" required>
+                        <input type="checkbox" id="vehicleInspection" class="checkbox-input" required name="VehicleInspected">
                         <label for="vehicleInspection" class="checkbox-label">
                             <i class="fas fa-check-circle"></i> I confirm that the vehicle has passed our safety inspection and meets all requirements for delivery service.
                         </label>
@@ -1130,13 +1129,13 @@
                                 <i class="fas fa-sticky-note"></i> Administrator Notes
                             </label>
                             <div class="input-container">
-                                <textarea id="adminNotes" class="form-textarea" placeholder="Enter any additional notes or instructions for the rider (optional)"></textarea>
+                                <textarea id="adminNotes" class="form-textarea" placeholder="Enter any additional notes or instructions for the rider (optional)" name="AdminNotes"></textarea>
                             </div>
                         </div>
                     </div>
                     
                     <div class="checkbox-group">
-                        <input type="checkbox" id="termsAgreement" class="checkbox-input" required>
+                        <input type="checkbox" id="termsAgreement" class="checkbox-input" required name="TermsAccepted">
                         <label for="termsAgreement" class="checkbox-label">
                             <i class="fas fa-file-signature"></i> I confirm that all information provided is accurate and the rider has agreed to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
                         </label>
@@ -1147,7 +1146,7 @@
                         <button type="button" class="btn btn-prev prev-tab" data-prev="vehicle">
                             <i class="fas fa-arrow-left"></i> Back to Vehicle
                         </button>
-                        <button type="button" id="submitForm" class="btn btn-submit">
+                        <button type="submit" id="submitForm" class="btn btn-submit">
                             <i class="fas fa-paper-plane"></i> Submit Rider Registration
                         </button>
                     </div>
