@@ -121,6 +121,9 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
     Route::get('/earning', function () {
         return view('Rider.earning');
     });
+    Route::get('/delivery', function () {
+        return view('Rider.delivery');
+    });
     Route::get('/pickup', function () {
         return view('Rider.pickup');
     });
