@@ -1,4 +1,4 @@
-@extends('Rider.layout')
+@extends('Rider.riderlayout')
 @section('content')
 
 @endsection

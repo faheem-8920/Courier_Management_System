@@ -2,9 +2,6 @@
 @section('content')
 
 
-
-
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
         <div class="container py-5">
@@ -103,8 +100,6 @@
         </div>
     </div>
     <!-- Feature End -->
-
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>

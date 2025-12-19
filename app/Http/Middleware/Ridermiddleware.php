@@ -4,25 +4,21 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-
-
-class Ridermiddleware
+class RiderMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-         if (Auth::user()->role == 'rider') {
-           return $next($request);
-       }
-       else {
-        return response()->json("You are not allowed to access this page");
-    }
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
+
+        
+        if (Auth::user()->role !== 'rider') {
+            abort(403, 'Unauthorized'); 
+        }
+
+        return $next($request);
     }
 }

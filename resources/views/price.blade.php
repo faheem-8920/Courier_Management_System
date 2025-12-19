@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
         <div class="container py-5">
