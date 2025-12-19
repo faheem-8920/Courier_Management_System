@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\Shipment;
 use App\Models\User;
 use App\Models\rider;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -25,35 +25,46 @@ class AdminController extends Controller
         $table->PickupTime=$req->PickupTime;
         $table->DeliveryAddress=$req->DeliveryAddress;
         $table->DeliveryType=$req->DeliveryType;
+        $table->DeliveryZone=$req->DeliveryZone;
         $table->ParcelWeight=$req->ParcelWeight;
         $table->save();
             
 return redirect()->back();  
     } 
 
-    public function saverider(Request $req){
-     
-    $table=new rider();
+   public function saverider(Request $req)
+{
+    // 1️⃣ Create User for Jetstream login
+    $user = User::create([
+        'name' => $req->Fullname,
+        'email' => $req->Email,
+        'password' => Hash::make($req->Password), // Admin sets initial password
+        'role' => 'rider',                         // Add 'role' column to users table
+        'zone' => $req->WorkingZone,              // Rider zone
+    ]);
 
-    $table->Fullname=$req->Fullname;
-    $table->Email=$req->Email;
-    $table->Phone=$req->Phone;
-    $table->DateOfBirth=$req->DateOfBirth;
-    $table->HireDate=$req->HireDate;
-    $table->WorkingShift=$req->WorkingShift;
-    $table->WorkingZone=$req->DeliveryZone;
-    $table->VehicleType=$req->VehicleType;
-    $table->PlateNumber=$req->PlateNumber;
-    $table->VehicleModel=$req->VehicleModel;
-    $table->AdminNotes=$req->Adminnotes;
+    // 2️⃣ Create Rider info
+    $rider = new Rider();
+    $rider->Fullname = $req->Fullname;
+    $rider->Email = $req->Email;
+    $rider->Phone = $req->Phone;
+    $rider->DateOfBirth = $req->DateOfBirth;
+    $rider->HireDate = $req->HireDate;
+    $rider->WorkingShift = $req->WorkingShift;
+    $rider->WorkingZone = $req->WorkingZone;
+    $rider->VehicleType = $req->VehicleType;
+    $rider->PlateNumber = $req->PlateNumber;
+    $rider->VehicleModel = $req->VehicleModel;
+    $rider->AdminNotes = $req->AdminNotes;
+    $rider->VehicleInspected = $req->has('VehicleInspected') ? 1 : 0;
+    $rider->TermsAccepted = $req->has('TermsAccepted') ? 1 : 0;
     
+    // Optional: link Rider to User
 
-$table->VehicleInspected = $req->has('VehicleInspected') ? 1 : 0;
-$table->TermsAccepted = $req->has('TermsAccepted') ? 1 : 0;
+    $rider->save();
 
-
-    $table->save();
-return redirect()->back();    }
+    return redirect()->back()->with('success', 'Rider added successfully');
+}
 
 
 public function showriders(){

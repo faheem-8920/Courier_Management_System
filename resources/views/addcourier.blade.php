@@ -943,9 +943,27 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="deliveryZone" class="required">Delivery Zone</label>
+                    <div class="input-wrapper">
+                        <select id="deliveryZone" name="DeliveryZone" required>
+                            <option value="">Select Delivery Zone</option>
+                            <option value="north">North</option>
+                            <option value="south">South</option>
+                            <option value="east">East</option>
+                            <option value="west">West</option>
+                            <option value="central">Central</option>
+                        </select>
+                        <span class="input-icon"><i class="fas fa-map"></i></span>
+                    </div>
+                    <div class="error-message" id="deliveryZoneError">
+                        <i class="fas fa-exclamation-circle"></i> Please select a delivery zone
+                    </div>
+                </div>
+                
+                <div class="form-group">
                     <label for="deliveryType" class="required">Delivery Speed</label>
-                    <select id="deliveryType" name="DeliveryType"required>
-                        <option value="" name='DeliveryType'>Select speed</option>
+                    <select id="deliveryType" name="DeliveryType" required>
+                        <option value="">Select speed</option>
                         <option value="standard">Standard (3-5 days) - $9.99</option>
                         <option value="express">Express (1-2 days) - $19.99</option>
                         <option value="overnight">Overnight - $29.99</option>
@@ -1072,7 +1090,8 @@
                     return this.validateNumber(field);
             }
             
-            if (field.id === 'deliveryType' && !field.value) {
+            // For select elements
+            if (field.tagName === 'SELECT' && !field.value) {
                 this.showFieldError(field, errorElement, 'Please select an option');
                 return false;
             }
@@ -1229,6 +1248,7 @@
                 },
                 delivery: {
                     address: document.getElementById('deliveryAddress').value,
+                    zone: document.getElementById('deliveryZone').value,
                     type: document.getElementById('deliveryType').value
                 },
                 parcel: {
@@ -1244,25 +1264,24 @@
             return data;
         }
         
-       async handleSubmit(e) {
-    e.preventDefault(); // stop for animation first
+        async handleSubmit(e) {
+            e.preventDefault(); // stop for animation first
 
-    if (!this.validateForm()) {
-        this.showToast('Please fix the errors', 'Some fields require your attention.', 'error');
-        return;
-    }
+            if (!this.validateForm()) {
+                this.showToast('Please fix the errors', 'Some fields require your attention.', 'error');
+                return;
+            }
 
-    // Disable button
-    this.submitBtn.disabled = true;
-    this.submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            // Disable button
+            this.submitBtn.disabled = true;
+            this.submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
-    // Run animation
-    await this.showLoading();
+            // Run animation
+            await this.showLoading();
 
-    // ✅ AFTER animation → SUBMIT FORM TO LARAVEL
-    this.form.submit(); // 🔥 THIS IS THE KEY
-}
-
+            // ✅ AFTER animation → SUBMIT FORM TO LARAVEL
+            this.form.submit(); // 🔥 THIS IS THE KEY
+        }
         
         async showLoading() {
             this.loadingOverlay.classList.add('active');

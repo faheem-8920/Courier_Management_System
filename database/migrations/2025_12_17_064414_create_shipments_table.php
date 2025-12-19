@@ -29,7 +29,8 @@ return new class extends Migration
             $table->enum('PickupTime', ['morning', 'afternoon', 'evening']);
             //delivery details
             $table->text('DeliveryAddress');
-           $table->enum('DeliveryType', ['standard', 'express', 'overnight']);
+           $table->enum('DeliveryZone', ['north','south','east','west','central'])->index();
+            $table->enum('DeliveryType', ['standard', 'express', 'overnight']);
            $table->decimal('ParcelWeight', 5, 2);
 
             $table->timestamps();

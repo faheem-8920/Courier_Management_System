@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RiderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
@@ -9,10 +10,9 @@ use App\Http\Middleware\RiderMiddleware;
 // Controller routes
 Route::post('/uploadcourier',[AdminController::class,'savecourier']);
 Route::post('/saverider',[AdminController::class,'saverider']);
-Route::get('/riders',[AdminController::class,'showriders']);
-Route::get('/shipments', [AdminController::class,'showshipments']);
-Route::get('/users',[AdminController::class,'showuserrecords']);
-
+Route::get('/mydashboard', function () {
+    return view('dashboard');
+});
 // User routes
 Route::get('/', function () {
     return view('auth.login');
@@ -97,6 +97,13 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
+
+    Route::get('/riders',[AdminController::class,'showriders']);
+Route::get('/shipments', [AdminController::class,'showshipments']);
+Route::get('/users',[AdminController::class,'showuserrecords']);
+
+
+
 });
 
 // Rider routes (protected)
@@ -105,9 +112,9 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
         return view('Rider.index');
     })->name('Rider.index');
 
-    Route::get('/delivery', function () {
-        return view('Rider.delivery');
-    });
+ 
+Route::get('/delivery', [RiderController::class, 'myShipments'])
+     ->middleware('auth'); 
     Route::get('/earning', function () {
         return view('Rider.earning');
     });
