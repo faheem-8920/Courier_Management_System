@@ -665,14 +665,14 @@
             line-height: 1.6;
         }
 
-        .rider-id {
+        .rider-name-display {
             background: linear-gradient(135deg, var(--light-red), #ffe6e6);
             color: var(--primary-red);
             padding: 12px 25px;
             border-radius: 8px;
             font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin: 20px 0;
             display: inline-block;
             border: 2px dashed var(--primary-red);
@@ -803,7 +803,6 @@
             }
         }
 
-        /* Floating particles background */
         .particles {
             position: fixed;
             top: 0;
@@ -825,6 +824,67 @@
         @keyframes floatParticle {
             0% { transform: translateY(100vh) rotate(0deg); }
             100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        /* Password toggle styles */
+        .password-toggle {
+            position: absolute;
+            right: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--medium-gray);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-red);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .password-strength {
+            height: 4px;
+            width: 100%;
+            background: #e8e8e8;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .strength-weak {
+            background-color: #ff5252;
+            width: 25%;
+        }
+
+        .strength-fair {
+            background-color: #ffb74d;
+            width: 50%;
+        }
+
+        .strength-good {
+            background-color: #4caf50;
+            width: 75%;
+        }
+
+        .strength-strong {
+            background-color: #2e7d32;
+            width: 100%;
+        }
+
+        .strength-text {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            text-align: right;
+            color: var(--medium-gray);
         }
     </style>
 </head>
@@ -880,7 +940,8 @@
                 </div>
             </div>
 
-            <form id="riderForm">
+            <form id="riderForm" method="POST" action="/saverider">
+                @csrf
                 <!-- Personal Details Tab -->
                 <div class="tab-content active" id="personal-tab">
                     <div class="form-row">
@@ -889,7 +950,7 @@
                                 <i class="fas fa-user-circle"></i> Full Name
                             </label>
                             <div class="input-container">
-                                <input type="text" id="fullName" class="form-input" placeholder="Enter rider's full name" autocomplete="name">
+                                <input type="text" id="fullName" class="form-input" placeholder="Enter rider's full name" name='Fullname' autocomplete="name">
                                 <i class="fas fa-user input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -901,7 +962,7 @@
                                 <i class="fas fa-envelope"></i> Email Address
                             </label>
                             <div class="input-container">
-                                <input type="email" id="email" class="form-input" placeholder="Enter rider's email" autocomplete="email">
+                                <input type="email" id="email" class="form-input" placeholder="Enter rider's email" name="Email" autocomplete="email">
                                 <i class="fas fa-envelope input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -916,7 +977,7 @@
                                 <i class="fas fa-phone"></i> Phone Number
                             </label>
                             <div class="input-container">
-                                <input type="tel" id="phone" class="form-input" placeholder="Enter 10-digit phone number" autocomplete="tel">
+                                <input type="tel" id="phone" class="form-input" placeholder="Enter 10-digit phone number" name="Phone" autocomplete="tel">
                                 <i class="fas fa-phone input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -928,7 +989,7 @@
                                 <i class="fas fa-birthday-cake"></i> Date of Birth
                             </label>
                             <div class="input-container">
-                                <input type="date" id="dob" class="form-input" autocomplete="bday">
+                                <input type="date" id="dob" class="form-input" autocomplete="bday" name="DateOfBirth">
                                 <i class="fas fa-calendar-alt input-icon"></i>
                                 <div class="date-reset-container">
                                     <button type="button" class="date-reset-btn" id="resetDOB" title="Reset to 25 years ago">
@@ -939,6 +1000,39 @@
                                 <i class="fas fa-times validation-icon"></i>
                             </div>
                             <div class="error-message" id="dobError">Rider must be at least 18 years old</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password" class="form-label required">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <div class="input-container">
+                                <input type="password" id="password" class="form-input" placeholder="Create a strong password" name="Password" autocomplete="new-password">
+                                <i class="fas fa-lock input-icon"></i>
+                                <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                                <i class="fas fa-check validation-icon"></i>
+                                <i class="fas fa-times validation-icon"></i>
+                            </div>
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                            </div>
+                            <div class="strength-text" id="strengthText">Password strength</div>
+                            <div class="error-message" id="passwordError">Password must be at least 8 characters with uppercase, lowercase, number, and special character</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label required">
+                                <i class="fas fa-lock"></i> Confirm Password
+                            </label>
+                            <div class="input-container">
+                                <input type="password" id="confirmPassword" class="form-input" placeholder="Confirm your password" autocomplete="new-password">
+                                <i class="fas fa-lock input-icon"></i>
+                                <i class="fas fa-eye password-toggle" id="toggleConfirmPassword"></i>
+                                <i class="fas fa-check validation-icon"></i>
+                                <i class="fas fa-times validation-icon"></i>
+                            </div>
+                            <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
                         </div>
                     </div>
                     
@@ -954,35 +1048,23 @@
                 <div class="tab-content" id="employment-tab">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="employeeId" class="form-label required">
-                                <i class="fas fa-id-card"></i> Employee ID
-                            </label>
-                            <div class="input-container">
-                                <input type="text" id="employeeId" class="form-input" placeholder="Auto-generated" readonly>
-                                <i class="fas fa-id-card input-icon"></i>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="hireDate" class="form-label required">
                                 <i class="fas fa-calendar-plus"></i> Hire Date
                             </label>
                             <div class="input-container">
-                                <input type="date" id="hireDate" class="form-input">
+                                <input type="date" id="hireDate" class="form-input" name="HireDate">
                                 <i class="fas fa-calendar-check input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
                             </div>
                             <div class="error-message" id="hireDateError">Please select a valid hire date</div>
                         </div>
-                    </div>
-                    
-                    <div class="form-row">
                         <div class="form-group">
                             <label for="shift" class="form-label required">
                                 <i class="fas fa-clock"></i> Preferred Shift
                             </label>
                             <div class="input-container">
-                                <select id="shift" class="form-select">
+                                <select id="shift" class="form-select" name="WorkingShift">
                                     <option value="">Select working shift</option>
                                     <option value="morning">Morning (6:00 AM - 2:00 PM)</option>
                                     <option value="afternoon">Afternoon (2:00 PM - 10:00 PM)</option>
@@ -995,12 +1077,15 @@
                             </div>
                             <div class="error-message" id="shiftError">Please select a shift</div>
                         </div>
-                        <div class="form-group">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group full-width">
                             <label for="zone" class="form-label required">
                                 <i class="fas fa-map-marked-alt"></i> Delivery Zone
                             </label>
                             <div class="input-container">
-                                <select id="zone" class="form-select">
+                                <select id="zone" class="form-select" name='WorkingZone'>
                                     <option value="">Select delivery zone</option>
                                     <option value="north">North Zone</option>
                                     <option value="south">South Zone</option>
@@ -1034,11 +1119,10 @@
                                 <i class="fas fa-car"></i> Vehicle Type
                             </label>
                             <div class="input-container">
-                                <select id="vehicleType" class="form-select">
+                                <select id="vehicleType" class="form-select" name="VehicleType">
                                     <option value="">Select vehicle type</option>
                                     <option value="motorcycle">Motorcycle</option>
                                     <option value="scooter">Scooter</option>
-                                    <option value="bicycle">Bicycle</option>
                                     <option value="car">Car</option>
                                     <option value="van">Delivery Van</option>
                                 </select>
@@ -1053,7 +1137,7 @@
                                 <i class="fas fa-tag"></i> License Plate
                             </label>
                             <div class="input-container">
-                                <input type="text" id="plateNumber" class="form-input" placeholder="Enter license plate number">
+                                <input type="text" id="plateNumber" class="form-input" placeholder="Enter license plate number" name="PlateNumber">
                                 <i class="fas fa-tag input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1068,7 +1152,7 @@
                                 <i class="fas fa-id-badge"></i> Driver's License
                             </label>
                             <div class="input-container">
-                                <input type="text" id="licenseNumber" class="form-input" placeholder="Enter driver's license number">
+                                <input type="text" id="licenseNumber" class="form-input" placeholder="Enter driver's license number" name="LicenseNumber">
                                 <i class="fas fa-id-card input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1080,14 +1164,14 @@
                                 <i class="fas fa-cogs"></i> Vehicle Model
                             </label>
                             <div class="input-container">
-                                <input type="text" id="vehicleModel" class="form-input" placeholder="Enter vehicle model (optional)">
+                                <input type="text" id="vehicleModel" class="form-input" placeholder="Enter vehicle model (optional)" name="VehicleModel">
                                 <i class="fas fa-car input-icon"></i>
                             </div>
                         </div>
                     </div>
                     
                     <div class="checkbox-group">
-                        <input type="checkbox" id="vehicleInspection" class="checkbox-input" required>
+                        <input type="checkbox" id="vehicleInspection" class="checkbox-input" required name="VehicleInspected">
                         <label for="vehicleInspection" class="checkbox-label">
                             <i class="fas fa-check-circle"></i> I confirm that the vehicle has passed our safety inspection and meets all requirements for delivery service.
                         </label>
@@ -1130,13 +1214,13 @@
                                 <i class="fas fa-sticky-note"></i> Administrator Notes
                             </label>
                             <div class="input-container">
-                                <textarea id="adminNotes" class="form-textarea" placeholder="Enter any additional notes or instructions for the rider (optional)"></textarea>
+                                <textarea id="adminNotes" class="form-textarea" placeholder="Enter any additional notes or instructions for the rider (optional)" name="AdminNotes"></textarea>
                             </div>
                         </div>
                     </div>
                     
                     <div class="checkbox-group">
-                        <input type="checkbox" id="termsAgreement" class="checkbox-input" required>
+                        <input type="checkbox" id="termsAgreement" class="checkbox-input" required name="TermsAccepted">
                         <label for="termsAgreement" class="checkbox-label">
                             <i class="fas fa-file-signature"></i> I confirm that all information provided is accurate and the rider has agreed to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
                         </label>
@@ -1147,7 +1231,7 @@
                         <button type="button" class="btn btn-prev prev-tab" data-prev="vehicle">
                             <i class="fas fa-arrow-left"></i> Back to Vehicle
                         </button>
-                        <button type="button" id="submitForm" class="btn btn-submit">
+                        <button type="submit" id="submitForm" class="btn btn-submit">
                             <i class="fas fa-paper-plane"></i> Submit Rider Registration
                         </button>
                     </div>
@@ -1159,7 +1243,7 @@
             <i class="fas fa-check-circle success-icon"></i>
             <h2>Rider Successfully Registered!</h2>
             <p>The new rider has been added to the SwiftCourier Management System. Login credentials and welcome package have been generated.</p>
-            <div class="rider-id" id="generatedId">RIDER-00245</div>
+            <div class="rider-name-display" id="generatedName">Rider Name</div>
             <p>A confirmation email has been sent to the rider with login credentials and onboarding instructions.</p>
             <button type="button" id="addAnother" class="btn btn-next" style="margin-top: 20px; padding: 12px 25px;">
                 <i class="fas fa-plus-circle"></i> Add Another Rider
@@ -1176,10 +1260,6 @@
             // Create background particles
             createParticles();
             
-            // Generate employee ID
-            const employeeId = 'RIDER-' + Math.floor(10000 + Math.random() * 90000);
-            document.getElementById('employeeId').value = employeeId;
-            
             // Set today as hire date
             const today = new Date();
             const todayStr = today.toISOString().split('T')[0];
@@ -1193,6 +1273,81 @@
             
             // Store original DOB value for reset
             let originalDOB = defaultDOBStr;
+            
+            // Password toggle functionality
+            const togglePassword = document.getElementById('togglePassword');
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+            
+            toggleConfirmPassword.addEventListener('click', function() {
+                const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPasswordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+            
+            // Password strength meter
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strengthBar = document.getElementById('passwordStrengthBar');
+                const strengthText = document.getElementById('strengthText');
+                
+                // Reset
+                strengthBar.className = 'password-strength-bar';
+                strengthBar.style.width = '0%';
+                
+                if (password.length === 0) {
+                    strengthText.textContent = 'Password strength';
+                    return;
+                }
+                
+                let strength = 0;
+                
+                // Length check
+                if (password.length >= 8) strength++;
+                if (password.length >= 12) strength++;
+                
+                // Character type checks
+                if (/[A-Z]/.test(password)) strength++;
+                if (/[a-z]/.test(password)) strength++;
+                if (/[0-9]/.test(password)) strength++;
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                // Update strength bar
+                let width = 0;
+                let strengthClass = '';
+                let text = '';
+                
+                if (strength <= 2) {
+                    width = 25;
+                    strengthClass = 'strength-weak';
+                    text = 'Weak';
+                } else if (strength <= 4) {
+                    width = 50;
+                    strengthClass = 'strength-fair';
+                    text = 'Fair';
+                } else if (strength <= 6) {
+                    width = 75;
+                    strengthClass = 'strength-good';
+                    text = 'Good';
+                } else {
+                    width = 100;
+                    strengthClass = 'strength-strong';
+                    text = 'Strong';
+                }
+                
+                strengthBar.style.width = width + '%';
+                strengthBar.className = 'password-strength-bar ' + strengthClass;
+                strengthText.textContent = 'Password strength: ' + text;
+            });
             
             // Date reset button functionality - FIXED: Properly resets to original value
             document.getElementById('resetDOB').addEventListener('click', function() {
@@ -1271,9 +1426,9 @@
             submitButton.addEventListener('click', () => {
                 const reviewTab = document.getElementById('review-tab');
                 if (validateTab(reviewTab.id)) {
-                    // Generate a rider ID
-                    const riderId = 'RIDER-' + Math.floor(1000 + Math.random() * 9000);
-                    document.getElementById('generatedId').textContent = riderId;
+                    // Get rider's name for success message
+                    const riderName = document.getElementById('fullName').value;
+                    document.getElementById('generatedName').textContent = riderName || 'New Rider';
                     
                     // Show success message
                     document.querySelector('.form-container').style.display = 'none';
@@ -1290,15 +1445,24 @@
                 // Reset form
                 document.getElementById('riderForm').reset();
                 
-                // Regenerate employee ID
-                const newEmployeeId = 'RIDER-' + Math.floor(10000 + Math.random() * 90000);
-                document.getElementById('employeeId').value = newEmployeeId;
-                
                 // Set today as hire date
                 document.getElementById('hireDate').value = todayStr;
                 
                 // FIXED: Reset DOB to original value (25 years ago)
                 document.getElementById('dob').value = originalDOB;
+                
+                // Reset password visibility
+                passwordInput.type = 'password';
+                confirmPasswordInput.type = 'password';
+                togglePassword.classList.remove('fa-eye-slash');
+                togglePassword.classList.add('fa-eye');
+                toggleConfirmPassword.classList.remove('fa-eye-slash');
+                toggleConfirmPassword.classList.add('fa-eye');
+                
+                // Reset password strength meter
+                document.getElementById('passwordStrengthBar').style.width = '0%';
+                document.getElementById('passwordStrengthBar').className = 'password-strength-bar';
+                document.getElementById('strengthText').textContent = 'Password strength';
                 
                 // Switch back to first tab
                 switchTab('personal');
@@ -1362,6 +1526,20 @@
                 // Live validation for DOB
                 if (input.id === 'dob') {
                     input.addEventListener('change', function() {
+                        validateRealTime(this);
+                    });
+                }
+                
+                // Live validation for password
+                if (input.id === 'password') {
+                    input.addEventListener('input', function() {
+                        validateRealTime(this);
+                    });
+                }
+                
+                // Live validation for confirm password
+                if (input.id === 'confirmPassword') {
+                    input.addEventListener('input', function() {
                         validateRealTime(this);
                     });
                 }
@@ -1509,6 +1687,8 @@
                     const email = document.getElementById('email');
                     const phone = document.getElementById('phone');
                     const dob = document.getElementById('dob');
+                    const password = document.getElementById('password');
+                    const confirmPassword = document.getElementById('confirmPassword');
                     
                     if (!name.value.trim() || name.value.trim().length < 3) {
                         showError(name, 'nameError', 'Please enter a valid name (minimum 3 characters)');
@@ -1540,6 +1720,22 @@
                     } else {
                         hideError(dob, 'dobError');
                         markAsValid(dob);
+                    }
+                    
+                    if (!isValidPassword(password.value)) {
+                        showError(password, 'passwordError', 'Password must be at least 8 characters with uppercase, lowercase, number, and special character');
+                        isValid = false;
+                    } else {
+                        hideError(password, 'passwordError');
+                        markAsValid(password);
+                    }
+                    
+                    if (password.value !== confirmPassword.value) {
+                        showError(confirmPassword, 'confirmPasswordError', 'Passwords do not match');
+                        isValid = false;
+                    } else {
+                        hideError(confirmPassword, 'confirmPasswordError');
+                        if (confirmPassword.value) markAsValid(confirmPassword);
                     }
                     
                 } else if (tabId === 'employment-tab') {
@@ -1644,6 +1840,11 @@
                     validateField(input, errorId, input.value);
                 } else if (inputId === 'plateNumber' || inputId === 'licenseNumber') {
                     validateField(input, errorId, input.value.trim().length > 0);
+                } else if (inputId === 'password') {
+                    validateField(input, errorId, isValidPassword(input.value));
+                } else if (inputId === 'confirmPassword') {
+                    const password = document.getElementById('password').value;
+                    validateField(input, errorId, input.value === password);
                 }
             }
             
@@ -1677,7 +1878,9 @@
                     'zone': 'Please select a delivery zone',
                     'vehicleType': 'Please select vehicle type',
                     'plateNumber': 'Please enter license plate number',
-                    'licenseNumber': 'Please enter driver\'s license number'
+                    'licenseNumber': 'Please enter driver\'s license number',
+                    'password': 'Password must be at least 8 characters with uppercase, lowercase, number, and special character',
+                    'confirmPassword': 'Passwords do not match'
                 };
                 return messages[fieldId] || 'Please fill this field';
             }
@@ -1761,6 +1964,12 @@
                 return age >= 18;
             }
             
+            function isValidPassword(password) {
+                // At least 8 characters, contains uppercase, lowercase, number, and special character
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                return passwordRegex.test(password);
+            }
+            
             // Function to update review summary
             function updateReviewSummary() {
                 const summary = document.getElementById('reviewSummary');
@@ -1769,13 +1978,13 @@
                 const email = document.getElementById('email').value;
                 const phone = document.getElementById('phone').value;
                 const dob = document.getElementById('dob').value;
-                const employeeId = document.getElementById('employeeId').value;
                 const hireDate = document.getElementById('hireDate').value;
                 const shift = document.getElementById('shift').options[document.getElementById('shift').selectedIndex].text;
                 const zone = document.getElementById('zone').options[document.getElementById('zone').selectedIndex].text;
                 const vehicleType = document.getElementById('vehicleType').options[document.getElementById('vehicleType').selectedIndex].text;
                 const plateNumber = document.getElementById('plateNumber').value;
                 const licenseNumber = document.getElementById('licenseNumber').value;
+                const vehicleModel = document.getElementById('vehicleModel').value;
                 
                 // Calculate age from DOB
                 let ageDisplay = 'Not provided';
@@ -1818,7 +2027,6 @@
                         <div><strong><i class="fas fa-envelope" style="color: var(--primary-red);"></i> Email:</strong> ${email || 'Not provided'}</div>
                         <div><strong><i class="fas fa-phone" style="color: var(--primary-red);"></i> Phone:</strong> ${phone || 'Not provided'}</div>
                         <div><strong><i class="fas fa-birthday-cake" style="color: var(--primary-red);"></i> Age:</strong> ${ageDisplay}</div>
-                        <div><strong><i class="fas fa-id-card" style="color: var(--primary-red);"></i> Employee ID:</strong> ${employeeId || 'Not provided'}</div>
                         <div><strong><i class="fas fa-calendar-plus" style="color: var(--primary-red);"></i> Hire Date:</strong> ${hireDateDisplay}</div>
                         <div><strong><i class="fas fa-clock" style="color: var(--primary-red);"></i> Shift:</strong> ${shift || 'Not provided'}</div>
                         <div><strong><i class="fas fa-map-marker-alt" style="color: var(--primary-red);"></i> Zone:</strong> ${zone || 'Not provided'}</div>
@@ -1826,6 +2034,8 @@
                         <div><strong><i class="fas fa-tag" style="color: var(--primary-red);"></i> Plate No.:</strong> ${plateNumber || 'Not provided'}</div>
                         <div><strong><i class="fas fa-id-badge" style="color: var(--primary-red);"></i> License No.:</strong> ${licenseNumber || 'Not provided'}</div>
                         <div><strong><i class="fas fa-calendar-alt" style="color: var(--primary-red);"></i> Date of Birth:</strong> ${dobDisplay}</div>
+                        ${vehicleModel ? `<div><strong><i class="fas fa-cogs" style="color: var(--primary-red);"></i> Vehicle Model:</strong> ${vehicleModel}</div>` : ''}
+                        <div><strong><i class="fas fa-lock" style="color: var(--primary-red);"></i> Password:</strong> ********</div>
                     </div>
                     <div style="padding: 15px; background: rgba(255, 255, 255, 0.7); border-radius: 8px; font-size: 0.9rem; color: var(--medium-gray); border-left: 3px solid var(--primary-red);">
                         <i class="fas fa-info-circle" style="color: var(--primary-red); margin-right: 8px;"></i>

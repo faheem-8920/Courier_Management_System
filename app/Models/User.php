@@ -26,11 +26,12 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
+    'name',
+    'email',
+    'password',
+    'role',  // allows setting 'rider' or 'admin'
+    'zone',  // allows setting the rider's zone
+];
     /**
      * The attributes that should be hidden for serialization.
      *
