@@ -20,6 +20,113 @@
 
     <!-- Custom styles for this template-->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+    .slide-left {
+    animation: slideInLeft 1s ease-out;
+}
+.user-link {
+    transition: all 0.3s ease;
+}
+
+.user-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.user-link:hover .user-icon {
+    transform: translateX(6px);
+    color: #4e73df; 
+}
+.nav-text {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    color: #d1d3e2;
+    transition: color 0.3s ease;
+}
+.rider-icon {
+    transition: transform 0.35s ease, color 0.3s ease;
+}
+
+.rider-link:hover .rider-icon {
+    transform: translateX(8px) rotate(-5deg);
+    color: #1cc88a; 
+}
+.rider-link:hover .nav-text {
+    color: #ffffff;
+}
+.shipment-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.shipment-link:hover .shipment-icon {
+    transform: translateY(-4px) scale(1.05);
+    color: #f6c23e; 
+}
+.shipment-link:hover .nav-text {
+    color: #ffffff;
+}
+.add-rider-icon {
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.add-rider-link:hover .add-rider-icon {
+    transform: scale(1.15);
+    color: #36b9cc; 
+    text-shadow: 0 0 8px rgba(54,185,204,0.6);
+}
+.add-rider-link:hover .nav-text {
+    color: #ffffff;
+}
+
+.animated-text {
+    font-weight: 800;
+    font-size: 1.3rem; 
+    color: #ffffff; 
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+}
+.animated-text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    animation: shine 2.5s infinite;
+}
+.animated-text:hover {
+    transform: scale(1.1);
+    text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+  </style>
 
 </head>
 
@@ -38,11 +145,12 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-            <div class="sidebar-brand-icon">
-                <i class="fas fa-truck"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">Courier Admin</div>
-        </a>
+    <div class="sidebar-brand-icon slide-left">
+        <i class="fas fa-truck"></i>
+    </div>
+     <div class="sidebar-brand-text mx-3 animated-text">Courier Admin</div>
+</a>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -59,36 +167,40 @@
         <hr class="sidebar-divider">
 
         <!-- Users -->
-        <li class="nav-item">
-            <a class="nav-link" href="/users">
-                <i class="fas fa-fw fa-users"></i>
-                <span>Users</span>
-            </a>
-        </li>
+         <li class="nav-item">
+         <a class="nav-link user-link" href="/users">
+              <i class="fas fa-fw fa-users user-icon"></i>
+             <span class="nav-text">Users</span>
+          </a>
+       </li>
 
         <!-- Riders -->
-        <li class="nav-item">
-            <a class="nav-link" href="/riders">
-                <i class="fas fa-fw fa-motorcycle"></i>
-                <span>Riders</span>
-            </a>
-        </li>
+
+  <li class="nav-item">
+    <a class="nav-link rider-link" href="/riders">
+        <i class="fas fa-fw fa-motorcycle rider-icon"></i>
+        <span class="nav-text">Riders</span>
+    </a>
+</li>
+     
 
         <!-- Shipments -->
         <li class="nav-item">
-            <a class="nav-link" href="/shipments">
-                <i class="fas fa-fw fa-box"></i>
-                <span>Shipments</span>
-            </a>
-        </li>
+    <a class="nav-link shipment-link" href="/shipments">
+        <i class="fas fa-fw fa-box shipment-icon"></i>
+        <span class="nav-text">Shipments</span>
+    </a>
+</li>
+
 
         <!-- Add Rider -->
         <li class="nav-item">
-            <a class="nav-link" href="/addrider">
-                <i class="fas fa-fw fa-user-plus"></i>
-                <span>Add Rider</span>
-            </a>
-        </li>
+    <a class="nav-link add-rider-link" href="/addrider">
+        <i class="fas fa-fw fa-user-plus add-rider-icon"></i>
+        <span class="nav-text">Add Rider</span>
+    </a>
+</li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
