@@ -1,9 +1,5 @@
 @extends('layout')
 @section('content')
-<<<<<<< HEAD
-
-=======
->>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
 
 
     <!-- Page Header Start -->
@@ -104,7 +100,6 @@
         </div>
     </div>
     <!-- Feature End -->
-<<<<<<< HEAD
 
 
     <!-- Back to Top -->
@@ -125,9 +120,3 @@
 </body>
 
 </html>
-@endsection
-=======
-        
-
-    @endsection
->>>>>>> a64afaa2e09f817548519c9673eba5ed0bb70af5
