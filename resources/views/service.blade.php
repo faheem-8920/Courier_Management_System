@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
 @extends('layout')
 @section('content')
 
@@ -151,8 +154,11 @@
     </div>
     <!-- Testimonial End -->
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
@@ -173,3 +179,8 @@
 </html>
 
 @endsection
+<<<<<<< HEAD
+=======
+
+   
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0

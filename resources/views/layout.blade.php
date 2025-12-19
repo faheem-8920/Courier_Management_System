@@ -53,7 +53,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
+                <a href="{{ url('/index') }}" class="nav-item nav-link active">Home</a>
                 <a href="{{ url('/about') }}" class="nav-item nav-link">About</a>
                 <a href="{{ url('/service') }}" class="nav-item nav-link">Services</a>
                 <div class="nav-item dropdown">

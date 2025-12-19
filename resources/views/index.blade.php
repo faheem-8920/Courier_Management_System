@@ -1,18 +1,24 @@
-
 @extends('layout')
 @section('content')
-
+ 
     <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative mb-5">
             <div class="owl-carousel-item position-relative">
+<<<<<<< HEAD
                 <img class="img-fluid" src="img/carousal-3.jpg" alt="">
+=======
+
+                <img class="img-fluid" src="img/carousal-3.jpg" alt="">
+
+              
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Smart Courier Management System</h5>
-                                <h1 class="display-6 display-md-4 display-lg-3 text-white animated slideInDown mb-4">
+                                <h1 class="display-6 display-lg-4 text-white animated slideInDown mb-4">
                                   Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Send parcels anywhere in Pakistan with real-time tracking, fast pickup, and secure delivery.</p>
                                 
@@ -24,6 +30,11 @@
             </div>
             <div class="owl-carousel-item position-relative">
                 <img class="img-fluid" src="img/image-4.avif" alt="">
+<<<<<<< HEAD
+=======
+
+               
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
@@ -53,7 +64,14 @@
             <div class="row g-5 mx-lg-0">
                 <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
+<<<<<<< HEAD
                         <img class="position-absolute img-fluid w-100 h-100" src="img/about-2.jpg" style="object-fit: cover;" alt="">
+=======
+
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/parcel.1.jpeg" style="object-fit: cover;" alt="">
+
+
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
                     </div>
                 </div>
                 <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
@@ -722,6 +740,12 @@
     <!-- Testimonial End -->
  @endsection
 
+<<<<<<< HEAD
 
 
     
+=======
+
+     
+
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
