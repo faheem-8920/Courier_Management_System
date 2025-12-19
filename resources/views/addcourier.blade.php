@@ -787,7 +787,8 @@
         </div>
     </div>
     
-    <form id="courierForm">
+    <form id="courierForm" action=/uploadcourier method="POST">
+        @csrf
         <div class="form-body">
             <!-- Sender Information -->
             <div class="form-section">
@@ -799,7 +800,7 @@
                 <div class="form-group">
                     <label for="senderName" class="required">Full Name</label>
                     <div class="input-wrapper">
-                        <input type="text" id="senderName" placeholder="John Doe" required>
+                        <input type="text" id="senderName" placeholder="John Doe" name='SenderName' required>
                         <span class="input-icon"><i class="fas fa-user"></i></span>
                     </div>
                     <div class="error-message" id="senderNameError">
@@ -810,7 +811,7 @@
                 <div class="form-group">
                     <label for="senderPhone" class="required">Phone Number</label>
                     <div class="input-wrapper">
-                        <input type="tel" id="senderPhone" placeholder="+1 (555) 123-4567" required>
+                        <input type="tel" id="senderPhone" placeholder="+1 (555) 123-4567" name='SenderPhone' required>
                         <span class="input-icon"><i class="fas fa-phone"></i></span>
                     </div>
                     <div class="error-message" id="senderPhoneError">
@@ -821,7 +822,7 @@
                 <div class="form-group">
                     <label for="senderEmail" class="required">Email Address</label>
                     <div class="input-wrapper">
-                        <input type="email" id="senderEmail" placeholder="john@example.com" required>
+                        <input type="email" id="senderEmail" placeholder="john@example.com" name='SenderEmail' required>
                         <span class="input-icon"><i class="fas fa-envelope"></i></span>
                     </div>
                     <div class="error-message" id="senderEmailError">
@@ -840,7 +841,7 @@
                 <div class="form-group">
                     <label for="receiverName" class="required">Full Name</label>
                     <div class="input-wrapper">
-                        <input type="text" id="receiverName" placeholder="Jane Smith" required>
+                        <input type="text" id="receiverName" placeholder="Jane Smith" name='ReceiverName' required>
                         <span class="input-icon"><i class="fas fa-user"></i></span>
                     </div>
                     <div class="error-message" id="receiverNameError">
@@ -851,7 +852,7 @@
                 <div class="form-group">
                     <label for="receiverPhone" class="required">Phone Number</label>
                     <div class="input-wrapper">
-                        <input type="tel" id="receiverPhone" placeholder="+1 (555) 987-6543" required>
+                        <input type="tel" id="receiverPhone" placeholder="+1 (555) 987-6543" name='ReceiverPhone' required>
                         <span class="input-icon"><i class="fas fa-phone"></i></span>
                     </div>
                     <div class="error-message" id="receiverPhoneError">
@@ -862,7 +863,7 @@
                 <div class="form-group">
                     <label for="receiverEmail">Email Address (Optional)</label>
                     <div class="input-wrapper">
-                        <input type="email" id="receiverEmail" placeholder="jane@example.com">
+                        <input type="email" id="receiverEmail" placeholder="jane@example.com" name="RecevierEmail" >
                         <span class="input-icon"><i class="fas fa-envelope"></i></span>
                     </div>
                     <div class="error-message" id="receiverEmailError">
@@ -884,7 +885,7 @@
                 <div class="form-group">
                     <label for="pickupAddress" class="required">Complete Address</label>
                     <div class="input-wrapper">
-                        <textarea id="pickupAddress" placeholder="123 Main Street, Apt 4B&#10;New York, NY 10001" required></textarea>
+                        <textarea id="pickupAddress" placeholder="123 Main Street, Apt 4B&#10;New York, NY 10001" name='PickupAddress' required></textarea>
                         <span class="input-icon"><i class="fas fa-home"></i></span>
                     </div>
                     <div class="error-message" id="pickupAddressError">
@@ -896,21 +897,21 @@
                     <label for="pickupTime" class="required">Preferred Time</label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" id="timeMorning" name="pickupTime" value="morning" required>
+                            <input type="radio" id="timeMorning" name="PickupTime" value="morning" required>
                             <label for="timeMorning" class="radio-label">
                                 <i class="fas fa-sun"></i>
                                 <span>Morning<br>(9AM-12PM)</span>
                             </label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="timeAfternoon" name="pickupTime" value="afternoon">
+                            <input type="radio" id="timeAfternoon" name="PickupTime" value="afternoon">
                             <label for="timeAfternoon" class="radio-label">
                                 <i class="fas fa-cloud-sun"></i>
                                 <span>Afternoon<br>(12PM-4PM)</span>
                             </label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="timeEvening" name="pickupTime" value="evening">
+                            <input type="radio" id="timeEvening" name="PickupTime" value="evening">
                             <label for="timeEvening" class="radio-label">
                                 <i class="fas fa-moon"></i>
                                 <span>Evening<br>(4PM-8PM)</span>
@@ -933,7 +934,7 @@
                 <div class="form-group">
                     <label for="deliveryAddress" class="required">Complete Address</label>
                     <div class="input-wrapper">
-                        <textarea id="deliveryAddress" placeholder="456 Oak Avenue, Suite 300&#10;Los Angeles, CA 90001" required></textarea>
+                        <textarea id="deliveryAddress" placeholder="456 Oak Avenue, Suite 300&#10;Los Angeles, CA 90001" name='DeliveryAddress' required></textarea>
                         <span class="input-icon"><i class="fas fa-building"></i></span>
                     </div>
                     <div class="error-message" id="deliveryAddressError">
@@ -943,8 +944,8 @@
                 
                 <div class="form-group">
                     <label for="deliveryType" class="required">Delivery Speed</label>
-                    <select id="deliveryType" required>
-                        <option value="">Select speed</option>
+                    <select id="deliveryType" name="DeliveryType"required>
+                        <option value="" name='DeliveryType'>Select speed</option>
                         <option value="standard">Standard (3-5 days) - $9.99</option>
                         <option value="express">Express (1-2 days) - $19.99</option>
                         <option value="overnight">Overnight - $29.99</option>
@@ -957,7 +958,7 @@
                 <div class="form-group">
                     <label for="parcelWeight" class="required">Parcel Weight (kg)</label>
                     <div class="input-wrapper">
-                        <input type="number" id="parcelWeight" placeholder="2.5" min="0.1" step="0.1" required>
+                        <input type="number" id="parcelWeight" placeholder="2.5" min="0.1" step="0.1" name='ParcelWeight' required>
                         <span class="input-icon"><i class="fas fa-weight-hanging"></i></span>
                     </div>
                     <div class="error-message" id="parcelWeightError">
@@ -1201,7 +1202,7 @@
             });
             
             // Validate radio group
-            const pickupTime = this.form.querySelector('input[name="pickupTime"]:checked');
+            const pickupTime = this.form.querySelector('input[name="PickupTime"]:checked');
             if (!pickupTime) {
                 document.getElementById('pickupTimeError').classList.add('show');
                 isValid = false;
@@ -1224,7 +1225,7 @@
                 },
                 pickup: {
                     address: document.getElementById('pickupAddress').value,
-                    time: document.querySelector('input[name="pickupTime"]:checked').value
+                    time: document.querySelector('input[name="PickupTime"]:checked').value
                 },
                 delivery: {
                     address: document.getElementById('deliveryAddress').value,
@@ -1243,40 +1244,25 @@
             return data;
         }
         
-        async handleSubmit(e) {
-            e.preventDefault();
-            
-            if (!this.validateForm()) {
-                this.showToast('Please fix the errors', 'Some fields require your attention.', 'error');
-                return;
-            }
-            
-            // Disable submit button
-            this.submitBtn.disabled = true;
-            this.submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            try {
-                // Show loading animation
-                await this.showLoading();
-                
-                // Collect data
-                const data = this.collectFormData();
-                console.log('Form data:', data);
-                
-                // Simulate API call delay
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // Show success
-                this.showSuccess(data.trackingId);
-                
-            } catch (error) {
-                console.error('Error:', error);
-                this.showToast('An error occurred', 'Please try again.', 'error');
-            } finally {
-                this.submitBtn.disabled = false;
-                this.submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Book Courier Now';
-            }
-        }
+       async handleSubmit(e) {
+    e.preventDefault(); // stop for animation first
+
+    if (!this.validateForm()) {
+        this.showToast('Please fix the errors', 'Some fields require your attention.', 'error');
+        return;
+    }
+
+    // Disable button
+    this.submitBtn.disabled = true;
+    this.submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+    // Run animation
+    await this.showLoading();
+
+    // ✅ AFTER animation → SUBMIT FORM TO LARAVEL
+    this.form.submit(); // 🔥 THIS IS THE KEY
+}
+
         
         async showLoading() {
             this.loadingOverlay.classList.add('active');

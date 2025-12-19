@@ -1,5 +1,9 @@
 @extends('layout')
 @section('content')
+<<<<<<< HEAD
+=======
+
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
 
 
 
@@ -93,3 +97,7 @@
 
 </html>
 @endsection
+<<<<<<< HEAD
+=======
+
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0

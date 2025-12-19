@@ -1,6 +1,9 @@
 @extends('layout')
 @section('content')
+<<<<<<< HEAD
 
+=======
+>>>>>>> f50d9fb41c769670d90840102f3f3efc614758a0
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
@@ -142,7 +145,6 @@
     <!-- Quote End -->
         
 
-<<<<<<< HEAD
 
 
     <!-- Back to Top -->

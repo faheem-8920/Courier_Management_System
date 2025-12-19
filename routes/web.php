@@ -1,8 +1,24 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\UserMiddleware;
+use App\Http\Middleware\RiderMiddleware;
 
+// Controller routes
+Route::post('/uploadcourier',[AdminController::class,'savecourier']);
+Route::post('/saverider',[AdminController::class,'saverider']);
+Route::get('/riders',[AdminController::class,'showriders']);
+Route::get('/shipments', [AdminController::class,'showshipments']);
+Route::get('/users',[AdminController::class,'showuserrecords']);
+
+// User routes
 Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/index', function () {
     return view('index');
 });
 Route::get('/feature', function () {
@@ -37,40 +53,71 @@ Route::get('/addcourier', function () {
 Route::get('/addrider', function () {
     return view('addrider');
 });
-Route::get('/index', function () {
-    return view('admin.index');
+
+// Admin panel routes
+Route::get('/admindashboard', function () {
+    return view('admin.dashboard');
 });
 
-// Rider routes 
-
-Route::get('/rider', function () {
-    return view('Rider.index');
-});
-Route::get('/delivery', function () {
-    return view('Rider.delivery');
-});
-Route::get('/earning', function () {
-    return view('Rider.earning');
-});
-Route::get('/pickup', function () {
-    return view('Rider.pickup');
-});
-Route::get('/profile', function () {
-    return view('Rider.profile');
-});
-Route::get('/support', function () {
-    return view('Rider.support');
-});
-
-
-
-
+// Role-based dashboard redirect after login
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $role = auth()->user()->role;
+
+        if ($role === 'admin') return redirect('/admin');
+        if ($role === 'rider') return redirect('/rider');
+        if ($role === 'user') return redirect('/user');
+
+        abort(403, 'Unauthorized');
     })->name('dashboard');
+});
+
+// User routes (protected)
+Route::middleware(['auth', UserMiddleware::class])->group(function () {
+    Route::get('/user', function () {
+        return view('index');
+    })->name('index');
+});
+
+// Admin routes (protected)
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+    Route::get('/riders', function () {
+        return view('admin.riders');
+    });
+    Route::get('/shipments', function () {
+        return view('admin.shipments');
+    });
+    Route::get('/users', function () {
+        return view('admin.users');
+    });
+});
+
+// Rider routes (protected)
+Route::middleware(['auth', RiderMiddleware::class])->group(function () {
+    Route::get('/rider', function () {
+        return view('Rider.index');
+    })->name('Rider.index');
+
+    Route::get('/delivery', function () {
+        return view('Rider.delivery');
+    });
+    Route::get('/earning', function () {
+        return view('Rider.earning');
+    });
+    Route::get('/pickup', function () {
+        return view('Rider.pickup');
+    });
+    Route::get('/profile', function () {
+        return view('Rider.profile');
+    });
+    Route::get('/support', function () {
+        return view('Rider.support');
+    });
 });
