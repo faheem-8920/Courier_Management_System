@@ -113,12 +113,8 @@ Route::get('/users',[AdminController::class,'showuserrecords']);
 Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::get('/rider', function () {
         return view('Rider.index');
-    })->name('Rider.index');
 
- 
-Route::get('/delivery', [RiderController::class, 'myShipments'])
-     ->middleware('auth'); 
-    Route::get('/earning', function () {
+ Route::get('/earning', function () {
         return view('Rider.earning');
     });
     Route::get('/delivery', function () {
@@ -134,3 +130,12 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
         return view('Rider.support');
     });
 });
+Route::get('/delivery', [RiderController::class, 'myShipments'])
+     ->middleware('auth'); 
+
+
+    })->name('Rider.index');
+
+ 
+
+   
