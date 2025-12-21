@@ -56,8 +56,39 @@
                 <a href="{{ url('/pickup') }}" class="nav-item nav-link">Pickups</a>
                 <a href="{{ url('/earning') }}" class="nav-item nav-link">Earnings</a>
                 <a href="{{ url('/support') }}" class="nav-item nav-link">Support</a>
-                <a href="{{ url('/profile') }}" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0 px-4 d-flex align-items-center justify-content-center">Profile</a>
+                
             </div>
+            <div id="auth-navbar" class="d-flex align-items-center ms-lg-3 pe-lg-4">
+    <div id="user-dropdown" class="nav-item dropdown d-none">
+        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center"
+           data-bs-toggle="dropdown">
+            <span id="user-name"></span>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-end">
+            <p class="dropdown-item mb-0" id="user-email"></p>
+            <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="dropdown-item text-danger">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("{{ route('navbar.data') }}")
+        .then(response => response.json())
+        .then(data => {
+            if (data.logged_in) {
+                document.getElementById("user-dropdown").classList.remove("d-none");
+                document.getElementById("user-name").innerText = data.name;
+               
+            }
+        });
+    });
+</script>
+
         </div>
     </nav>
     <!-- Navbar End -->

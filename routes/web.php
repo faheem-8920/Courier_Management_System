@@ -5,6 +5,7 @@ use App\Http\Controllers\RiderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Usermiddleware;
 // Controller routes
 Route::post('/uploadcourier',[AdminController::class,'savecourier']);
@@ -138,4 +139,10 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
  
 
-   
+
+
+
+Route::get('/navbar-data', [ProfileController::class, 'navbarData'])->name('navbar.data');
+
+
+Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
