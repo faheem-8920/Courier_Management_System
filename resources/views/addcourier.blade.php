@@ -800,7 +800,7 @@
                 <div class="form-group">
                     <label for="senderName" class="required">Full Name</label>
                     <div class="input-wrapper">
-                        <input type="text" id="senderName" placeholder="John Doe" name='SenderName' required>
+                        <input type="text" id="senderName"  name='SenderName' required>
                         <span class="input-icon"><i class="fas fa-user"></i></span>
                     </div>
                     <div class="error-message" id="senderNameError">
