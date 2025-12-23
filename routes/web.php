@@ -1,4 +1,4 @@
-<?php
+p<?php
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RiderController;
@@ -13,11 +13,12 @@ Route::post('/saverider',[AdminController::class,'saverider']);
 Route::get('/mydashboard', function () {
     return view('dashboard');
 });
+Route::get('/downloadcourierdetails/{id}',[AdminController::class,'DownloadCourierPdf']);
 // User routes
 Route::get('/', function () {
     return view('auth.login');
 });
-
+Route::get('/usercouriers',[AdminController::class,'UserCouriers']);
 Route::get('/index', function () {
     return view('index');
 });
