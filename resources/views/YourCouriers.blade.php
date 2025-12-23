@@ -770,7 +770,7 @@
                             </td>
                             <td data-label="Actions">
                                 <div class="action-buttons-container">
-                                    <a href="#" class="btn-view">
+                                    <a href="/usercourierdetails/{{$courier->id}}" class="btn-view">
                                         View Details
                                     </a>
                                     <a href="/downloadcourierdetails/{{ $courier->id }}" class="pdf-btn">
@@ -935,13 +935,13 @@
                 this.style.pointerEvents = 'none';
                 
                 // Simulate API call or navigation
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.pointerEvents = 'auto';
-                    showNotification('📋 Loading shipment details...', 'info');
-                }, 800);
-            });
-        });
+        //         setTimeout(() => {
+        //             this.innerHTML = originalText;
+        //             this.style.pointerEvents = 'auto';
+        //             showNotification('📋 Loading shipment details...', 'info');
+        //         }, 800);
+        //     });
+        // });
         
         // Add hover effect to table rows
         const tableRows = document.querySelectorAll('.professional-table tbody tr');
