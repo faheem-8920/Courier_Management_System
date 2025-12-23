@@ -37,7 +37,7 @@ return redirect('/usercouriers');
 
 
     public function UserCouriers(){
-        $couriers=Shipment::where('UserId',auth()->id())->get();
+        $couriers=Shipment::where('UserId',Auth::user()->id)->get();
         return view('YourCouriers',compact('couriers'));
     }
 

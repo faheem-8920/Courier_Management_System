@@ -7,6 +7,8 @@ use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Usermiddleware;
+use Illuminate\Support\Facades\Auth;
+
 // Controller routes
 Route::post('/uploadcourier',[AdminController::class,'savecourier']);
 Route::post('/saverider',[AdminController::class,'saverider']);
@@ -69,7 +71,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $role = auth()->user()->role;
+        $role = Auth::user()->id;
 
         if ($role === 'admin') return redirect('/admin');
         if ($role === 'rider') return redirect('/rider');
@@ -102,7 +104,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
-Route::get('/dashboard', [AdminController::class, 'showsadmin']);
+// Route::get('/dashboard', [AdminController::class, 'showsadmin']);
     Route::get('/riders',[AdminController::class,'showriders']);
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
