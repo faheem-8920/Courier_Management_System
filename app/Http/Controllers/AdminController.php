@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-use AppApp\Models\Admin;
 use App\Models\Shipment;
 use App\Models\User;
 use App\Models\rider;
