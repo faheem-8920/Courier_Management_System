@@ -416,10 +416,10 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                               <a href="logout" class="btn btn-outline-danger btn-sm d-flex align-items-center">
-    <i class="fas fa-sign-out-alt fa-fw mr-2"></i>
-    <span>Logout</span>
-</a>
+                                 <form action="/logout" method="post">
+                                    @csrf 
+                                    <button type="submit">Logout</button>
+                                 </form>
                             </div>
                         </li>
 
