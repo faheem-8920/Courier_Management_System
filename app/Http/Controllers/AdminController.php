@@ -6,6 +6,7 @@ use App\Models\rider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
+
 class AdminController extends Controller
 {
 
@@ -80,4 +81,11 @@ public function showuserrecords(){
     $Users=User::get();
     return view('admin.users',compact('Users'));
 }
+public function dashboard()
+{
+    $pendingRequests = Shipment::where('Status', 'Pending')->count();
+
+    return view('admin.dashboard', compact('pendingRequests'));
+}
+
 }
