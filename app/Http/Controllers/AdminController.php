@@ -1,10 +1,13 @@
 <?php
 namespace App\Http\Controllers;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use App\Models\Shipment;
 use App\Models\User;
 use App\Models\rider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -27,11 +30,31 @@ class AdminController extends Controller
         $table->DeliveryType=$req->DeliveryType;
         $table->DeliveryZone=$req->DeliveryZone;
         $table->ParcelWeight=$req->ParcelWeight;
+        $table->UserId=Auth::id();
         $table->save();
             
-return redirect()->back();  
+return redirect('/usercouriers');
     } 
 
+
+    public function UserCouriers(){
+        $couriers=Shipment::where('UserId',auth()->id())->get();
+        return view('YourCouriers',compact('couriers'));
+    }
+
+    public function DownloadCourierPdf($id)
+{
+    // Security: user can download only their own courier
+    $courier = Shipment::where('id', $id)
+        ->where('UserId', Auth::id())
+        ->firstOrFail();
+
+    $pdf = Pdf::loadView('CourierDetailsPdf',[
+        'courier' => $courier
+    ]);
+
+    return $pdf->download('Courier-' . $courier->TrackingNumber . '.pdf');
+}
    public function saverider(Request $req)
 {
     // 1️⃣ Create User for Jetstream login
