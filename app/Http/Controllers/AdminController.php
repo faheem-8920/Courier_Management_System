@@ -1,11 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-<<<<<<< HEAD
 use Barryvdh\DomPDF\Facade\Pdf;
-
-=======
-use AppApp\Models\Admin;
->>>>>>> 17e66463ea7a7a929df3852b8e6f16f9fe86df77
 use App\Models\Shipment;
 use App\Models\User;
 use App\Models\rider;
