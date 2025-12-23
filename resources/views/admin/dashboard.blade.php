@@ -1,6 +1,6 @@
 @extends('admin.masterlayout')
 <style>
-/* Dashboard Animations */
+
 .fade-up {
     animation: fadeUp 0.9s ease forwards;
 }
@@ -14,7 +14,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card Enhancement */
+
 .stat-card {
     border-radius: 18px;
     backdrop-filter: blur(10px);
@@ -32,8 +32,7 @@
 .stat-card:hover .stat-icon {
     transform: rotate(-8deg) scale(1.2);
 }
-
-/* Progress Animation */
+*/
 .progress-bar {
     animation: progressFill 1.5s ease-in-out;
 }
