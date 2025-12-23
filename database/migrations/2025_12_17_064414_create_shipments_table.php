@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             //order details
             $table->id();
+            $table->unsignedBigInteger('UserId'); // add after id column
+        $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
             $table->string('Status')->default('Pending');
             $table->string('TrackingNumber');
             //sender details
