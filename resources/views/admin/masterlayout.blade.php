@@ -44,7 +44,7 @@
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.4px;
-    color: #d1d3e2;
+    color: #f3f4f9ff;
     transition: color 0.3s ease;
 }
 .rider-icon {
@@ -56,7 +56,7 @@
     color: #1cc88a; 
 }
 .rider-link:hover .nav-text {
-    color: #ffffff;
+    color:;
 }
 .shipment-icon {
     transition: transform 0.3s ease, color 0.3s ease;
@@ -92,21 +92,33 @@
     overflow: hidden;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
     cursor: default;
+    max-width: 100%;
 }
+
 .animated-text::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
-    left: -100%;
     background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
     animation: shine 2.5s infinite;
+     left: -80%;
+    width: 80%;
 }
 .animated-text:hover {
     transform: scale(1.1);
-    text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.35);
+
+
 }
+.user-link:hover .user-icon,
+.rider-link:hover .rider-icon,
+.shipment-link:hover .shipment-icon,
+.add-rider-link:hover .add-rider-icon {
+    transform: translateX(5px) scale(1.05);
+}
+
 
 @keyframes shine {
     0% { left: -100%; }
@@ -125,6 +137,111 @@
         opacity: 1;
     }
 }
+/* ===== Sidebar Modern Look ===== */
+.sidebar {
+    backdrop-filter: blur(12px);
+    box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+    transition: all 0.4s ease;
+}
+
+/* Sidebar hover glow */
+.sidebar:hover {
+    box-shadow: 6px 0 35px rgba(0,0,0,0.35);
+}
+
+/* Sidebar items spacing */
+.sidebar .nav-item {
+    margin: 6px 10px;
+}
+
+/* Nav links modern card look */
+.sidebar .nav-link {
+    border-radius: 14px;
+    padding: 12px 16px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+/* Left glow animation */
+.sidebar .nav-link::before {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: all 0.4s ease;
+}
+
+.sidebar .nav-link:hover::before {
+    left: 100%;
+}
+
+/* Hover background */
+.sidebar .nav-link:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(6px);
+}
+.sidebar .nav-item.active .nav-link {
+    background: rgba(255,255,255,0.25);
+    box-shadow: inset 4px 0 0 #ffffff;
+}
+.sidebar .nav-link i {
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/* Icon hover motion */
+.sidebar .nav-link:hover i {
+    transform: rotate(-8deg) scale(1.2);
+    color: #ffffff;
+}
+.sidebar-brand {
+    padding: 20px 0;
+    transition: all 0.4s ease;
+}
+
+.sidebar-brand:hover {
+    transform: scale(1.05);
+}
+
+/* Truck icon pulse */
+.sidebar-brand-icon i {
+    animation: pulseIcon 2.5s infinite;
+}
+
+@keyframes pulseIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+.sidebar.toggled {
+    transition: width 0.4s ease;
+}
+#accordionSidebar {
+    overflow: hidden;
+}
+.animated-text:hover {
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+.add-rider-link:hover .add-rider-icon {
+    transform: scale(1.08); /* pehle 1.15 tha */
+}
+.sidebar,
+#accordionSidebar,
+.navbar-nav.sidebar {
+    overflow: hidden !important;
+}
+.sidebar .nav-item,
+.sidebar .nav-link {
+    position: relative;
+    overflow: hidden;
+}
+.add-rider-link:hover {
+    box-shadow: inset 4px 0 0 #36b9cc;
+}
+
+
 
   </style>
 
@@ -216,7 +333,8 @@
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" style="background:linear-gradient(135deg, #f9f9f9 0%, #ffecec 100%);">
+
 
             <!-- Main Content -->
             <div id="content">
@@ -236,7 +354,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-danger" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -261,7 +379,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-danger" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -274,7 +392,8 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                              <i class="fas fa-bell fa-fw text-danger" style="font-size: 1.2rem;"></i>
+
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
@@ -325,7 +444,8 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
+                                <i class="fas fa-envelope fa-fw text-danger" style="font-size: 1.2rem;"></i>
+
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
@@ -393,7 +513,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-dark  font-weight-bold small">ADMIN</span>
                                 <img class="img-profile rounded-circle"
                                     src="admin/img/undraw_profile.svg">
                             </a>
@@ -401,22 +521,22 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-danger-400"></i>
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-danger-400"></i>
                                     Settings
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-danger-400"></i>
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+                               <a href="logout" class="btn btn-outline-danger btn-sm d-flex align-items-center">
+    <i class="fas fa-sign-out-alt fa-fw mr-2"></i>
+    <span>Logout</span>
+</a>
                             </div>
                         </li>
 

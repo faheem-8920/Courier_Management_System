@@ -1,10 +1,11 @@
-<?php
+p<?php
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RiderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Usermiddleware;
 // Controller routes
 Route::post('/uploadcourier',[AdminController::class,'savecourier']);
@@ -101,7 +102,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
-
+Route::get('/dashboard', [AdminController::class, 'showsadmin']);
     Route::get('/riders',[AdminController::class,'showriders']);
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
@@ -139,4 +140,10 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
  
 
-   
+
+
+
+Route::get('/navbar-data', [ProfileController::class, 'navbarData'])->name('navbar.data');
+
+
+Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
