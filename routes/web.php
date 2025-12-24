@@ -14,6 +14,8 @@ Route::post('/saverider',[AdminController::class,'saverider']);
 Route::get('/mydashboard', function () {
     return view('dashboard');
 });
+Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
+
 Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
 // User routes
 Route::get('/', function () {

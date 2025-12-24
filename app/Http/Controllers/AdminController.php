@@ -7,6 +7,8 @@ use App\Models\rider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\RiderCredentialsMail;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -43,6 +45,15 @@ class AdminController extends Controller
 
     $rider->save();
 
+     Mail::to($req->Email)->send(
+        new RiderCredentialsMail(
+            $req->Fullname,
+            $req->Email,
+            $req->Password
+        )
+    );
+
+
     return redirect()->back()->with('success', 'Rider added successfully');
 }
 
@@ -50,6 +61,15 @@ class AdminController extends Controller
 public function showriders(){
     $riders=rider::get();
     return view('admin.riders',compact('riders'));
+}
+
+public function updateriderdetails($id){
+
+    $riderdata=rider::findOrFail($id);
+
+    return view('admin.updaterider',compact('riderdata'));
+
+
 }
 
 public function showshipments(){
