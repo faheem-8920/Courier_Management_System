@@ -107,11 +107,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
-<<<<<<< HEAD
-    Route::get('/riders',[AdminController::class,'showriders']);
-=======
+
 Route::get('/riders',[AdminController::class,'showriders']);
->>>>>>> 0d4bfe72fb92b4b6ab3d772ac311701f903e1f40
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
 Route::get('/admindashboard', [AdminController::class, 'dashboard']);
