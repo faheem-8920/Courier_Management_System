@@ -58,22 +58,7 @@
                 <a href="{{ url('/support') }}" class="nav-item nav-link">Support</a>
                 
             </div>
-            <div id="auth-navbar" class="d-flex align-items-center ms-lg-3 pe-lg-4">
-    <div id="user-dropdown" class="nav-item dropdown d-none">
-        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center"
-           data-bs-toggle="dropdown">
-            <span id="user-name"></span>
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-end">
-            <p class="dropdown-item mb-0" id="user-email"></p>
-            <form id="logout-form" method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="dropdown-item text-danger">Logout</button>
-            </form>
-        </div>
-    </div>
-</div>
+            
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
