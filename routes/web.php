@@ -1,6 +1,7 @@
-p<?php
+<?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RiderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
@@ -8,17 +9,21 @@ use App\Http\Middleware\Ridermiddleware;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Usermiddleware;
 // Controller routes
-Route::post('/uploadcourier',[AdminController::class,'savecourier']);
+Route::post('/uploadcourier',[UserController::class,'savecourier']);
 Route::post('/saverider',[AdminController::class,'saverider']);
 Route::get('/mydashboard', function () {
     return view('dashboard');
 });
-Route::get('/downloadcourierdetails/{id}',[AdminController::class,'DownloadCourierPdf']);
+Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
 // User routes
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/usercouriers',[AdminController::class,'UserCouriers']);
+Route::get('/usercouriers',[UserController::class,'UserCouriers']);
+
+Route::get('/usercourierdetails/{id}',[UserController::class,'courierdetails']);
+
+
 Route::get('/index', function () {
     return view('index');
 });
@@ -57,9 +62,9 @@ Route::get('/addrider', function () {
 
 
 // Admin panel routes
-Route::get('/admindashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/admindashboard', function () {
+//     return view('admin.dashboard');
+// });
 
 
 // Role-based dashboard redirect after login
@@ -90,7 +95,7 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
 // Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/admin', function () {
+    Route::get('/admindashboard', function () {
         return view('admin.dashboard');
     });
     Route::get('/riders', function () {
@@ -102,9 +107,14 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
+<<<<<<< HEAD
     Route::get('/riders',[AdminController::class,'showriders']);
+=======
+Route::get('/riders',[AdminController::class,'showriders']);
+>>>>>>> 0d4bfe72fb92b4b6ab3d772ac311701f903e1f40
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
+Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 
 
 
@@ -137,12 +147,6 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
     })->name('Rider.index');
 
+
  
 
-
-
-
-Route::get('/navbar-data', [ProfileController::class, 'navbarData'])->name('navbar.data');
-
-
-Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
