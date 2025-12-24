@@ -507,42 +507,55 @@
                             </div>
                         </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-dark  font-weight-bold small">ADMIN</span>
-                                <img class="img-profile rounded-circle"
-                                    src="admin/img/undraw_profile.svg">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- AUTH USER DROPDOWN -->
+                    @auth
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           id="userDropdown"
+                           role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+
+                            <span class="mr-2 d-none d-lg-inline text-gray-800 small font-weight-bold">
+                                {{ Auth::user()->name }}
+                            </span>
+
+                            <img class="img-profile rounded-circle"
+                                 src="{{ Auth::user()->profile_photo_url }}"
+                                 style="width:32px;height:32px;">
+                        </a>
+
+                        <!-- Dropdown -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-danger-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-danger-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-danger-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                               <a href="logout" class="btn btn-outline-danger btn-sm d-flex align-items-center">
-    <i class="fas fa-sign-out-alt fa-fw mr-2"></i>
-    <span>Logout</span>
-</a>
-                            </div>
-                        </li>
 
-                    </ul>
+                            <div class="dropdown-divider"></div>
 
-                </nav>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                                    Logout
+                                </button>
+                            </form>
+
+                        </div>
+                    </li>
+                    @endauth
+
+                </ul>
+            </nav>
                 <!-- End of Topbar -->
 
                @yield("content")

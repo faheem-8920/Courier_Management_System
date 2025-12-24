@@ -157,10 +157,10 @@
         <td>{{$rider->WorkingZone}}</td>
         <td>{{$rider->VehicleType}}</td>
         <td>
-            <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this rider?');" style="margin:0; display:flex; justify-content:center;">
+            <form method="get" action="/updaterider/{{$rider->id}}"  style="margin:0; display:flex; justify-content:center;">
                 @csrf
                 <button type="submit" class="delete-btn">
-                    <i class="fas fa-trash-alt"></i> Delete
+                    <i class="fas fa-trash-alt"></i> Update
                 </button>
             </form>
         </td>
