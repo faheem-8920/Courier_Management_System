@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\RiderCredentialsMail;
 use Illuminate\Support\Facades\Mail;
 
+
 class AdminController extends Controller
 {
 
@@ -80,5 +81,12 @@ public function showuserrecords(){
     $Users=User::get();
     return view('admin.users',compact('Users'));
 }
+public function dashboard()
+{
+    $pendingRequests = Shipment::where('Status', 'Pending')->count();
+
+    return view('admin.dashboard', compact('pendingRequests'));
+}
+
 }
 
