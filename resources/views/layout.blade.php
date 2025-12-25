@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Welcome | Courier Management System</title>
@@ -29,7 +28,6 @@
     <!-- Main Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-
 <body>
 
     <!-- Spinner Start -->
@@ -63,176 +61,132 @@
                         <a href="{{ url('/testimonial') }}" class="dropdown-item">Testimonial</a>
                     </div>
                 </div>
-                <a href="contact" class="nav-item nav-link">Contact</a>
+                <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
             </div>
+
             <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
-            <!-- Auth Navbar Section -->
-<div id="auth-navbar" class="d-flex align-items-center ms-lg-3 pe-lg-4">
-    <div id="user-dropdown" class="nav-item dropdown d-none">
-        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center"
-           data-bs-toggle="dropdown">
-            <span id="user-name"></span>
-        </a>
 
-        <div class="dropdown-menu dropdown-menu-end">
-            <p class="dropdown-item mb-0" id="user-email"></p>
-            <form id="logout-form" method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="dropdown-item text-danger">Logout</button>
-            </form>
+            <!-- Auth Section -->
+            @guest
+                <div class="d-flex align-items-center ms-lg-3 pe-lg-4">
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                </div>
+            @endguest
+
+            @auth
+                <ul class="navbar-nav align-items-center ms-lg-3 pe-lg-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center"
+                           href="#"
+                           data-bs-toggle="dropdown">
+
+                            <img src="{{ Auth::user()->profile_photo_url ?? asset('img/default-profile.png') }}"
+                                 class="rounded-circle me-2"
+                                 width="30"
+                                 height="30">
+
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                    <i class="fa fa-user me-2"></i> Profile
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="dropdown-item text-danger">
+                                        <i class="fa fa-sign-out-alt me-2"></i> Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            @endauth
         </div>
-    </div>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("{{ route('navbar.data') }}")
-        .then(response => response.json())
-        .then(data => {
-            if (data.logged_in) {
-                document.getElementById("user-dropdown").classList.remove("d-none");
-                document.getElementById("user-name").innerText = data.name;
-               
-            }
-        });
-    });
-</script>
-
-        </div>
-<<<<<<< HEAD
- @guest
-            <div class="d-flex align-items-center me-4">
-                <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="btn btn-primary">
-                    Register
-                </a>
-            </div>
-        @endguest
-
-        @auth
-            <ul class="navbar-nav align-items-center me-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center"
-                       href="#"
-                       data-bs-toggle="dropdown">
-
-                        <img src="{{ Auth::user()->profile_photo_url }}"
-                             class="rounded-circle me-2"
-                             width="30"
-                             height="25">
-
-                        {{ Auth::user()->name }}
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('profile.show') }}">
-                                <i class="fa fa-user me-2"></i> Profile
-                            </a>
-                        </li>
-
-                        <li><hr class="dropdown-divider"></li>
-
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="dropdown-item text-danger">
-                                    <i class="fa fa-sign-out-alt me-2"></i> Logout
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        @endauth 
-
-       
-</nav>
-<!-- Navbar End -->
-=======
     </nav>
     <!-- Navbar End -->
->>>>>>> bfc3611e6206e14c146fb79291845b1946f8499f
 
-<!-- Page Content -->
-@yield('content')
-<!-- Page Content End -->
+    <!-- Page Content -->
+    @yield('content')
+    <!-- Page Content End -->
 
-<!-- Footer -->
-<div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top:6rem;">
-    <div class="container py-5">
-        <div class="row g-5">
+    <!-- Footer -->
+    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top:6rem;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Address</h4>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
 
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Address</h4>
-                <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social"><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Services</h4>
+                    <a class="btn btn-link">Air Freight</a>
+                    <a class="btn btn-link">Sea Freight</a>
+                    <a class="btn btn-link">Road Freight</a>
+                    <a class="btn btn-link">Logistic Solutions</a>
+                    <a class="btn btn-link">Industry Solutions</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link">About Us</a>
+                    <a class="btn btn-link">Contact Us</a>
+                    <a class="btn btn-link">Our Services</a>
+                    <a class="btn btn-link">Terms & Conditions</a>
+                    <a class="btn btn-link">Support</a>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Newsletter</h4>
+                    <p>Subscribe for latest updates</p>
+                    <div class="position-relative mx-auto" style="max-width:400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Services</h4>
-                <a class="btn btn-link">Air Freight</a>
-                <a class="btn btn-link">Sea Freight</a>
-                <a class="btn btn-link">Road Freight</a>
-                <a class="btn btn-link">Logistic Solutions</a>
-                <a class="btn btn-link">Industry Solutions</a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Quick Links</h4>
-                <a class="btn btn-link">About Us</a>
-                <a class="btn btn-link">Contact Us</a>
-                <a class="btn btn-link">Our Services</a>
-                <a class="btn btn-link">Terms & Conditions</a>
-                <a class="btn btn-link">Support</a>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-light mb-4">Newsletter</h4>
-                <p>Subscribe for latest updates</p>
-                <div class="position-relative mx-auto" style="max-width:400px;">
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                    <button class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
-                </div>
-            </div>
-
+        <div class="container text-center">
+            <p class="mb-0">&copy; {{ date('Y') }} <strong>Courier Management System</strong>. All Rights Reserved.</p>
         </div>
     </div>
+    <!-- Footer End -->
 
-    <div class="container text-center">
-        <p class="mb-0">
-            &copy; {{ date('Y') }} <strong>Courier Management System</strong>. All Rights Reserved.
-        </p>
-    </div>
-</div>
-<!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
-    <i class="bi bi-arrow-up"></i>
-</a>
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- JS Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
-<script src="{{ asset('lib/wow/wow.min.js') }}"></script>
-<script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-<script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-<script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
-<script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-
-<!-- Main JS -->
-<script src="{{ asset('js/main.js') }}"></script>
+    <!-- Main JS -->
+    <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
 </html>
