@@ -32,42 +32,74 @@
 
 <body>
 
-<!-- Spinner -->
-<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" style="width:3rem;height:3rem;">
-        <span class="sr-only">Loading...</span>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
+        <a href="{{ url('/') }}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+            <h2 class="mb-2 text-white">CMS</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{ url('/index') }}" class="nav-item nav-link active">Home</a>
+                <a href="{{ url('/about') }}" class="nav-item nav-link">About</a>
+                <a href="{{ url('/service') }}" class="nav-item nav-link">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu fade-up m-0">
+                        <a href="{{ url('/price') }}" class="dropdown-item">Pricing Plan</a>
+                        <a href="{{ url('/feature') }}" class="dropdown-item">Features</a>
+                        <a href="{{ url('/quote') }}" class="dropdown-item">Free Quote</a>
+                        <a href="{{ url('/team') }}" class="dropdown-item">Our Team</a>
+                        <a href="{{ url('/testimonial') }}" class="dropdown-item">Testimonial</a>
+                    </div>
+                </div>
+                <a href="contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
+            <!-- Auth Navbar Section -->
+<div id="auth-navbar" class="d-flex align-items-center ms-lg-3 pe-lg-4">
+    <div id="user-dropdown" class="nav-item dropdown d-none">
+        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center"
+           data-bs-toggle="dropdown">
+            <span id="user-name"></span>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-end">
+            <p class="dropdown-item mb-0" id="user-email"></p>
+            <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="dropdown-item text-danger">Logout</button>
+            </form>
+        </div>
     </div>
 </div>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
-    <a href="{{ url('/') }}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-        <h2 class="mb-0 text-white">CMS</h2>
-    </a>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("{{ route('navbar.data') }}")
+        .then(response => response.json())
+        .then(data => {
+            if (data.logged_in) {
+                document.getElementById("user-dropdown").classList.remove("d-none");
+                document.getElementById("user-name").innerText = data.name;
+               
+            }
+        });
+    });
+</script>
 
-    <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
-            <a href="{{ url('/about') }}" class="nav-item nav-link">About</a>
-            <a href="{{ url('/service') }}" class="nav-item nav-link">Services</a>
-
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                <div class="dropdown-menu fade-up m-0">
-                    <a href="{{ url('/price') }}" class="dropdown-item">Pricing Plan</a>
-                    <a href="{{ url('/feature') }}" class="dropdown-item">Features</a>
-                    <a href="{{ url('/quote') }}" class="dropdown-item">Free Quote</a>
-                    <a href="{{ url('/team') }}" class="dropdown-item">Our Team</a>
-                    <a href="{{ url('/testimonial') }}" class="dropdown-item">Testimonial</a>
-                </div>
-            </div>
-
-            <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
         </div>
+<<<<<<< HEAD
  @guest
             <div class="d-flex align-items-center me-4">
                 <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">
@@ -119,6 +151,10 @@
        
 </nav>
 <!-- Navbar End -->
+=======
+    </nav>
+    <!-- Navbar End -->
+>>>>>>> bfc3611e6206e14c146fb79291845b1946f8499f
 
 <!-- Page Content -->
 @yield('content')

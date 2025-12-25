@@ -64,9 +64,9 @@ Route::get('/addrider', function () {
 
 
 // Admin panel routes
-Route::get('/admindashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/admindashboard', function () {
+//     return view('admin.dashboard');
+// });
 
 
 // Role-based dashboard redirect after login
@@ -97,7 +97,7 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
 // Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/admin', function () {
+    Route::get('/admindashboard', function () {
         return view('admin.dashboard');
     });
     Route::get('/riders', function () {
@@ -109,9 +109,11 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
+
 Route::get('/riders',[AdminController::class,'showriders']);
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
+Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 
 
 
@@ -143,6 +145,7 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
 
     })->name('Rider.index');
+
 
  
 

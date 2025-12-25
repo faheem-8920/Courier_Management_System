@@ -15,5 +15,4 @@ class RiderController extends Controller
 
     return view('Rider.delivery', compact('shipments'));
 }
-
 }
