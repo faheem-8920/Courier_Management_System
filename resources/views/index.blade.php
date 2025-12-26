@@ -73,7 +73,7 @@
                             <p class="m-0">Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
                         </div>
                     </div>
-                    <a href="{{ url('/addcourier') }}" class="btn btn-primary py-3 px-5">Book a Parcel</a>
+                    
                 </div>
             </div>
         </div>
