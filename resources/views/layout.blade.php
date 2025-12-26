@@ -82,11 +82,12 @@
                         <a class="nav-link dropdown-toggle d-flex align-items-center"
                            href="#"
                            data-bs-toggle="dropdown">
-<img src="{{ Auth::user()->profile_photo_url 
-    ?? asset('img/default-profile.png') }}"
-    onerror="this.src='{{ asset('img/default-profile.png') }}'">
+<img src="{{ Auth::user()->profile_photo_url ?? asset('img/default-profile.png') }}"
+     onerror="this.src='{{ asset('img/default-profile.png') }}'"
+     class="rounded-circle me-2"
+     width="30"
+     height="30">
 
-                               
 
                             {{ Auth::user()->name }}
                         </a>

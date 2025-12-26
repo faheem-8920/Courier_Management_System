@@ -14,45 +14,232 @@
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+    .slide-left {
+    animation: slideInLeft 1s ease-out;
+}
+.user-link {
+    transition: all 0.3s ease;
+}
 
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+.user-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
 
-    <!-- Custom CSS -->
-    <style>
-        /* Sidebar & Brand Animations */
-        .slide-left { animation: slideInLeft 1s ease-out; }
-        .animated-text { font-weight: 800; font-size: 1.3rem; color: #fff; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); display: inline-block; position: relative; overflow: hidden; cursor: default; transition: transform 0.3s ease, text-shadow 0.3s ease; }
-        .animated-text::after { content: ''; position: absolute; width: 80%; height: 100%; top: 0; left: -80%; background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3)); animation: shine 2.5s infinite; }
-        .animated-text:hover { transform: scale(1.1); text-shadow: 1px 1px 4px rgba(0,0,0,0.35); }
-        @keyframes shine { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
-        @keyframes slideInLeft { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.user-link:hover .user-icon {
+    transform: translateX(6px);
+    color: #4e73df; 
+}
+.nav-text {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    color: #f3f4f9ff;
+    transition: color 0.3s ease;
+}
+.rider-icon {
+    transition: transform 0.35s ease, color 0.3s ease;
+}
 
-        /* Sidebar Modern Look */
-        .sidebar { backdrop-filter: blur(12px); box-shadow: 4px 0 25px rgba(0,0,0,0.25); transition: all 0.4s ease; }
-        .sidebar:hover { box-shadow: 6px 0 35px rgba(0,0,0,0.35); }
-        .sidebar .nav-item { margin: 6px 10px; position: relative; overflow: hidden; }
-        .sidebar .nav-link { border-radius: 14px; padding: 12px 16px; transition: all 0.35s ease; position: relative; overflow: hidden; }
-        .sidebar .nav-link::before { content: ""; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: all 0.4s ease; }
-        .sidebar .nav-link:hover::before { left: 100%; }
-        .sidebar .nav-link:hover { background: rgba(255,255,255,0.15); transform: translateX(6px); }
-        .sidebar .nav-item.active .nav-link { background: rgba(255,255,255,0.25); box-shadow: inset 4px 0 0 #ffffff; }
-        .sidebar .nav-link i { transition: transform 0.4s ease, color 0.3s ease; }
-        .sidebar .nav-link:hover i { transform: rotate(-8deg) scale(1.2); color: #fff; }
-        .sidebar-brand { padding: 20px 0; transition: all 0.4s ease; }
-        .sidebar-brand:hover { transform: scale(1.05); }
-        .sidebar-brand-icon i { animation: pulseIcon 2.5s infinite; }
-        @keyframes pulseIcon { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+.rider-link:hover .rider-icon {
+    transform: translateX(8px) rotate(-5deg);
+    color: #1cc88a; 
+}
+.rider-link:hover .nav-text {
+    color:;
+}
+.shipment-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
 
-        /* Sidebar Links Hover */
-        .user-link:hover .user-icon { transform: translateX(6px); color: #4e73df; }
-        .rider-link:hover .rider-icon { transform: translateX(8px) rotate(-5deg); color: #1cc88a; }
-        .shipment-link:hover .shipment-icon { transform: translateY(-4px) scale(1.05); color: #f6c23e; }
-        .add-rider-link:hover .add-rider-icon { transform: scale(1.08); color: #36b9cc; text-shadow: 0 0 8px rgba(54,185,204,0.6); }
-    </style>
-    @stack('styles')
+.shipment-link:hover .shipment-icon {
+    transform: translateY(-4px) scale(1.05);
+    color: #f6c23e; 
+}
+.shipment-link:hover .nav-text {
+    color: #ffffff;
+}
+.add-rider-icon {
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.add-rider-link:hover .add-rider-icon {
+    transform: scale(1.15);
+    color: #36b9cc; 
+    text-shadow: 0 0 8px rgba(54,185,204,0.6);
+}
+.add-rider-link:hover .nav-text {
+    color: #ffffff;
+}
+
+.animated-text {
+    font-weight: 800;
+    font-size: 1.3rem; 
+    color: #ffffff; 
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+    max-width: 100%;
+}
+
+.animated-text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    animation: shine 2.5s infinite;
+     left: -80%;
+    width: 80%;
+}
+.animated-text:hover {
+    transform: scale(1.1);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.35);
+
+
+}
+.user-link:hover .user-icon,
+.rider-link:hover .rider-icon,
+.shipment-link:hover .shipment-icon,
+.add-rider-link:hover .add-rider-icon {
+    transform: translateX(5px) scale(1.05);
+}
+
+
+@keyframes shine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* ===== Sidebar Modern Look ===== */
+.sidebar {
+    backdrop-filter: blur(12px);
+    box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+    transition: all 0.4s ease;
+}
+
+/* Sidebar hover glow */
+.sidebar:hover {
+    box-shadow: 6px 0 35px rgba(0,0,0,0.35);
+}
+
+/* Sidebar items spacing */
+.sidebar .nav-item {
+    margin: 6px 10px;
+}
+
+/* Nav links modern card look */
+.sidebar .nav-link {
+    border-radius: 14px;
+    padding: 12px 16px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+/* Left glow animation */
+.sidebar .nav-link::before {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: all 0.4s ease;
+}
+
+.sidebar .nav-link:hover::before {
+    left: 100%;
+}
+
+/* Hover background */
+.sidebar .nav-link:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(6px);
+}
+.sidebar .nav-item.active .nav-link {
+    background: rgba(255,255,255,0.25);
+    box-shadow: inset 4px 0 0 #ffffff;
+}
+.sidebar .nav-link i {
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/* Icon hover motion */
+.sidebar .nav-link:hover i {
+    transform: rotate(-8deg) scale(1.2);
+    color: #ffffff;
+}
+.sidebar-brand {
+    padding: 20px 0;
+    transition: all 0.4s ease;
+}
+
+.sidebar-brand:hover {
+    transform: scale(1.05);
+}
+
+/* Truck icon pulse */
+.sidebar-brand-icon i {
+    animation: pulseIcon 2.5s infinite;
+}
+
+@keyframes pulseIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+.sidebar.toggled {
+    transition: width 0.4s ease;
+}
+#accordionSidebar {
+    overflow: hidden;
+}
+.animated-text:hover {
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+.add-rider-link:hover .add-rider-icon {
+    transform: scale(1.08); /* pehle 1.15 tha */
+}
+.sidebar,
+#accordionSidebar,
+.navbar-nav.sidebar {
+    overflow: hidden !important;
+}
+.sidebar .nav-item,
+.sidebar .nav-link {
+    position: relative;
+    overflow: hidden;
+}
+.add-rider-link:hover {
+    box-shadow: inset 4px 0 0 #36b9cc;
+}
+
+
+
+  </style>
 
 </head>
 

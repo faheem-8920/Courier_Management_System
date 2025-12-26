@@ -1,5 +1,6 @@
 @extends('admin.masterlayout')
 @push('styles')
+
 <style>
 .fade-up {
     animation: fadeUp 0.9s ease forwards;
