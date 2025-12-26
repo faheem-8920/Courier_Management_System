@@ -30,7 +30,7 @@ class UserController extends Controller
         $table->DeliveryType=$req->DeliveryType;
         $table->DeliveryZone=$req->DeliveryZone;
         $table->ParcelWeight=$req->ParcelWeight;
-        $table->UserId=Auth::id();
+        $table->UserId=Auth::user()->id;
         $table->save();
             
 return redirect('/usercouriers');
