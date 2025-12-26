@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RiderCredentialsMail;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
 
 
 class AdminController extends Controller
@@ -86,6 +88,16 @@ public function dashboard()
     $pendingRequests = Shipment::where('Status', 'Pending')->count();
 
     return view('admin.dashboard', compact('pendingRequests'));
+}
+
+public function exporttoexcel(){
+    return Excel::download(new UsersExport, 'users.xlsx');
+}
+public function exporttoexcel2(){
+    return Excel::download(new UsersExport, 'users.xlsx');
+}
+public function exporttoexcel3(){
+    return Excel::download(new UsersExport, 'users.xlsx');
 }
 
 }
