@@ -127,6 +127,46 @@ td.action {
     td.action { flex-direction: column; gap: 4px; align-items: flex-start; }
     .action-btn { font-size: 0.75em; padding: 4px 8px; gap: 4px; }
 }
+
+/* Export Button */
+.export-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-export {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(211,47,47,0.3);
+}
+
+.btn-export i {
+    margin-right: 6px;
+}
+
+.btn-export:hover {
+    background: linear-gradient(135deg, #b71c1c, #7f0000);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(211,47,47,0.4);
+    color: #fff;
+}
+
+
+/* Column alignment */
+td.id, th.id { text-align: center; }
+td.name, th.name { text-align: left; }
+td.email, th.email { text-align: left; }
+td.role, th.role { text-align: center; }
+
+/* Limit column widths */
+td, th { max-width: 200px; }
 </style>
 
 <div class="table-container">
@@ -164,6 +204,12 @@ td.action {
       @endforeach
     </tbody>
   </table>
+  <div class="export-wrapper">
+    <a href="/exporttoexcel3" class="btn-export">
+        <i class="fas fa-file-excel"></i> Download Excel Report
+    </a>
+</div>
+</div>
 </div>
 
 <!-- FontAwesome -->
