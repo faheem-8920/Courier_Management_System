@@ -940,7 +940,7 @@
                 </div>
             </div>
 
-            <form id="riderForm" method="POST" action="/saverider">
+            <form id="riderForm" method="GET" action="/updateriderdetails/{{$riderdata->id}}">
                 @csrf
                 <!-- Personal Details Tab -->
                 <div class="tab-content active" id="personal-tab">
@@ -1009,7 +1009,7 @@
                                 <i class="fas fa-lock"></i> Password
                             </label>
                             <div class="input-container">
-                                <input type="password" id="password" class="form-input" placeholder="Create a strong password" name="Password" autocomplete="new-password">
+                                <input type="password" id="password" class="form-input" placeholder="only if you want to change password" name="Password" autocomplete="new-password">
                                 <i class="fas fa-lock input-icon"></i>
                                 <i class="fas fa-eye password-toggle" id="togglePassword"></i>
                                 <i class="fas fa-check validation-icon"></i>
@@ -1064,13 +1064,14 @@
                                 <i class="fas fa-clock"></i> Preferred Shift
                             </label>
                             <div class="input-container">
-                                <select id="shift" value='{{$riderdata->WorkingShift}}' class="form-select" name="WorkingShift">
-                                    <option value="">Select working shift</option>
-                                    <option value="morning">Morning (6:00 AM - 2:00 PM)</option>
-                                    <option value="afternoon">Afternoon (2:00 PM - 10:00 PM)</option>
-                                    <option value="night">Night (10:00 PM - 6:00 AM)</option>
-                                    <option value="flexible">Flexible Hours</option>
-                                </select>
+                               <select name="WorkingShift" class="form-select" id="shift" >
+    <option value="">Select working shift</option>
+    <option value="morning" {{ $riderdata->WorkingShift == 'morning' ? 'selected' : '' }}>Morning</option>
+    <option value="afternoon" {{ $riderdata->WorkingShift == 'afternoon' ? 'selected' : '' }}>Afternoon</option>
+    <option value="night" {{ $riderdata->WorkingShift == 'night' ? 'selected' : '' }}>Night</option>
+    <option value="flexible" {{ $riderdata->WorkingShift == 'flexible' ? 'selected' : '' }}>Flexible</option>
+</select>
+
                                 <i class="fas fa-clock input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1085,14 +1086,15 @@
                                 <i class="fas fa-map-marked-alt"></i> Delivery Zone
                             </label>
                             <div class="input-container">
-                                <select id="zone" class="form-select" name='WorkingZone'>
-                                    <option value="">Select delivery zone</option>
-                                    <option value="north">North Zone</option>
-                                    <option value="south">South Zone</option>
-                                    <option value="east">East Zone</option>
-                                    <option value="west">West Zone</option>
-                                    <option value="central">Central Zone</option>
-                                </select>
+                                <select name="WorkingZone" class="form-select" id="zone">
+    <option value="">Select delivery zone</option>
+    <option value="north" {{ $riderdata->WorkingZone == 'north' ? 'selected' : '' }}>North</option>
+    <option value="south" {{ $riderdata->WorkingZone == 'south' ? 'selected' : '' }}>South</option>
+    <option value="east" {{ $riderdata->WorkingZone == 'east' ? 'selected' : '' }}>East</option>
+    <option value="west" {{ $riderdata->WorkingZone == 'west' ? 'selected' : '' }}>West</option>
+    <option value="central" {{ $riderdata->WorkingZone == 'central' ? 'selected' : '' }}>Central</option>
+</select>
+
                                 <i class="fas fa-map-marker-alt input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1119,13 +1121,15 @@
                                 <i class="fas fa-car"></i> Vehicle Type
                             </label>
                             <div class="input-container">
-                                <select id="vehicleType" class="form-select" name="VehicleType">
-                                    <option value="">Select vehicle type</option>
-                                    <option value="motorcycle">Motorcycle</option>
-                                    <option value="scooter">Scooter</option>
-                                    <option value="car">Car</option>
-                                    <option value="van">Delivery Van</option>
-                                </select>
+   <select id="vehicleType" class="form-select" name="VehicleType">
+    <option value="">Select vehicle type</option>
+    <option value="motorcycle" {{ $riderdata->VehicleType == 'motorcycle' ? 'selected' : '' }}>Motorcycle</option>
+    <option value="scooter" {{ $riderdata->VehicleType == 'scooter' ? 'selected' : '' }}>Scooter</option>
+    <option value="car" {{ $riderdata->VehicleType == 'car' ? 'selected' : '' }}>Car</option>
+    <option value="delivery van" {{ $riderdata->VehicleType == 'delivery van' ? 'selected' : '' }}>Delivery Van</option>
+</select>
+
+
                                 <i class="fas fa-motorcycle input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1152,7 +1156,7 @@
                                 <i class="fas fa-id-badge"></i> Driver's License
                             </label>
                             <div class="input-container">
-                                <input type="text" id="licenseNumber" value="VehicleModel" class="form-input" placeholder="Enter driver's license number" name="LicenseNumber">
+                                <input type="text" id="LicenseNumber" value="{{$riderdata->LicenseNumber}}" class="form-input" placeholder="Enter driver's license number" name="LicenseNumber">
                                 <i class="fas fa-id-card input-icon"></i>
                                 <i class="fas fa-check validation-icon"></i>
                                 <i class="fas fa-times validation-icon"></i>
@@ -1164,7 +1168,7 @@
                                 <i class="fas fa-cogs"></i> Vehicle Model
                             </label>
                             <div class="input-container">
-                                <input type="text" id="vehicleModel" class="form-input" placeholder="Enter vehicle model (optional)" name="VehicleModel">
+                                <input type="text" id="vehicleModel" class="form-input" value="{{$riderdata->VehicleModel}}" name="VehicleModel">
                                 <i class="fas fa-car input-icon"></i>
                             </div>
                         </div>
@@ -1214,7 +1218,7 @@
                                 <i class="fas fa-sticky-note"></i> Administrator Notes
                             </label>
                             <div class="input-container">
-                                <textarea id="adminNotes" class="form-textarea" placeholder="Enter any additional notes or instructions for the rider (optional)" name="AdminNotes"></textarea>
+                                <textarea id="adminNotes" class="form-textarea" placeholder="Enter any additional notes or instructions for the rider (optional)" name="AdminNotes">{{$riderdata->AdminNotes}}</textarea>
                             </div>
                         </div>
                     </div>

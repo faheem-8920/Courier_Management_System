@@ -197,7 +197,7 @@ td, th { max-width: 200px; }
         <td>{{$rider->WorkingZone}}</td>
         <td>{{$rider->VehicleType}}</td>
         <td>
-            <form method="get" action="/updaterider/{{$rider->id}}"  style="margin:0; display:flex; justify-content:center;">
+             <form method="get" action="{{ url('/getriderdetails/'.$rider->id) }}"  style="margin:0; display:flex; justify-content:center;">
                 @csrf
                 <button type="submit" class="delete-btn">
                     <i class="fas fa-trash-alt"></i> Update
