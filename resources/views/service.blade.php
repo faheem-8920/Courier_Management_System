@@ -10,9 +10,9 @@
             <h1 class="display-3 text-white mb-3 animated slideInDown">Services</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Services</li>
+                    <li class="breadcrumb-item"><a class="text-white" href="/index">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="/team">Team</a></li>
+                    
                 </ol>
             </nav>
         </div>
