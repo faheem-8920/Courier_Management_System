@@ -6,7 +6,6 @@ use App\Http\Controllers\RiderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
-use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Usermiddleware;
 // Controller routes
 Route::post('/uploadcourier',[UserController::class,'savecourier']);
@@ -14,7 +13,6 @@ Route::post('/saverider',[AdminController::class,'saverider']);
 Route::get('/mydashboard', function () {
     return view('dashboard');
 });
-Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
 
 Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
 // User routes
@@ -78,7 +76,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $role = auth()->user()->role;
 
-        if ($role === 'admin') return redirect('/admin');
+        if ($role === 'admin') return redirect('/admindashboard');
         if ($role === 'rider') return redirect('/rider');
         if ($role === 'user') return redirect('/user');
 
@@ -109,6 +107,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
+Route::get('/getriderdetails/{id}',[AdminController::class,'getriderdetails']);
+Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
 
 Route::get('/riders',[AdminController::class,'showriders']);
 Route::get('/shipments', [AdminController::class,'showshipments']);

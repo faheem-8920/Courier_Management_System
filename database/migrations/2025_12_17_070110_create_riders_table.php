@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('riders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('UserId')->nullable();
+        $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status',['active','inactive','suspended'])->default('active');
             
             //rider personal information
@@ -26,6 +28,7 @@ return new class extends Migration
             $table->enum('WorkingZone',['north','south','east','west','central']);
            //vehicle details
             $table->enum('VehicleType',['motorcycle','scooter','car','van']);
+           $table->string("LicenseNumber")->unique();
             $table->string('PlateNumber');
             $table->string('VehicleModel');
             $table->boolean('VehicleInspected')->default(false);
