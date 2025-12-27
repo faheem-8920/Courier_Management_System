@@ -1,4 +1,5 @@
 @extends('admin.masterlayout')
+@push('styles')
 
 <style>
 .fade-up {
@@ -39,6 +40,7 @@
     from { width: 0; }
 }
 </style>
+@endpush
 
 @section('content')
 <div class="container-fluid">

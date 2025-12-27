@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- Icon Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -40,7 +39,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
-        <a href="{{ url('/') }}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+    <a href="{{ url('/') }}" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
             <h2 class="mb-2 text-white">CMS</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -67,12 +66,14 @@
             <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
 
             <!-- Auth Section -->
-            @guest
-                <div class="d-flex align-items-center ms-lg-3 pe-lg-4">
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
-                </div>
-            @endguest
+          @guest
+<div class="d-flex align-items-center gap-2">
+    <a href="{{ route('login') }}"><button class="btn btn-primary rounded-3 btn-medium me-2"  >Login</button></a>
+    <a href="{{ route('register') }}"><button class="btn btn-primary rounded-3 btn-medium me-2">Register</button></a>
+</div>
+@endguest
+
+
 
             @auth
                 <ul class="navbar-nav align-items-center ms-lg-3 pe-lg-4">
@@ -80,11 +81,12 @@
                         <a class="nav-link dropdown-toggle d-flex align-items-center"
                            href="#"
                            data-bs-toggle="dropdown">
+<img src="{{ Auth::user()->profile_photo_url ?? asset('img/default-profile.png') }}"
+     onerror="this.src='{{ asset('img/default-profile.png') }}'"
+     class="rounded-circle me-2"
+     width="30"
+     height="30">
 
-                            <img src="{{ Auth::user()->profile_photo_url ?? asset('img/default-profile.png') }}"
-                                 class="rounded-circle me-2"
-                                 width="30"
-                                 height="30">
 
                             {{ Auth::user()->name }}
                         </a>

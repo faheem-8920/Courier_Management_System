@@ -17,7 +17,7 @@
                                   Delivering Your Parcel <span class="text-primary">Safely & On Time</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Send parcels anywhere in Pakistan with real-time tracking, fast pickup, and secure delivery.</p>
                                 
-                                <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Track Parcel</a>
+                                <a href="/addcourier" class="btn btn-danger py-md-3 px-md-5 animated slideInRight">Add Courier</a>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                             <p class="m-0">Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
                         </div>
                     </div>
-                    <a href="{{ url('/addcourier') }}" class="btn btn-primary py-3 px-5">Book a Parcel</a>
+                    
                 </div>
             </div>
         </div>

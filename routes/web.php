@@ -17,7 +17,7 @@ Route::get('/mydashboard', function () {
 Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
 // User routes
 Route::get('/', function () {
-    return view('auth.login');
+    return view('index');
 });
 Route::get('/usercouriers',[UserController::class,'UserCouriers']);
 
@@ -78,7 +78,7 @@ Route::middleware([
 
         if ($role === 'admin') return redirect('/admindashboard');
         if ($role === 'rider') return redirect('/rider');
-        if ($role === 'user') return redirect('/user');
+        if ($role === 'user') return redirect('/index');
 
         abort(403, 'Unauthorized');
     })->name('dashboard');
@@ -146,6 +146,11 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
     })->name('Rider.index');
 
+Route::get('/exporttoexcel',[AdminController::class,('exporttoexcel')]);
+
+Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
+
+Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
 
  
 
