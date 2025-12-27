@@ -40,7 +40,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="team-item text-center wow fadeInUp" data-wow-delay="0.4s">
                     <img class="img-fluid rounded mb-3" src="img/teampic-2.jpg" alt="">
-                    <h6 class="mb-0">Kulsoom Gulam</h6>
+                    <h6 class="mb-0">Kulsoom Ghulam</h6>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="team-item text-center wow fadeInUp" data-wow-delay="0.5s">
                     <img class="img-fluid rounded mb-3" src="img/teampic.jpg" alt="">
-                    <h6 class="mb-0">Muhammad Bin Nadir</h6>
+                    <h6 class="mb-0">Muhammad Bin Nasir</h6>
                 </div>
             </div>
 
