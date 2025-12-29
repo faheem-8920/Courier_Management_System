@@ -115,6 +115,8 @@ Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
 Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 
+Route::post('/delete/{id}', [AdminController::class, 'deleterider']);
+
 
 
 });

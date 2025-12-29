@@ -174,6 +174,18 @@ td, th { max-width: 200px; }
     .table-container { max-width: 95%; padding: 15px; }
     .delete-btn { font-size: 0.7em; padding: 4px 8px; }
 }
+
+.action-form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;  
+}
+
+.action-form:last-child{
+    margin-bottom: 0;
+}
+   
+
 </style>
 
 <div class="table-container">
@@ -197,13 +209,28 @@ td, th { max-width: 200px; }
         <td>{{$rider->WorkingZone}}</td>
         <td>{{$rider->VehicleType}}</td>
         <td>
-             <form method="get" action="{{ url('/getriderdetails/'.$rider->id) }}"  style="margin:0; display:flex; justify-content:center;">
-                @csrf
-                <button type="submit" class="delete-btn">
-                    <i class="fas fa-trash-alt"></i> Update
-                </button>
-            </form>
-        </td>
+            
+    <form method="get"
+          action="{{ url('/getriderdetails/'.$rider->id) }}"
+          class="action-form">
+        @csrf
+        <button type="submit" class="delete-btn">
+            <i class="fas fa-edit"></i> Update
+        </button>
+    </form>
+
+    <form method="post"
+          action="/delete/{{$rider->id}}"
+          class="action-form">
+        @csrf
+        <button type="submit" class="delete-btn">
+            <i class="fas fa-trash-alt"></i> Delete
+        </button>
+    </form>
+    </div>
+</td>
+
+
       </tr>
       @endforeach
     </tbody>
