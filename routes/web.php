@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Middleware\Usermiddleware;
+use App\Http\Controllers\Googlecontroller;
+
 // Controller routes
 Route::post('/uploadcourier',[UserController::class,'savecourier']);
 Route::post('/saverider',[AdminController::class,'saverider']);
@@ -152,5 +154,6 @@ Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
 
 Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
 
- 
+Route::get('auth/google', [Googlecontroller::class, 'googlepage']);
 
+Route::get('auth/google/callback', [Googlecontroller::class, 'googlecallback']);

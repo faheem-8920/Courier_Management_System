@@ -750,6 +750,7 @@
                 <div class="additional-links">
                     New to SwiftCourier?
                     <a href="{{ route('register') }}">Sign up</a>
+                    <a href="/auth/google">login with google</a>
                 </div>
             </form>
         </div>
