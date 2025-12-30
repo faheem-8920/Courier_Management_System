@@ -11,7 +11,10 @@
         "laravel/framework": "^12.0",
         "laravel/jetstream": "^5.4",
         "laravel/sanctum": "^4.0",
+<<<<<<< HEAD
         "laravel/socialite": "^5.24",
+=======
+>>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "^3.6.4",
         "maatwebsite/excel": "^3.1"

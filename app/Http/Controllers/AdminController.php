@@ -148,5 +148,13 @@ public function exporttoexcel3(){
     return Excel::download(new UsersExport, 'users.xlsx');
 }
 
+
+public function deleterider($id){
+    $rider = Rider::findOrFail($id);
+    $rider->delete();
+    return redirect('/riders');
+}
+
+
 }
 
