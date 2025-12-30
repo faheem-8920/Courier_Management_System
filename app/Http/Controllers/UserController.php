@@ -25,7 +25,7 @@ class UserController extends Controller
         $table->ReceiverPhone=$req->ReceiverPhone;
         $table->ReceiverEmail=$req->ReceiverEmail;
         $table->PickupAddress=$req->PickupAddress;
-        $table->PickupTime=$req->PickupTime;
+        $table->PickupSlot=$req->PickupTime;
         $table->DeliveryAddress=$req->DeliveryAddress;
         $table->DeliveryType=$req->DeliveryType;
         $table->DeliveryZone=$req->DeliveryZone;
@@ -58,9 +58,9 @@ return redirect('/usercouriers');
 
 public function courierdetails($id){
 
-    $courierdetail = Shipment::findOrFail($id);
+   $courierdetail = Shipment::find($id);
+return view('CourierDetails', compact('courierdetail'));
 
-        return view('CourierDetails',compact('courierdetail'));
 
 
 

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Middleware\Usermiddleware;
+use App\Mail\ParcelDeliveredMail;
+
 // Controller routes
 Route::post('/uploadcourier',[UserController::class,'savecourier']);
 Route::post('/saverider',[AdminController::class,'saverider']);
@@ -123,7 +125,8 @@ Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::get('/rider', function () {
         return view('Rider.index');
-
+    })->name('Rider.index');
+    
  Route::get('/earning', function () {
         return view('Rider.earning');
     });
@@ -139,12 +142,22 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::get('/support', function () {
         return view('Rider.support');
     });
+
+    Route::post('/rider/order/{id}/accept', [RiderController::class, 'acceptorder'])->name('rider.accept');
+
+    Route::post('/rider/order/{id}/transit', [RiderController::class, 'transitorder'])
+        ->name('rider.transit');
+
+    Route::post('/rider/order/{id}/delivered', [RiderController::class, 'deliveredorder'])
+     ->name('rider.delivered');
+
+
 });
 Route::get('/delivery', [RiderController::class, 'myShipments'])
      ->middleware('auth'); 
 
 
-    })->name('Rider.index');
+  
 
 Route::get('/exporttoexcel',[AdminController::class,('exporttoexcel')]);
 
