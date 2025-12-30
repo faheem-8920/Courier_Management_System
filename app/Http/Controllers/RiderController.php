@@ -1,9 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Http\Request;
 use App\Models\Shipment;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+use App\Models\rider;
+use App\Mail\ParcelDeliveredMail;
+
+>>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
 class RiderController extends Controller
 {
     public function myShipments()
@@ -15,4 +23,57 @@ class RiderController extends Controller
 
     return view('Rider.delivery', compact('shipments'));
 }
+
+public function acceptorder($id)
+    {
+        $order = Shipment::where('id', $id)
+            ->where('status', 'pending')
+            ->first();
+
+        if (!$order) {
+            return back()->with('error', 'Order already taken');
+        }
+
+        $order->AssignedRiderId = auth()->id();
+        $order->status = 'PickedUp';
+        $order->PickedUpAt = now();
+        $order->save();
+
+        return back()->with('success', 'Order accepted successfully');
+    }
+
+    // 🟡 IN TRANSIT
+    public function transitorder($id)
+    {
+        $order = Shipment::where('id', $id)
+            ->where('AssignedRiderId', auth()->id())
+            ->where('status', 'PickedUp')
+            ->firstOrFail();
+$order->status = 'InTransit';
+$order->InTransitAt = now();
+$order->save();
+
+
+        return back()->with('success', 'Order is now in transit');
+    }
+
+    // 🔵 DELIVERED
+    public function deliveredorder($id)
+{
+    $order = Shipment::where('id', $id)
+        ->where('AssignedRiderId', auth()->id())
+        ->where('status', 'InTransit')
+        ->firstOrFail();
+
+    $order->status = 'Delivered';
+    $order->DeliveredAt = now();
+    $order->save();
+
+    // Send detailed email to sender
+    Mail::to($order->SenderEmail)->send(new ParcelDeliveredMail($order));
+
+    return back()->with('success', 'Order delivered successfully and sender has been notified.');
+}
+
+
 }

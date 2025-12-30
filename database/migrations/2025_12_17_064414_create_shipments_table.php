@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('UserId'); // add after id column
         $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
-            $table->string('Status')->default('Pending');
+$table->enum('Status', ['Pending', 'PickedUp', 'InTransit', 'Delivered'])->default('Pending');
             $table->string('TrackingNumber');
             //sender details
             $table->string('SenderName');
@@ -28,14 +28,20 @@ return new class extends Migration
             $table->string('ReceiverEmail')->nullable();
             //pickup details
             $table->text('PickupAddress');
-            $table->enum('PickupTime', ['morning', 'afternoon', 'evening']);
+            $table->enum('PickupSlot', ['morning', 'afternoon', 'evening']);
             //delivery details
             $table->text('DeliveryAddress');
            $table->enum('DeliveryZone', ['north','south','east','west','central'])->index();
             $table->enum('DeliveryType', ['standard', 'express', 'overnight']);
            $table->decimal('ParcelWeight', 5, 2);
-
-            $table->timestamps();
+// EXTRA DETAIL AND JOIN COLUMN
+$table->timestamp('InTransitAt')->nullable();
+       
+$table->unsignedBigInteger('AssignedRiderId')->nullable();
+        $table->timestamp('PickedUpAt')->nullable();
+        $table->timestamp('DeliveredAt')->nullable();
+        $table->foreign('AssignedRiderId')->references('id')->on('users')->nullOnDelete();
+        $table->timestamps();
 
         });
     }

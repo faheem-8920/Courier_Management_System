@@ -74,6 +74,7 @@ return redirect('/usercouriers');
 
     // 2️⃣ Create Rider info
     $rider = new Rider();
+    $rider->UserId=$user->id;
     $rider->Fullname = $req->Fullname;
     $rider->Email = $req->Email;
     $rider->Phone = $req->Phone;
@@ -82,6 +83,7 @@ return redirect('/usercouriers');
     $rider->WorkingShift = $req->WorkingShift;
     $rider->WorkingZone = $req->WorkingZone;
     $rider->VehicleType = $req->VehicleType;
+    $rider->LicenseNumber=$req->LicenseNumber;
     $rider->PlateNumber = $req->PlateNumber;
     $rider->VehicleModel = $req->VehicleModel;
     $rider->AdminNotes = $req->AdminNotes;
@@ -110,14 +112,60 @@ public function showriders(){
     return view('admin.riders',compact('riders'));
 }
 
-public function updateriderdetails($id){
+public function getriderdetails($id){
 
     $riderdata=rider::findOrFail($id);
 
     return view('admin.updaterider',compact('riderdata'));
 
-
 }
+
+
+
+   public function updateriderdetails(Request $req, $id)
+{
+    $rider = Rider::findOrFail($id);
+
+    // Update Rider info
+    $rider->update([
+        'Fullname' => $req->Fullname,
+        'Email' => $req->Email,
+        'Phone' => $req->Phone,
+        'DateOfBirth' => $req->DateOfBirth,
+        'HireDate' => $req->HireDate,
+        'WorkingShift' => $req->WorkingShift,
+        'WorkingZone' => $req->WorkingZone,
+        'VehicleType' => $req->VehicleType,
+        'LicenseNumber'=>$req->LicenseNumber,
+        'PlateNumber' => $req->PlateNumber,
+        'VehicleModel' => $req->VehicleModel,
+        'AdminNotes' => $req->AdminNotes,
+        'VehicleInspected' => $req->has('VehicleInspected') ? 1 : 0,
+        'TermsAccepted' => $req->has('TermsAccepted') ? 1 : 0,
+    ]);
+
+    // Update linked user if exists
+    if($rider->user) {
+        $rider->user->update([
+            'name' => $req->Fullname,
+            'email' => $req->Email,
+        ]);
+
+        // Optional: Update password if provided
+        if($req->Password) {
+            $rider->user->update([
+                'password' => Hash::make($req->Password)
+            ]);
+        }
+    }
+
+    return redirect()->back()->with('success', 'Rider details updated successfully');
+}
+
+
+
+
+
 
 public function showshipments(){
     $Shipments=Shipment::get();
@@ -143,6 +191,13 @@ public function exporttoexcel2(){
 public function exporttoexcel3(){
     return Excel::download(new UsersExport, 'users.xlsx');
 }
+
+public function deleterider($id){
+    $rider = Rider::findOrFail($id);
+    $rider->delete();
+    return redirect('/riders');
+}
+
 
 }
 
