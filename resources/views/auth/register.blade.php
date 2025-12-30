@@ -584,10 +584,10 @@
                             <i class="fas fa-shipping-fast"></i>
                         </div>
                     </div>
-                    <div class="logo-text">SwiftCourier</div>
+                    <div class="logo-text">CMS</div>
                 </div>
                 <h1>Create Account</h1>
-                <p>Join SwiftCourier today</p>
+                <p>Join CMS today</p>
             </div>
 
             <!-- Validation Errors - Using Laravel's built-in validation -->

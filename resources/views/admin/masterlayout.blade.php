@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title> Admin Dashboard</title>
 
     <!-- Custom fonts for this template -->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -94,7 +94,7 @@
 .animated-text::after {
     content: '';
     position: absolute;
-    width: 100%;
+    width: 60%;
     height: 100%;
     top: 0;
     background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
@@ -236,6 +236,17 @@
 .add-rider-link:hover {
     box-shadow: inset 4px 0 0 #36b9cc;
 }
+.sidebar-brand {
+    overflow: visible !important;
+}
+.animated-text {
+    overflow: visible;
+}
+#accordionSidebar {
+    overflow-x: visible;
+}
+
+
 
 
 

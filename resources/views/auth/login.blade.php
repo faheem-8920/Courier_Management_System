@@ -664,7 +664,7 @@
                             <i class="fas fa-shipping-fast"></i>
                         </div>
                     </div>
-                    <div class="logo-text">SwiftCourier</div>
+                    <div class="logo-text">CMS</div>
                 </div>
                 <h1>Welcome Back</h1>
                 <p>Sign in to continue</p>
@@ -748,7 +748,7 @@
 
                 <!-- Additional Links -->
                 <div class="additional-links">
-                    New to SwiftCourier?
+                    New to CMS?
                     <a href="{{ route('register') }}">Sign up</a>
                 </div>
             </form>
