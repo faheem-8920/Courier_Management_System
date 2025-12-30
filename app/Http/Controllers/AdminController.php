@@ -7,9 +7,15 @@ use App\Models\rider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\RiderCredentialsMail;
+use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
+
 
 class AdminController extends Controller
 {
+
 
     public function savecourier(Request $req){
 
@@ -54,6 +60,7 @@ return redirect('/usercouriers');
 
     return $pdf->download('Courier-' . $courier->TrackingNumber . '.pdf');
 }
+
    public function saverider(Request $req)
 {
     // 1️⃣ Create User for Jetstream login
@@ -85,6 +92,15 @@ return redirect('/usercouriers');
 
     $rider->save();
 
+     Mail::to($req->Email)->send(
+        new RiderCredentialsMail(
+            $req->Fullname,
+            $req->Email,
+            $req->Password
+        )
+    );
+
+
     return redirect()->back()->with('success', 'Rider added successfully');
 }
 
@@ -92,6 +108,15 @@ return redirect('/usercouriers');
 public function showriders(){
     $riders=rider::get();
     return view('admin.riders',compact('riders'));
+}
+
+public function updateriderdetails($id){
+
+    $riderdata=rider::findOrFail($id);
+
+    return view('admin.updaterider',compact('riderdata'));
+
+
 }
 
 public function showshipments(){
@@ -102,5 +127,22 @@ public function showuserrecords(){
     $Users=User::get();
     return view('admin.users',compact('Users'));
 }
+public function dashboard()
+{
+    $pendingRequests = Shipment::where('Status', 'Pending')->count();
+
+    return view('admin.dashboard', compact('pendingRequests'));
+}
+
+public function exporttoexcel(){
+    return Excel::download(new UsersExport, 'users.xlsx');
+}
+public function exporttoexcel2(){
+    return Excel::download(new UsersExport, 'users.xlsx');
+}
+public function exporttoexcel3(){
+    return Excel::download(new UsersExport, 'users.xlsx');
+}
+
 }
 

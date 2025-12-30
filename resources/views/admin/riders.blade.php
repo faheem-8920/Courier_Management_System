@@ -128,6 +128,46 @@
     box-shadow: 0 4px 12px rgba(211,47,47,0.3);
 }
 
+/* Export Button */
+.export-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-export {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(211,47,47,0.3);
+}
+
+.btn-export i {
+    margin-right: 6px;
+}
+
+.btn-export:hover {
+    background: linear-gradient(135deg, #b71c1c, #7f0000);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(211,47,47,0.4);
+    color: #fff;
+}
+
+
+/* Column alignment */
+td.id, th.id { text-align: center; }
+td.name, th.name { text-align: left; }
+td.email, th.email { text-align: left; }
+td.role, th.role { text-align: center; }
+
+/* Limit column widths */
+td, th { max-width: 200px; }
+
 /* Responsive */
 @media (max-width: 768px) { 
     .table td, .table th { padding: 8px 5px; font-size:0.75em; } 
@@ -157,10 +197,10 @@
         <td>{{$rider->WorkingZone}}</td>
         <td>{{$rider->VehicleType}}</td>
         <td>
-            <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this rider?');" style="margin:0; display:flex; justify-content:center;">
+            <form method="get" action="/updaterider/{{$rider->id}}"  style="margin:0; display:flex; justify-content:center;">
                 @csrf
                 <button type="submit" class="delete-btn">
-                    <i class="fas fa-trash-alt"></i> Delete
+                    <i class="fas fa-trash-alt"></i> Update
                 </button>
             </form>
         </td>
@@ -168,6 +208,11 @@
       @endforeach
     </tbody>
   </table>
+  <div class="export-wrapper">
+    <a href="/exporttoexcel2" class="btn-export">
+        <i class="fas fa-file-excel"></i> Download Excel Report
+    </a>
+</div>
 </div>
 
 <!-- Optional: Include Font Awesome for Trash Icon -->

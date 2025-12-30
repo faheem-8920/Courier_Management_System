@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Shipment;
-
+use Illuminate\Support\Facades\Auth;
 class RiderController extends Controller
 {
     public function myShipments()
@@ -15,5 +15,4 @@ class RiderController extends Controller
 
     return view('Rider.delivery', compact('shipments'));
 }
-
 }

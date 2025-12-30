@@ -58,36 +58,55 @@
                 <a href="{{ url('/support') }}" class="nav-item nav-link">Support</a>
                 
             </div>
-            <div id="auth-navbar" class="d-flex align-items-center ms-lg-3 pe-lg-4">
-    <div id="user-dropdown" class="nav-item dropdown d-none">
-        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center"
-           data-bs-toggle="dropdown">
-            <span id="user-name"></span>
-        </a>
+             @guest
+            <div class="d-flex align-items-center me-4">
+                <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">
+                    Login
+                </a>
+                <a href="{{ route('register') }}" class="btn btn-primary">
+                    Register
+                </a>
+            </div>
+        @endguest
 
-        <div class="dropdown-menu dropdown-menu-end">
-            <p class="dropdown-item mb-0" id="user-email"></p>
-            <form id="logout-form" method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="dropdown-item text-danger">Logout</button>
-            </form>
-        </div>
-    </div>
-</div>
+        @auth
+            <ul class="navbar-nav align-items-center me-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center"
+                       href="#"
+                       data-bs-toggle="dropdown">
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("{{ route('navbar.data') }}")
-        .then(response => response.json())
-        .then(data => {
-            if (data.logged_in) {
-                document.getElementById("user-dropdown").classList.remove("d-none");
-                document.getElementById("user-name").innerText = data.name;
-               
-            }
-        });
-    });
-</script>
+                        <img src="{{ Auth::user()->profile_photo_url }}"
+                             class="rounded-circle me-2"
+                             width="30"
+                             height="25">
+
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">
+                                <i class="fa fa-user me-2"></i> Profile
+                            </a>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button class="dropdown-item text-danger">
+                                    <i class="fa fa-sign-out-alt me-2"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        @endauth 
+
+
 
         </div>
     </nav>

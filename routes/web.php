@@ -1,26 +1,32 @@
-p<?php
+<?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RiderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
-use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Usermiddleware;
 use Illuminate\Support\Facades\Auth;
 
 // Controller routes
-Route::post('/uploadcourier',[AdminController::class,'savecourier']);
+Route::post('/uploadcourier',[UserController::class,'savecourier']);
 Route::post('/saverider',[AdminController::class,'saverider']);
 Route::get('/mydashboard', function () {
     return view('dashboard');
 });
-Route::get('/downloadcourierdetails/{id}',[AdminController::class,'DownloadCourierPdf']);
+Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
+
+Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
 // User routes
 Route::get('/', function () {
-    return view('auth.login');
+    return view('index');
 });
-Route::get('/usercouriers',[AdminController::class,'UserCouriers']);
+Route::get('/usercouriers',[UserController::class,'UserCouriers']);
+
+Route::get('/usercourierdetails/{id}',[UserController::class,'courierdetails']);
+
+
 Route::get('/index', function () {
     return view('index');
 });
@@ -59,9 +65,9 @@ Route::get('/addrider', function () {
 
 
 // Admin panel routes
-Route::get('/admindashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/admindashboard', function () {
+//     return view('admin.dashboard');
+// });
 
 
 // Role-based dashboard redirect after login
@@ -73,9 +79,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $role = Auth::user()->id;
 
-        if ($role === 'admin') return redirect('/admin');
+        if ($role === 'admin') return redirect('/admindashboard');
         if ($role === 'rider') return redirect('/rider');
-        if ($role === 'user') return redirect('/user');
+        if ($role === 'user') return redirect('/index');
 
         abort(403, 'Unauthorized');
     })->name('dashboard');
@@ -92,7 +98,7 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
 // Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/admin', function () {
+    Route::get('/admindashboard', function () {
         return view('admin.dashboard');
     });
     Route::get('/riders', function () {
@@ -104,10 +110,16 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/users', function () {
         return view('admin.users');
     });
+
 // Route::get('/dashboard', [AdminController::class, 'showsadmin']);
     Route::get('/riders',[AdminController::class,'showriders']);
+
+
+Route::get('/riders',[AdminController::class,'showriders']);
+
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
+Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 
 
 
@@ -140,12 +152,11 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
     })->name('Rider.index');
 
+Route::get('/exporttoexcel',[AdminController::class,('exporttoexcel')]);
+
+Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
+
+Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
+
  
 
-
-
-
-Route::get('/navbar-data', [ProfileController::class, 'navbarData'])->name('navbar.data');
-
-
-Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');

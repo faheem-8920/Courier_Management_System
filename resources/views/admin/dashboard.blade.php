@@ -1,6 +1,7 @@
 @extends('admin.masterlayout')
-<style>
+@push('styles')
 
+<style>
 .fade-up {
     animation: fadeUp 0.9s ease forwards;
 }
@@ -13,7 +14,6 @@
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 
 .stat-card {
     border-radius: 18px;
@@ -32,7 +32,7 @@
 .stat-card:hover .stat-icon {
     transform: rotate(-8deg) scale(1.2);
 }
-*/
+
 .progress-bar {
     animation: progressFill 1.5s ease-in-out;
 }
@@ -40,6 +40,7 @@
     from { width: 0; }
 }
 </style>
+@endpush
 
 @section('content')
 <div class="container-fluid">
@@ -60,16 +61,12 @@
         <!-- Monthly Earnings -->
         <div class="col-xl-3 col-md-6 mb-4 fade-up delay-1">
             <div class="card stat-card border-left-primary shadow h-100 py-3">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Monthly Earnings
-                            </div>
-                            <div class="h4 font-weight-bold text-gray-800">$40,000</div>
-                        </div>
-                        <i class="fas fa-calendar fa-2x text-primary stat-icon"></i>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Monthly Earnings</div>
+                        <div class="h4 font-weight-bold text-gray-800">$40,000</div>
                     </div>
+                    <i class="fas fa-calendar fa-2x text-primary stat-icon"></i>
                 </div>
             </div>
         </div>
@@ -77,32 +74,25 @@
         <!-- Annual Earnings -->
         <div class="col-xl-3 col-md-6 mb-4 fade-up delay-2">
             <div class="card stat-card border-left-success shadow h-100 py-3">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Annual Earnings
-                            </div>
-                            <div class="h4 font-weight-bold text-gray-800">$215,000</div>
-                        </div>
-                        <i class="fas fa-dollar-sign fa-2x text-success stat-icon"></i>
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Annual Earnings</div>
+                        <div class="h4 font-weight-bold text-gray-800">$215,000</div>
                     </div>
+                    <i class="fas fa-dollar-sign fa-2x text-success stat-icon"></i>
                 </div>
             </div>
         </div>
 
-        <!-- Tasks -->
+        <!-- Delivery Progress -->
         <div class="col-xl-3 col-md-6 mb-4 fade-up delay-3">
             <div class="card stat-card border-left-info shadow h-100 py-3">
                 <div class="card-body">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-2">
-                        Delivery Progress
-                    </div>
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-2">Delivery Progress</div>
                     <div class="d-flex align-items-center">
                         <div class="h4 mb-0 font-weight-bold text-gray-800 mr-3">50%</div>
                         <div class="progress w-100">
-                            <div class="progress-bar bg-info" role="progressbar"
-                                style="width: 50%"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%"></div>
                         </div>
                     </div>
                 </div>
@@ -112,23 +102,23 @@
         <!-- Pending Requests -->
         <div class="col-xl-3 col-md-6 mb-4 fade-up delay-4">
             <div class="card stat-card border-left-warning shadow h-100 py-3">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ url('/shipments') }}" class="text-decoration-none text-dark">
+                    <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Shipments
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                            <div class="h4 font-weight-bold text-gray-800">
+                                {{ $pendingRequests ?? 0 }}
                             </div>
-                            <div class="h4 font-weight-bold text-gray-800">18</div>
                         </div>
-                        <i class="fas fa-box fa-2x text-warning stat-icon"></i>
+                        <i class="fas fa-comments fa-2x text-gray-300 stat-icon"></i>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 
     </div>
 
-    <!-- Extra Section -->
+    <!-- Recent Activity -->
     <div class="row mt-4 fade-up">
         <div class="col-lg-12">
             <div class="card shadow-lg border-0">
