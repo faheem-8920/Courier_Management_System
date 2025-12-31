@@ -183,7 +183,10 @@
     <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<<<<<<< HEAD
+=======
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>

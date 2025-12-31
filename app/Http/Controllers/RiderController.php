@@ -8,6 +8,7 @@ use App\Models\Shipment;
 use App\Models\rider;
 use App\Mail\ParcelDeliveredMail;
 
+
 class RiderController extends Controller
 {
     public function myShipments()
@@ -19,6 +20,7 @@ class RiderController extends Controller
 
     return view('Rider.delivery', compact('shipments'));
 }
+
 
 public function acceptorder($id)
     {

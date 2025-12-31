@@ -1,12 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
+
         <h2 class="font-bold text-3xl text-red-700 leading-tight">
+
             {{ __('Profile') }}
         </h2>
     </x-slot>
 
     <div class="bg-white min-h-screen py-10">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-10">
+
 
             <!-- Update Profile Information -->
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
@@ -46,6 +49,7 @@
                 <x-section-border class="border-red-200" />
                 <div class="bg-red-50 border-l-4 border-red-600 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
                     <h3 class="text-xl font-semibold text-red-700 mb-4">{{ __('Delete Account') }}</h3>
+
                     @livewire('profile.delete-user-form')
                 </div>
             @endif
