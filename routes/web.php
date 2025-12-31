@@ -10,6 +10,7 @@ use App\Http\Middleware\Usermiddleware;
 
 use App\Http\Controllers\Googlecontroller;
 use App\Mail\ParcelDeliveredMail;
+use App\Http\Controllers\TrackRiderLocationController;
 
 
 // Controller routes
@@ -100,9 +101,7 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
 // Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/admindashboard', function () {
-        return view('admin.dashboard');
-    });
+ 
     Route::get('/riders', function () {
         return view('admin.riders');
     });
@@ -179,8 +178,23 @@ Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
 
 Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
 
+<<<<<<< HEAD
+ 
+ Route::get('/admindashboard', [AdminController::class, 'myadmindashboard'])->name('admin.dashboard');
+=======
 
 Route::get('auth/google', [Googlecontroller::class, 'googlepage']);
 
 Route::get('auth/google/callback', [Googlecontroller::class, 'googlecallback']);
+>>>>>>> c7cc037dc2a3b0a49e05dccc772f509fab8cc581
 
+
+
+// Rider updates location
+Route::middleware('auth:rider')->post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
+
+// Admin map page
+Route::get('/riders/map', [TrackRiderLocationController::class, 'showMap'])->name('riders.map');
+
+// Get JSON of all riders
+Route::get('/riders/locations', [TrackRiderLocationController::class, 'getLocations'])->name('riders.locations');
