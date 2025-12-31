@@ -59,15 +59,11 @@
                 
             </div>
              @guest
-            <div class="d-flex align-items-center me-4">
-                <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="btn btn-primary">
-                    Register
-                </a>
-            </div>
-        @endguest
+<div class="d-flex align-items-center gap-2">
+    <a href="{{ route('login') }}"><button class="btn btn-primary rounded-3 btn-medium me-2"  >Login</button></a>
+    <a href="{{ route('register') }}"><button class="btn btn-primary rounded-3 btn-medium me-2">Register</button></a>
+</div>
+@endguest
 
         @auth
             <ul class="navbar-nav align-items-center me-4">

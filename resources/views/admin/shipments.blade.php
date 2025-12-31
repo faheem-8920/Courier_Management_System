@@ -233,8 +233,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-<<<<<<< HEAD
+
 @endsection
-=======
-@endsection
->>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
