@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Middleware\Usermiddleware;
-<<<<<<< HEAD
+
 use Illuminate\Support\Facades\Auth;
-=======
+
 use App\Mail\ParcelDeliveredMail;
->>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
+
 
 // Controller routes
 Route::post('/uploadcourier',[UserController::class,'savecourier']);
