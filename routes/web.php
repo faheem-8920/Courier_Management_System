@@ -184,3 +184,5 @@ Route::get('auth/google', [Googlecontroller::class, 'googlepage']);
 
 Route::get('auth/google/callback', [Googlecontroller::class, 'googlecallback']);
 
+
+
