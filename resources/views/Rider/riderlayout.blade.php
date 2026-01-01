@@ -59,15 +59,11 @@
                 
             </div>
              @guest
-            <div class="d-flex align-items-center me-4">
-                <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="btn btn-primary">
-                    Register
-                </a>
-            </div>
-        @endguest
+<div class="d-flex align-items-center gap-2">
+    <a href="{{ route('login') }}"><button class="btn btn-primary rounded-3 btn-medium me-2"  >Login</button></a>
+    <a href="{{ route('register') }}"><button class="btn btn-primary rounded-3 btn-medium me-2">Register</button></a>
+</div>
+@endguest
 
         @auth
             <ul class="navbar-nav align-items-center me-4">
@@ -183,13 +179,64 @@
     <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-<<<<<<< HEAD
-=======
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
->>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
+
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
+
+<script>
+    if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(function(position) {
+        fetch("{{ route('rider.updateLocation') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            })
+        });
+    });
+} else {
+    alert("Geolocation is not supported by this browser.");
+}
+
+
+    let map = L.map('map').setView([30.3753, 69.3451], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    let markers = {};
+
+    function loadRiders() {
+        fetch("{{ route('riders.locations') }}")
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(item => {
+                    let rider = item.rider;
+                    if (!rider) return;
+
+                    if (markers[rider.id]) {
+                        markers[rider.id].setLatLng([item.latitude, item.longitude]);
+                    } else {
+                        markers[rider.id] = L.marker([item.latitude, item.longitude])
+                            .addTo(map)
+                            .bindPopup(rider.name);
+                    }
+                });
+            });
+    }
+
+    setInterval(loadRiders, 5000);
+    loadRiders();
+</script>
+
+
 </body>
 
 </html>
