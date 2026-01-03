@@ -59,15 +59,11 @@
                 
             </div>
              @guest
-            <div class="d-flex align-items-center me-4">
-                <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">
-                    Login
-                </a>
-                <a href="{{ route('register') }}" class="btn btn-primary">
-                    Register
-                </a>
-            </div>
-        @endguest
+<div class="d-flex align-items-center gap-2">
+    <a href="{{ route('login') }}"><button class="btn btn-primary rounded-3 btn-medium me-2"  >Login</button></a>
+    <a href="{{ route('register') }}"><button class="btn btn-primary rounded-3 btn-medium me-2">Register</button></a>
+</div>
+@endguest
 
         @auth
             <ul class="navbar-nav align-items-center me-4">
@@ -115,7 +111,13 @@
     @yield('content')
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
+
+      <iframe id="map-frame" width="100%" height="450" style="border:0;"></iframe>
+
+
+
+
+   <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
@@ -183,13 +185,71 @@
     <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-<<<<<<< HEAD
-=======
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
->>>>>>> 35bdd10d43fc705cac1ef99a7b57c57544104b3c
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
+
+<script>
+   if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    console.log("Latitude:", latitude);
+    console.log("Longitude:", longitude);
+    $.ajax({
+      url: "/rider/update-location",
+      method: "POST",
+      data: {
+        _token: "{{ csrf_token() }}",
+        latitude: latitude,
+        longitude: longitude
+      },
+      success: function (response) {
+
+        if(response.status === 'success')
+        {
+              console.log("Location updated successfully:", response);
+              const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&hl=es;z=15&output=embed`;
+
+                    // Set the iframe src to the Google Maps URL
+                    document.getElementById("map-frame").src = mapUrl;
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error updating location:", error);
+      }
+    });
+  });
+} else {
+  console.log("Geolocation is not supported by this browser.");
+}
+
+   
+    
+</script>
+<script>
+    function showMap(latitude, longitude) {
+            // Replace YOUR_API_KEY with your Google Maps Embed API key
+            const mapUrl = `https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${latitude},${longitude}&zoom=15`;
+
+            // Create the iframe element
+            const iframe = document.createElement("iframe");
+            iframe.width = "600";   
+            iframe.height = "450";
+            iframe.style.border = "0";
+            iframe.src = mapUrl;
+
+            // Clear any previous map and add the new iframe
+            const mapContainer = document.getElementById("map-container");
+            mapContainer.innerHTML = ""; // Clear previous map
+            mapContainer.appendChild(iframe);
+        }
+</script>
+
+
 </body>
 
 </html>

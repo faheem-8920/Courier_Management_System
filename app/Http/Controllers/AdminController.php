@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RiderCredentialsMail;
+use App\Mail\Paracelrejectedemail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
+use Illuminate\Support\Facades\DB;
 
 
 class AdminController extends Controller
@@ -59,7 +61,8 @@ class AdminController extends Controller
     );
 
 
-    return redirect()->back()->with('success', 'Rider added successfully');
+return redirect('/riders')
+    ->with('success', 'Rider added successfully');
 }
 
 
@@ -156,5 +159,107 @@ public function deleterider($id){
 }
 
 
+ 
+
+public function myadmindashboard()
+{
+    // Original Stats
+    $totalShipments = Shipment::count();
+    $totalUsers = User::count();
+    $totalRiders = Rider::count();
+    $totalCancelled = Shipment::where('Status', 'Pending')->count();
+    $totalDelayed = Shipment::whereNotNull('DeliveredAt')
+                            ->whereColumn('DeliveredAt', '>', 'InTransitAt')
+                            ->count();
+
+    // Additional Analytics Sections
+    $totalDelivered = Shipment::where('Status', 'Delivered')->count();
+    $totalInTransit = Shipment::where('Status', 'InTransit')->count();
+    $expressDeliveries = Shipment::where('DeliveryType','express')->count();
+    $standardDeliveries = Shipment::where('DeliveryType','standard')->count();
+    $overnightDeliveries = Shipment::where('DeliveryType','overnight')->count();
+    
+    $topUsersCount = Shipment::select('UserId')
+                             ->groupBy('UserId')
+                             ->orderByRaw('COUNT(*) DESC')
+                             ->take(10)
+                             ->count();
+
+    $topRidersCount = Shipment::select('AssignedRiderId')
+                              ->groupBy('AssignedRiderId')
+                              ->orderByRaw('COUNT(*) DESC')
+                              ->take(10)
+                              ->count();
+
+    $ridersOnShift = Rider::where('status','active')->count();
+
+    // Shipments per day
+    $shipmentsPerDay = Shipment::selectRaw('DATE(created_at) as date, COUNT(*) as total')
+                               ->groupBy('date')
+                               ->orderBy('date')
+                               ->get();
+
+    // Shipments per rider
+    $shipmentsPerRider = Shipment::select('AssignedRiderId')
+                                 ->selectRaw('COUNT(*) as total')
+                                 ->with('rider')  
+                                 ->groupBy('AssignedRiderId')
+                                 ->get();
+
+    // Top Users
+    $topUsers = Shipment::select('UserId')
+                        ->selectRaw('COUNT(*) as total')
+                        ->with('user')
+                        ->groupBy('UserId')
+                        ->orderByDesc('total')
+                        ->take(10)
+                        ->get();
+
+    // Top Riders
+    $topRiders = Shipment::where('Status', 'Delivered')
+                         ->select('AssignedRiderId')
+                         ->selectRaw('COUNT(*) as total_delivered')
+                         ->with('rider')
+                         ->groupBy('AssignedRiderId')
+                         ->orderByDesc('total_delivered')
+                         ->take(10)
+                         ->get();
+
+    return view('admin.dashboard', compact(
+        'totalShipments',
+        'totalUsers',
+        'totalRiders',
+        'totalCancelled',
+        'totalDelayed',
+        'totalDelivered',
+        'totalInTransit',
+        'expressDeliveries',
+        'standardDeliveries',
+        'overnightDeliveries',
+        'topUsersCount',
+        'topRidersCount',
+        'ridersOnShift',
+        'shipmentsPerDay',
+        'shipmentsPerRider',
+        'topUsers',
+        'topRiders'
+    ));
 }
 
+public function rejectShipment($id)
+{
+    $shipment = Shipment::findOrFail($id);
+
+    // Only allow rejecting shipments that are not already completed
+    if ($shipment->Status === 'Completed') {
+        return redirect()->back()->with('error', 'Cannot reject a completed shipment.');
+    }
+
+    $shipment->Status = 'Rejected'; // Update status to Rejected
+    $shipment->save();
+
+    return redirect()->back()->with('success', 'Shipment rejected successfully.');
+}
+
+
+}
