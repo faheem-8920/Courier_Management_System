@@ -1,6 +1,7 @@
 @extends('Rider.riderlayout')
 @section('content')
 
+
 <div class="container-fluid px-3 px-md-4 py-3" style="background: linear-gradient(135deg, #fff5f5 0%, #fff 100%); min-height: 100vh;">
     <!-- Header with Stats -->
     <div class="row mb-4 align-items-end">
@@ -263,6 +264,7 @@
                         </div>
 
                         <!-- Card Footer -->
+
                         <div class="card-footer bg-white border-0 pt-0 pb-4 px-4">
                             <div class="d-flex flex-column gap-3">
                                 <!-- Action Buttons -->
@@ -1158,3 +1160,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 @endsection
+

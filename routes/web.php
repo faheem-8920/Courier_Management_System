@@ -8,9 +8,14 @@ use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Middleware\Usermiddleware;
 
+
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\Googlecontroller;
+
 use App\Mail\ParcelDeliveredMail;
+use App\Http\Controllers\TrackRiderLocationController;
+
 
 
 // Controller routes
@@ -101,9 +106,7 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
 // Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/admindashboard', function () {
-        return view('admin.dashboard');
-    });
+ 
     Route::get('/riders', function () {
         return view('admin.riders');
     });
@@ -126,6 +129,7 @@ Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
 Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 
+
 Route::post('/delete/{id}', [AdminController::class, 'deleterider']);
 
 
@@ -136,8 +140,12 @@ Route::post('/delete/{id}', [AdminController::class, 'deleterider']);
 Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::get('/rider', function () {
         return view('Rider.index');
+
+
+
     })->name('Rider.index');
     
+
  Route::get('/earning', function () {
         return view('Rider.earning');
     });
@@ -154,6 +162,7 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
         return view('Rider.support');
     });
 
+
     Route::post('/rider/order/{id}/accept', [RiderController::class, 'acceptorder'])->name('rider.accept');
 
     Route::post('/rider/order/{id}/transit', [RiderController::class, 'transitorder'])
@@ -163,12 +172,15 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
      ->name('rider.delivered');
 
 
+
 });
 Route::get('/delivery', [RiderController::class, 'myShipments'])
      ->middleware('auth'); 
 
+Route::get('/rider', function () {
+        return view('Rider.index');
+    })->name('Rider.index');
 
-  
 
 Route::get('/exporttoexcel',[AdminController::class,('exporttoexcel')]);
 
@@ -176,5 +188,25 @@ Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
 
 Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
 
+
  
+ Route::get('/admindashboard', [AdminController::class, 'myadmindashboard'])->name('admin.dashboard');
+
+
+Route::get('auth/google', [Googlecontroller::class, 'googlepage']);
+
+Route::get('auth/google/callback', [Googlecontroller::class, 'googlecallback']);
+
+
+
+
+
+// Rider updates location
+Route::middleware('auth:rider')->post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
+
+// Admin map page
+Route::get('/riders/map', [TrackRiderLocationController::class, 'showMap'])->name('riders.map');
+
+// Get JSON of all riders
+Route::get('/riders/locations', [TrackRiderLocationController::class, 'getLocations'])->name('riders.locations');
 

@@ -1,4 +1,5 @@
 <x-action-section>
+
     <!-- Title -->
     <x-slot name="title">
         <span class="text-red-600 font-bold text-xl">{{ __('Delete Account') }}</span>
@@ -25,12 +26,14 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M12 5.5a7 7 0 110 14 7 7 0 010-14z" />
                 </svg>
+
                 {{ __('Delete Account') }}
             </x-danger-button>
         </div>
 
         <!-- Delete User Confirmation Modal -->
         <x-dialog-modal wire:model.live="confirmingUserDeletion">
+
             <!-- Modal Title -->
             <x-slot name="title">
                 <div class="flex items-center gap-2">
@@ -86,6 +89,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M12 5.5a7 7 0 110 14 7 7 0 010-14z" />
                     </svg>
+
                     {{ __('Delete Account') }}
                 </x-danger-button>
             </x-slot>

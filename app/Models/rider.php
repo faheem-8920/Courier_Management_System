@@ -18,5 +18,9 @@ class rider extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function location()
+{
+    return $this->hasOne(RiderLocation::class);
+}
 
 }

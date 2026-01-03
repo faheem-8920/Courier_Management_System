@@ -1,4 +1,5 @@
 <x-action-section>
+
     <!-- Title -->
     <x-slot name="title">
         <span class="text-red-600 font-bold text-xl">{{ __('Two Factor Authentication') }}</span>
@@ -31,6 +32,7 @@
             </p>
         </div>
 
+
         <!-- QR Code / Setup Key -->
         @if ($this->enabled)
             @if ($showingQrCode)
@@ -43,6 +45,7 @@
                         @endif
                     </p>
                 </div>
+
 
                 <div class="mt-4 p-4 inline-block bg-white border border-gray-200 rounded-lg shadow-sm">
                     {!! $this->user->twoFactorQrCodeSvg() !!}
@@ -70,6 +73,7 @@
                 @endif
             @endif
 
+
             <!-- Recovery Codes -->
             @if ($showingRecoveryCodes)
                 <div class="mt-4 max-w-xl text-sm text-gray-700 font-semibold">
@@ -79,6 +83,7 @@
                 <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-red-50 border border-red-200 rounded-lg shadow-sm">
                     @foreach (json_decode(decrypt($this->user->two_factor_recovery_codes), true) as $code)
                         <div class="hover:bg-red-100 transition duration-200 px-2 py-1 rounded">{{ $code }}</div>
+
                     @endforeach
                 </div>
             @endif
@@ -89,25 +94,32 @@
             @if (! $this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
                     <x-button type="button" class="bg-red-600 text-white hover:bg-red-700 px-5 py-2 rounded-lg shadow-md transition duration-300 hover:scale-105 transform">
+
                         {{ __('Enable') }}
                     </x-button>
                 </x-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
                     <x-confirms-password wire:then="regenerateRecoveryCodes">
+
                         <x-secondary-button class="px-4 py-2 rounded-lg hover:scale-105 transform transition duration-300 shadow-sm">
+
                             {{ __('Regenerate Recovery Codes') }}
                         </x-secondary-button>
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
                     <x-confirms-password wire:then="confirmTwoFactorAuthentication">
+
                         <x-button type="button" class="px-5 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 shadow-md transition duration-300 hover:scale-105 transform" wire:loading.attr="disabled">
+
                             {{ __('Confirm') }}
                         </x-button>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="showRecoveryCodes">
+
                         <x-secondary-button class="px-4 py-2 rounded-lg hover:scale-105 transform transition duration-300 shadow-sm">
+
                             {{ __('Show Recovery Codes') }}
                         </x-secondary-button>
                     </x-confirms-password>
@@ -115,17 +127,22 @@
 
                 @if ($showingConfirmation)
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
+
                         <x-secondary-button class="px-4 py-2 rounded-lg hover:scale-105 transform transition duration-300 shadow-sm" wire:loading.attr="disabled">
+
                             {{ __('Cancel') }}
                         </x-secondary-button>
                     </x-confirms-password>
                 @else
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
+
                         <x-danger-button class="px-5 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 shadow-md transition duration-300 hover:scale-105 transform" wire:loading.attr="disabled">
+
                             {{ __('Disable') }}
                         </x-danger-button>
                     </x-confirms-password>
                 @endif
+
             @endif
         </div>
     </x-slot>

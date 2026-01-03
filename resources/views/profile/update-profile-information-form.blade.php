@@ -1,4 +1,5 @@
 <x-form-section submit="updateProfileInformation">
+
     <!-- Title -->
     <x-slot name="title">
         <span class="text-red-600 font-bold text-xl">{{ __('Profile Information') }}</span>
@@ -95,6 +96,7 @@
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo" class="bg-red-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-red-700 transition duration-300 hover:scale-105 transform">
+
             {{ __('Save') }}
         </x-button>
     </x-slot>

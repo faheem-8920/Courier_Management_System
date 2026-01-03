@@ -964,9 +964,12 @@
                     <label for="deliveryType" class="required">Delivery Speed</label>
                     <select id="deliveryType" name="DeliveryType" required>
                         <option value="">Select speed</option>
+
+
                         <option value="standard">Standard (3-5 days) - RS-750</option>
                         <option value="express">Express (1-2 days) - RS-1300</option>
                         <option value="overnight">Overnight - RS-2000</option>
+
                     </select>
                     <div class="error-message" id="deliveryTypeError">
                         <i class="fas fa-exclamation-circle"></i> Please select delivery speed

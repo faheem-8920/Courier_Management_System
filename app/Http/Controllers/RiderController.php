@@ -24,6 +24,7 @@ class RiderController extends Controller
     return view('Rider.delivery', compact('shipments'));
 }
 
+
 public function acceptorder($id)
     {
         $order = Shipment::where('id', $id)

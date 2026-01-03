@@ -175,6 +175,7 @@ td, th { max-width: 200px; }
     .delete-btn { font-size: 0.7em; padding: 4px 8px; }
 }
 
+
 .action-form{
     display: flex;
     justify-content: center;
@@ -186,6 +187,7 @@ td, th { max-width: 200px; }
 }
    
 
+c
 </style>
 
 <div class="table-container">
@@ -209,6 +211,7 @@ td, th { max-width: 200px; }
         <td>{{$rider->WorkingZone}}</td>
         <td>{{$rider->VehicleType}}</td>
         <td>
+
             
     <form method="get"
           action="{{ url('/getriderdetails/'.$rider->id) }}"
@@ -229,6 +232,7 @@ td, th { max-width: 200px; }
     </form>
     </div>
 </td>
+
 
 
       </tr>

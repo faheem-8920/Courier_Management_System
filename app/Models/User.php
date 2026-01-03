@@ -65,4 +65,20 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function shipments()
+{
+    return $this->hasMany(Shipment::class, 'UserId');
+}
+
+public function assignedShipments()
+{
+    return $this->hasMany(Shipment::class, 'AssignedRiderId');
+}
+
+
+
+
+
+
 }

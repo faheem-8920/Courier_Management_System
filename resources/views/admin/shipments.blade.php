@@ -192,7 +192,9 @@ td, th { max-width: 200px; }
         <td class="name">{{$Shipment->SenderName}}</td>
         <td class="name">{{$Shipment->ReceiverName}}</td>
         <td class="action">
+
             <form method="get" action="/usercourierdetails/{{$Shipment->id}}">
+
                 <button type="submit" class="action-btn view-btn"><i class="fas fa-eye"></i> View</button>
             </form>
             <form  style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this shipment?');">
@@ -231,4 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
 @endsection
+
