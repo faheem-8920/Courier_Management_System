@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class RiderLocation extends Model
 {
     //
+          protected $guarded = [];
+
 }

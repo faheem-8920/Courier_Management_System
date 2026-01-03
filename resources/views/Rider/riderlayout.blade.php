@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Welcome | Courier Management System</title>
+    <title>Welcome Courier Management System</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -111,7 +111,13 @@
     @yield('content')
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
+
+      <iframe id="map-frame" width="100%" height="450" style="border:0;"></iframe>
+
+
+
+
+   <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
@@ -182,58 +188,65 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
 
 <script>
-    if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(function(position) {
-        fetch("{{ route('rider.updateLocation') }}", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            })
-        });
+   if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    console.log("Latitude:", latitude);
+    console.log("Longitude:", longitude);
+    $.ajax({
+      url: "/rider/update-location",
+      method: "POST",
+      data: {
+        _token: "{{ csrf_token() }}",
+        latitude: latitude,
+        longitude: longitude
+      },
+      success: function (response) {
+
+        if(response.status === 'success')
+        {
+              console.log("Location updated successfully:", response);
+              const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}&hl=es;z=15&output=embed`;
+
+                    // Set the iframe src to the Google Maps URL
+                    document.getElementById("map-frame").src = mapUrl;
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Error updating location:", error);
+      }
     });
+  });
 } else {
-    alert("Geolocation is not supported by this browser.");
+  console.log("Geolocation is not supported by this browser.");
 }
 
+   
+    
+</script>
+<script>
+    function showMap(latitude, longitude) {
+            // Replace YOUR_API_KEY with your Google Maps Embed API key
+            const mapUrl = `https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${latitude},${longitude}&zoom=15`;
 
-    let map = L.map('map').setView([30.3753, 69.3451], 6);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+            // Create the iframe element
+            const iframe = document.createElement("iframe");
+            iframe.width = "600";   
+            iframe.height = "450";
+            iframe.style.border = "0";
+            iframe.src = mapUrl;
 
-    let markers = {};
-
-    function loadRiders() {
-        fetch("{{ route('riders.locations') }}")
-            .then(res => res.json())
-            .then(data => {
-                data.forEach(item => {
-                    let rider = item.rider;
-                    if (!rider) return;
-
-                    if (markers[rider.id]) {
-                        markers[rider.id].setLatLng([item.latitude, item.longitude]);
-                    } else {
-                        markers[rider.id] = L.marker([item.latitude, item.longitude])
-                            .addTo(map)
-                            .bindPopup(rider.name);
-                    }
-                });
-            });
-    }
-
-    setInterval(loadRiders, 5000);
-    loadRiders();
+            // Clear any previous map and add the new iframe
+            const mapContainer = document.getElementById("map-container");
+            mapContainer.innerHTML = ""; // Clear previous map
+            mapContainer.appendChild(iframe);
+        }
 </script>
 
 

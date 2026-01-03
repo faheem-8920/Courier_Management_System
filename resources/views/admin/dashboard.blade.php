@@ -116,147 +116,7 @@
         animation-delay: 0.5s;
     }
 
-    /* Time Period Filter */
-    .period-filter {
-        background: var(--white);
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 30px;
-        box-shadow: 0 5px 20px rgba(220, 38, 38, 0.08);
-        animation: slideInRight 0.8s ease-out;
-    }
-
-    .filter-group {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-    .filter-btn {
-        padding: 10px 20px;
-        border: 2px solid var(--light-red);
-        background: var(--white);
-        color: var(--dark-red);
-        border-radius: 50px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .filter-btn:hover {
-        background: var(--light-red);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(220, 38, 38, 0.2);
-    }
-
-    .filter-btn.active {
-        background: var(--gradient-red);
-        color: var(--white);
-        border-color: var(--primary-red);
-        animation: pulse 2s infinite;
-    }
-
-    .filter-btn::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: rgba(255,255,255,0.3);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-
-    .filter-btn:active::after {
-        width: 300px;
-        height: 300px;
-    }
-
-    /* Advanced Filter Panel */
-    .advanced-filter {
-        background: var(--white);
-        border-radius: 15px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
-        animation: fadeIn 1s ease-out;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease, padding 0.5s ease;
-    }
-
-    .advanced-filter.expanded {
-        max-height: 500px;
-        padding: 25px;
-    }
-
-    .filter-toggle {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--primary-red);
-        font-weight: 600;
-        cursor: pointer;
-        padding: 10px 0;
-        transition: all 0.3s ease;
-    }
-
-    .filter-toggle:hover {
-        transform: translateX(5px);
-    }
-
-    .filter-toggle i {
-        transition: transform 0.3s ease;
-    }
-
-    .filter-toggle.active i {
-        transform: rotate(180deg);
-    }
-
-    .filter-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    .filter-item {
-        position: relative;
-    }
-
-    .filter-item label {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--dark-red);
-        font-weight: 600;
-        font-size: 14px;
-    }
-
-    .filter-input {
-        width: 100%;
-        padding: 12px 15px;
-        border: 2px solid var(--light-red);
-        border-radius: 10px;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        background: var(--white);
-    }
-
-    .filter-input:focus {
-        outline: none;
-        border-color: var(--primary-red);
-        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-        transform: translateY(-1px);
-    }
-
-    .filter-input::placeholder {
-        color: var(--medium-gray);
-    }
+    
 
     /* Stats Grid */
     .stats-grid {
@@ -1055,53 +915,10 @@
         <p class="text-muted mt-2">Real-time analytics and performance insights</p>
     </div>
 
-    <!-- Time Period Filter -->
-    <div class="period-filter">
-        <div class="filter-group">
-            <span class="text-dark fw-bold">Filter by:</span>
-            <button class="filter-btn active" data-period="today">Today</button>
-            <button class="filter-btn" data-period="week">This Week</button>
-            <button class="filter-btn" data-period="month">This Month</button>
-            <button class="filter-btn" data-period="quarter">This Quarter</button>
-            <button class="filter-btn" data-period="year">This Year</button>
-        </div>
-    </div>
+    
 
     <!-- Advanced Filter Panel -->
-    <div class="advanced-filter">
-        <div class="filter-toggle">
-            <i class="fas fa-filter"></i>
-            <span>Advanced Filters</span>
-        </div>
-        <div class="filter-grid">
-            <div class="filter-item">
-                <label for="dateFrom"><i class="far fa-calendar"></i> From Date</label>
-                <input type="date" class="filter-input" id="dateFrom">
-            </div>
-            <div class="filter-item">
-                <label for="dateTo"><i class="far fa-calendar"></i> To Date</label>
-                <input type="date" class="filter-input" id="dateTo">
-            </div>
-            <div class="filter-item">
-                <label for="statusFilter"><i class="fas fa-tags"></i> Status</label>
-                <select class="filter-input" id="statusFilter">
-                    <option value="">All Status</option>
-                    <option value="delivered">Delivered</option>
-                    <option value="intransit">In Transit</option>
-                    <option value="pending">Pending</option>
-                </select>
-            </div>
-            <div class="filter-item">
-                <label for="typeFilter"><i class="fas fa-box"></i> Shipment Type</label>
-                <select class="filter-input" id="typeFilter">
-                    <option value="">All Types</option>
-                    <option value="express">Express</option>
-                    <option value="standard">Standard</option>
-                    <option value="overnight">Overnight</option>
-                </select>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Main Stats Grid -->
     <div class="stats-grid">
@@ -1152,9 +969,9 @@
                         <i class="fas fa-search search-icon"></i>
                         <input type="text" class="search-input" placeholder="Search shipments..." data-table="shipmentsTable">
                     </div>
-                    <button class="btn btn-light export-btn" data-export="shipmentsTable">
+                    <a href="/exporttoexcel2"><button class="btn btn-light export-btn" data-export="shipmentsTable">
                         <i class="fas fa-download"></i> Export
-                    </button>
+                    </button></a>
                 </div>
             </div>
             <div class="data-table-wrapper">
@@ -1215,10 +1032,7 @@
                         <h3 class="section-title">
                             <i class="fas fa-user-tie"></i> Rider Performance
                         </h3>
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" class="search-input" placeholder="Search riders..." data-table="ridersTable">
-                        </div>
+                       
                     </div>
                     <div class="data-table-wrapper">
                         <table class="data-table" id="ridersTable">
@@ -1276,10 +1090,7 @@
                         <h3 class="section-title">
                             <i class="fas fa-users"></i> User Activity
                         </h3>
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" class="search-input" placeholder="Search users..." data-table="usersTable">
-                        </div>
+                        
                     </div>
                     <div class="data-table-wrapper">
                         <table class="data-table" id="usersTable">
@@ -1334,16 +1145,10 @@
                         <i class="fas fa-search search-icon"></i>
                         <input type="text" class="search-input" placeholder="Search performers..." data-table="topPerformersTable">
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-filter"></i> Filter
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Top Users</a></li>
-                            <li><a class="dropdown-item" href="#">Top Riders</a></li>
-                            <li><a class="dropdown-item" href="#">All Performers</a></li>
-                        </ul>
-                    </div>
+                   <a href="/exporttoexcel2"> <button class="btn btn-light export-btn" data-export="shipmentsTable">
+                        <i class="fas fa-download"></i> Export
+                    </button></a>
+                    
                 </div>
             </div>
             <div class="data-table-wrapper">
@@ -1399,32 +1204,7 @@
         </div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <div class="action-card" data-scroll-to="shipmentsTableSection">
-            <div class="action-icon">
-                <i class="fas fa-chart-bar"></i>
-            </div>
-            <div class="action-text">View Detailed Reports</div>
-        </div>
-        <div class="action-card" onclick="window.location.href='#'">
-            <div class="action-icon">
-                <i class="fas fa-download"></i>
-            </div>
-            <div class="action-text">Export All Data</div>
-        </div>
-        <div class="action-card" onclick="window.location.href='#'">
-            <div class="action-icon">
-                <i class="fas fa-cog"></i>
-            </div>
-            <div class="action-text">Dashboard Settings</div>
-        </div>
-        <div class="action-card" onclick="window.location.href='#'">
-            <div class="action-icon">
-                <i class="fas fa-bell"></i>
-            </div>
-            <div class="action-text">View Alerts</div>
-        </div>
+    
     </div>
 </div>
 

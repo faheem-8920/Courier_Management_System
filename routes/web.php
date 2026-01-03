@@ -190,9 +190,7 @@ Route::get('auth/google/callback', [Googlecontroller::class, 'googlecallback']);
 
 
 
-
-// Rider updates location
-Route::middleware('auth:rider')->post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
+    // Rider updates location
 
 // Admin map page
 Route::get('/riders/map', [TrackRiderLocationController::class, 'showMap'])->name('riders.map');
@@ -200,3 +198,8 @@ Route::get('/riders/map', [TrackRiderLocationController::class, 'showMap'])->nam
 // Get JSON of all riders
 Route::get('/riders/locations', [TrackRiderLocationController::class, 'getLocations'])->name('riders.locations');
 
+use App\Http\Controllers\ShipmentController;
+
+Route::post('/rejectshipment/{id}', [AdminController::class, 'rejectShipment'])->name('rejectshipment');
+
+Route::post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');

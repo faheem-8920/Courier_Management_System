@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('UserId'); // add after id column
         $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
 
-$table->enum('Status', ['Pending', 'PickedUp', 'InTransit', 'Delivered'])->default('Pending');
+$table->enum('Status', ['Pending', 'PickedUp', 'InTransit', 'Delivered','Rejected'])->default('Pending');
 
             $table->string('TrackingNumber');
             //sender details

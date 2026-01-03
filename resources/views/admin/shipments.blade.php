@@ -88,6 +88,7 @@ td.action, th.action { text-align: center; }
 .status-badge.pending { background: #f44336; } 
 .status-badge.in-progress { background: #ff9800; } 
 .status-badge.completed { background: #4caf50; } 
+.status-badge.rejected { background: #9e9e9e; } /* grey badge */
 
 /* Action buttons */
 td.action {
@@ -176,7 +177,6 @@ td, th { max-width: 200px; }
         <th class="name">Tracking Id</th>
         <th class="status">Status</th>
         <th class="name">Sender Name</th>
-        <th class="name">Receiver Name</th>
         <th class="action">Action</th>
       </tr>
     </thead>
@@ -190,18 +190,28 @@ td, th { max-width: 200px; }
             </span>
         </td>
         <td class="name">{{$Shipment->SenderName}}</td>
-        <td class="name">{{$Shipment->ReceiverName}}</td>
-        <td class="action">
+       <td class="action">
+    <!-- View Button -->
+    <form method="get" action="/usercourierdetails/{{$Shipment->id}}">
+        <button type="submit" class="action-btn view-btn"><i class="fas fa-eye"></i> View</button>
+    </form>
 
-            <form method="get" action="/usercourierdetails/{{$Shipment->id}}">
+    <!-- Delete Button -->
+    <form style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this shipment?');" method="POST" action="/deleteshipment/{{$Shipment->id}}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="action-btn delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>
+    </form>
 
-                <button type="submit" class="action-btn view-btn"><i class="fas fa-eye"></i> View</button>
-            </form>
-            <form  style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this shipment?');">
-                @csrf
-                <button type="submit" class="action-btn delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>
-            </form>
-        </td>
+    <!-- Reject Button: only show if shipment is NOT Completed or Rejected -->
+    @if(!in_array($Shipment->Status, ['Completed', 'Rejected']))
+    <form style="display:inline-block;" onsubmit="return confirm('Are you sure you want to reject this shipment?');" method="POST" action="/rejectshipment/{{$Shipment->id}}">
+        @csrf
+        <button type="submit" class="action-btn delete-btn"><i class="fas fa-ban"></i> Reject</button>
+    </form>
+    @endif
+</td>
+
       </tr>
       @endforeach
     </tbody>
