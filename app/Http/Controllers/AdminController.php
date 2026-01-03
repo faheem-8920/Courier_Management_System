@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RiderCredentialsMail;
+use App\Mail\Paracelrejectedemail;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
@@ -104,7 +105,8 @@ return redirect('/usercouriers');
     );
 
 
-    return redirect()->back()->with('success', 'Rider added successfully');
+return redirect('/riders')
+    ->with('success', 'Rider added successfully');
 }
 
 
@@ -286,6 +288,21 @@ public function myadmindashboard()
         'topUsers',
         'topRiders'
     ));
+}
+
+public function rejectShipment($id)
+{
+    $shipment = Shipment::findOrFail($id);
+
+    // Only allow rejecting shipments that are not already completed
+    if ($shipment->Status === 'Completed') {
+        return redirect()->back()->with('error', 'Cannot reject a completed shipment.');
+    }
+
+    $shipment->Status = 'Rejected'; // Update status to Rejected
+    $shipment->save();
+
+    return redirect()->back()->with('success', 'Shipment rejected successfully.');
 }
 
 
