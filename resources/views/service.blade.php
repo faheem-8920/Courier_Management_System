@@ -20,80 +20,91 @@
     <!-- Page Header End -->
 
 
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Our Services</h6>
-                <h1 class="mb-5">Explore Our Services</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-1.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Air Freight</h4>
-                      <p>Fast and reliable air freight services to deliver your shipments safely and on time worldwide.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+   <div class="container-xxl py-5">
+    <div class="container py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-secondary text-uppercase">Our Services</h6>
+            <h1 class="mb-5">Explore Our Courier Services</h1>
+        </div>
+        <div class="row g-4">
+
+            <!-- Same City Delivery -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid " src="img/bike.jfif" alt="">
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-2.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Ocean Freight</h4>
-                       <p>Cost-effective ocean freight solutions for large and heavy cargo with global coverage.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-3.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Road Freight</h4>
-<p>Efficient road transportation services ensuring timely delivery across cities and borders.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-4.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Train Freight</h4>
-<p>Secure and economical rail freight services for long-distance cargo transportation.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-5.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Customs Clearance</h4>
-<p>Hassle-free customs clearance services to ensure smooth import and export operations.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-6.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Warehouse Solutions</h4>
-<p>Modern warehousing solutions offering safe storage, inventory management, and distribution.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
+                    <h4 class="mb-3">Same City Delivery</h4>
+                    <p>Fast and secure delivery within the same city with real-time tracking updates.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                 </div>
             </div>
+
+            <!-- Out of City Delivery -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="img/truck.jfif" alt="">
+                    </div>
+                    <h4 class="mb-3">Out of City Delivery</h4>
+                    <p>Reliable parcel delivery across all major cities in Pakistan with timely dispatch.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                </div>
+            </div>
+
+            <!-- International Courier -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="img/plane.jfif" alt="">
+                    </div>
+                    <h4 class="mb-3">International Courier</h4>
+                    <p>Ship parcels worldwide with trusted partners ensuring safe handling and timely delivery.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                </div>
+            </div>
+
+            <!-- Express Urgent Delivery -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="img/ships.jfif" alt="">
+                    </div>
+                    <h4 class="mb-3">Express Urgent Delivery</h4>
+                    <p>Priority delivery service designed for urgent shipments requiring the fastest possible time.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                </div>
+            </div>
+
+            <!-- Cash on Delivery (COD) -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="img/COD.jfif" alt="">
+                    </div>
+                    <h4 class="mb-3">Cash on Delivery (COD)</h4>
+                    <p>Secure COD service for businesses with safe payment handling and instant confirmation.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                </div>
+            </div>
+
+            <!-- Bulk & Business Shipments -->
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item p-4">
+                    <div class="overflow-hidden mb-4">
+                        <img class="img-fluid" src="img/bulk.jfif" alt="">
+                    </div>
+                    <h4 class="mb-3">Bulk & Business Shipments</h4>
+                    <p>Cost-effective bulk parcel shipping designed for companies needing regular delivery support.</p>
+                    <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
+
     <!-- Service End -->
-
-
     <!-- Testimonial Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">

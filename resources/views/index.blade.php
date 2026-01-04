@@ -209,7 +209,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid " src="img/service-1.jpg" alt="">
+                        <img class="img-fluid " src="img/bike.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Same City Delivery</h4>
                     <p>Fast and secure delivery within the same city with real-time tracking updates.</p>
@@ -221,7 +221,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/service-2.jpg" alt="">
+                        <img class="img-fluid" src="img/truck.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Out of City Delivery</h4>
                     <p>Reliable parcel delivery across all major cities in Pakistan with timely dispatch.</p>
@@ -233,7 +233,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/service-3.jpg" alt="">
+                        <img class="img-fluid" src="img/plane.jfif" alt="">
                     </div>
                     <h4 class="mb-3">International Courier</h4>
                     <p>Ship parcels worldwide with trusted partners ensuring safe handling and timely delivery.</p>
@@ -245,7 +245,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/service-4.jpg" alt="">
+                        <img class="img-fluid" src="img/ships.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Express Urgent Delivery</h4>
                     <p>Priority delivery service designed for urgent shipments requiring the fastest possible time.</p>
@@ -257,7 +257,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/service-5.jpg" alt="">
+                        <img class="img-fluid" src="img/COD.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Cash on Delivery (COD)</h4>
                     <p>Secure COD service for businesses with safe payment handling and instant confirmation.</p>
@@ -269,7 +269,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/service-6.jpg" alt="">
+                        <img class="img-fluid" src="img/bulk.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Bulk & Business Shipments</h4>
                     <p>Cost-effective bulk parcel shipping designed for companies needing regular delivery support.</p>
