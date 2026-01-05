@@ -31,7 +31,7 @@
                             <div class="col-10 col-lg-8">
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Stay updated from booking to delivery</h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Real-Time <span class="text-primary">Parcel Tracking</span></h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2"> Our system allows you to book parcels easily and track them in real time.  </p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Track Parcel</a>
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Support</a>
                             </div>
@@ -70,7 +70,7 @@
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
                             <i class="fa fa-shipping-fast fa-3x text-primary mb-3"></i>
                             <h5>On Time Delivery</h5>
-                            <p class="m-0">Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
+                            <p class="m-0">We ensure safe handling of parcels and guarantee on-time delivery with reliable courier operations</p>
                         </div>
                     </div>
                     
@@ -233,7 +233,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/plane.jfif" alt="">
+                        <img class="img-fluid" src="img/ships.jfif" alt="">
                     </div>
                     <h4 class="mb-3">International Courier</h4>
                     <p>Ship parcels worldwide with trusted partners ensuring safe handling and timely delivery.</p>
@@ -245,7 +245,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/ships.jfif" alt="">
+                        <img class="img-fluid" src="img/plane.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Express Urgent Delivery</h4>
                     <p>Priority delivery service designed for urgent shipments requiring the fastest possible time.</p>

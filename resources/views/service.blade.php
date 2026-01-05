@@ -56,7 +56,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/plane.jfif" alt="">
+                        <img class="img-fluid" src="img/ships.jfif" alt="">
                     </div>
                     <h4 class="mb-3">International Courier</h4>
                     <p>Ship parcels worldwide with trusted partners ensuring safe handling and timely delivery.</p>
@@ -68,7 +68,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item p-4">
                     <div class="overflow-hidden mb-4">
-                        <img class="img-fluid" src="img/ships.jfif" alt="">
+                        <img class="img-fluid" src="img/plane.jfif" alt="">
                     </div>
                     <h4 class="mb-3">Express Urgent Delivery</h4>
                     <p>Priority delivery service designed for urgent shipments requiring the fastest possible time.</p>
