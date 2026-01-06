@@ -1,4 +1,5 @@
 @extends('admin.masterlayout')
+
 @section('content')
 <style>
 /* ================================
@@ -11,7 +12,7 @@
     border-radius: 20px;
     background: #fff;
     box-shadow: 0 15px 35px rgba(211, 47, 47, 0.15);
-    overflow-x: hidden; /* removed scrollbar */
+    overflow-x: hidden;
     transition: all 0.3s ease;
 }
 
@@ -22,8 +23,8 @@
     border-collapse: separate;
     border-spacing: 0;
     background: linear-gradient(135deg, #fff 0%, #fffafa 100%);
-    table-layout: fixed; /* fixed width columns */
-    word-wrap: break-word; /* wrap long text */
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 
 .table.table-bordered thead {
@@ -68,9 +69,8 @@
     overflow-wrap: break-word;
 }
 
-/* Limit column widths */
 .table.table-bordered th, .table.table-bordered td {
-    max-width: 150px;
+    max-width: 200px;
 }
 
 /* Status Badge */
@@ -86,46 +86,58 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
-.status-badge::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.2) 100%);
-    animation: moveGradient 2s linear infinite;
-}
-@keyframes moveGradient {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
 .status-badge.active { background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%); color:white; }
 .status-badge.pending { background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%); color:white; }
 .status-badge.inactive { background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); color:white; }
 
-/* Delete button */
-.delete-btn {
+/* Action Buttons Container */
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Common Button Styles */
+.btn-action {
     padding: 6px 12px;
-    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-    color: #fff;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    border-radius: 6px;
     font-size: 0.85em;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s ease;
 }
-.delete-btn i {
-    font-size: 0.9em;
-    margin-right: 4px;
+
+/* View Button */
+.view-btn {
+    background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+}
+.view-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(33,150,243,0.3);
+}
+
+/* Update Button */
+.update-btn {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+}
+.update-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255,152,0,0.3);
+}
+
+/* Delete Button */
+.delete-btn {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
 }
 .delete-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(211,47,47,0.3);
+    box-shadow: 0 4px 12px rgba(244,67,54,0.3);
 }
 
 /* Export Button */
@@ -155,39 +167,14 @@
     background: linear-gradient(135deg, #b71c1c, #7f0000);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(211,47,47,0.4);
-    color: #fff;
 }
-
-
-/* Column alignment */
-td.id, th.id { text-align: center; }
-td.name, th.name { text-align: left; }
-td.email, th.email { text-align: left; }
-td.role, th.role { text-align: center; }
-
-/* Limit column widths */
-td, th { max-width: 200px; }
 
 /* Responsive */
 @media (max-width: 768px) { 
     .table td, .table th { padding: 8px 5px; font-size:0.75em; } 
     .table-container { max-width: 95%; padding: 15px; }
-    .delete-btn { font-size: 0.7em; padding: 4px 8px; }
+    .btn-action { font-size: 0.7em; padding: 4px 8px; }
 }
-
-
-.action-form{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 8px;  
-}
-
-.action-form:last-child{
-    margin-bottom: 0;
-}
-   
-
-c
 </style>
 
 <div class="table-container">
@@ -197,56 +184,57 @@ c
         <th>Fullname</th>
         <th>Status</th>
         <th>Email</th>
-        <th>Working Zone</th>
-        <th>Vehicle</th>
-        <th>Action</th>
+        <th>Zone</th>
+        <th style="width: 36%;">Action</th>
       </tr>
     </thead>
     <tbody>
       @foreach($riders as $rider)
       <tr>
-        <td>{{$rider->Fullname}}</td>
-        <td><span class="status-badge {{$rider->status}}">{{$rider->status}}</span></td>
-        <td>{{$rider->Email}}</td>
-        <td>{{$rider->WorkingZone}}</td>
-        <td>{{$rider->VehicleType}}</td>
+        <td>{{ $rider->Fullname }}</td>
+        <td><span class="status-badge {{ $rider->status }}">{{ $rider->status }}</span></td>
+        <td>{{ $rider->Email }}</td>
+        <td>{{ $rider->WorkingZone }}</td>
         <td>
+            <div class="action-buttons">
+                <!-- View -->
+                <form method="get" action="{{ url('/showriderdetails/'.$rider->id) }}">
+                    @csrf
+                    <button type="submit" class="btn-action view-btn">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                </form>
 
-            
-    <form method="get"
-          action="{{ url('/getriderdetails/'.$rider->id) }}"
-          class="action-form">
-        @csrf
-        <button type="submit" class="delete-btn">
-            <i class="fas fa-edit"></i> Update
-        </button>
-    </form>
+                <!-- Update -->
+                <form method="get" action="{{ url('/getriderdetails/'.$rider->id) }}">
+                    @csrf
+                    <button type="submit" class="btn-action update-btn">
+                        <i class="fas fa-edit"></i> Update
+                    </button>
+                </form>
 
-    <form method="post"
-          action="/delete/{{$rider->id}}"
-          class="action-form">
-        @csrf
-        <button type="submit" class="delete-btn">
-            <i class="fas fa-trash-alt"></i> Delete
-        </button>
-    </form>
-    </div>
-</td>
-
-
-
+                <!-- Delete -->
+                <form method="post" action="{{ url('/delete/'.$rider->id) }}">
+                    @csrf
+                    <button type="submit" class="btn-action delete-btn" onclick="return confirm('Are you sure?')">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </td>
       </tr>
       @endforeach
     </tbody>
   </table>
+
   <div class="export-wrapper">
     <a href="/exporttoexcel2" class="btn-export">
         <i class="fas fa-file-excel"></i> Download Excel Report
     </a>
-</div>
+  </div>
 </div>
 
-<!-- Optional: Include Font Awesome for Trash Icon -->
+<!-- Font Awesome for icons -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 @endsection

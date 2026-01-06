@@ -76,5 +76,65 @@ $order->save();
     return back()->with('success', 'Order delivered successfully and sender has been notified.');
 }
 
+public function showriderdetails($id)
+{
+    $rider = Rider::findOrFail($id);
+
+    // IMPORTANT: use UserId, not rider id
+    $userId = $rider->UserId;
+
+     $shipments = Shipment::where('AssignedRiderId', $userId)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+
+    $pending = Shipment::where('AssignedRiderId', $userId)
+        ->where('Status', 'Pending')->count();
+
+    $pickedUp = Shipment::where('AssignedRiderId', $userId)
+        ->where('Status', 'PickedUp')->count();
+
+    $inTransit = Shipment::where('AssignedRiderId', $userId)
+        ->where('Status', 'InTransit')->count();
+
+    $delivered = Shipment::where('AssignedRiderId', $userId)
+        ->where('Status', 'Delivered')->count();
+
+        $todayDeliveries = Shipment::where('AssignedRiderId', $rider->UserId)
+    ->whereDate('DeliveredAt', today())
+    ->count();
+
+$monthDeliveries = Shipment::where('AssignedRiderId', $rider->UserId)
+    ->whereMonth('DeliveredAt', now()->month)
+    ->whereYear('DeliveredAt', now()->year)
+    ->count();
+
+$totalShipments = $shipments->count();
+$performance = $totalShipments > 0
+    ? round(($delivered / $totalShipments) * 100)
+    : 0;
+    
+
+   
+
+    return view('admin.RiderDetails', compact(
+        'rider',
+        'pending',
+        'pickedUp',
+        'inTransit',
+        'delivered',
+        'todayDeliveries',
+        'monthDeliveries',
+        'totalShipments',
+        'shipments',
+        'performance',
+    ));
+}
+
+
+
+
 
 }
+
+  

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use Illuminate\Support\Facades\DB;
+use App\Models\Contact;
+use App\Mail\ContactReplyMail;
+use App\Mail\RiderMessageEmail;
 
 
 class AdminController extends Controller
@@ -304,6 +307,84 @@ public function rejectShipment($id)
 
     return redirect()->back()->with('success', 'Shipment rejected successfully.');
 }
+
+
+//Contact Form functions
+
+public function store(Request $request){
+        $request->validate([
+            'Name'=>'required|string|max:255',
+            'Email'=>'required|email',
+            'Message'=>'required|string|min:10',
+        ]);
+
+
+        Contact::create($request->all());
+
+        return back()->with('success', 'Message sent successfully!');
+    }
+
+// Admin: List all contact messages
+public function showcontacts(){
+    // Fetch all contacts, latest first
+    $contacts = Contact::orderBy('created_at', 'desc')->get();
+
+    // Pass to the admin view
+    return view('admin.Contacts', compact('contacts'));
+}
+
+
+
+
+
+public function reply(Request $request, $id)
+    {
+        $request->validate([
+            'reply' => 'required|string|min:5',
+        ]);
+
+        $contact = Contact::findOrFail($id);
+        $contact->Reply = $request->reply;  // Save reply in database
+        $contact->save();
+ 
+        Mail::to($contact->Email)->send(
+        new ContactReplyMail($contact->Name, $contact->Reply)
+    );
+
+        return redirect("/showcontacts")
+                         ->with('success', 'Reply saved successfully!');
+    }
+
+    public function deletecontact($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect('/showcontacts');
+    }
+
+// RIDER MESSAGE MAIL
+
+public function sendRiderMessage(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'name' => 'required|string',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string',
+    ]);
+
+    // Send mail
+    Mail::to($request->email)->send(new RiderMessageEmail(
+        $request->subject,
+        $request->message,
+        $request->name
+    ));
+
+    return redirect()->back()->with('success', 'Message sent to rider successfully!');
+}
+
+
 
 
 }

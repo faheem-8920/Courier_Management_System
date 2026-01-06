@@ -123,80 +123,7 @@
             </div>
         </div>
     </div>
-    <!-- Fact End -->
-
-
-    <!-- Service Start -->
-    <!-- <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Our Services</h6>
-                <h1 class="mb-5">Explore Our Services</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-1.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Air Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-2.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Ocean Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-3.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Road Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-4.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Train Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-5.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Customs Clearance</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="img/service-6.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Warehouse Solutions</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+   
     <div class="container-xxl py-5">
     <div class="container py-5">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -321,76 +248,7 @@
             </div>
         </div>
     </div>
-    <!-- Feature End -->
-
-
-    <!-- Pricing Start -->
-    <!-- <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Pricing Plan</h6>
-                <h1 class="mb-5">Courier Service Pricing Plans</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="price-item">
-                        <div class="border-bottom p-4 mb-4">
-                            <h5 class="text-primary mb-1">Basic Plan</h5>
-                            <h1 class="display-5 mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                        <div class="p-4 pt-0">
-                            <p><i class="fa fa-check text-success me-3"></i>HTML5 & CSS3</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Bootstrap v5</p>
-                            <p><i class="fa fa-check text-success me-3"></i>FontAwesome Icons</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Responsive Layout</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Cross-browser Support</p>
-                            <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span >Order Now</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="price-item">
-                        <div class="border-bottom p-4 mb-4">
-                            <h5 class="text-primary mb-1">Standard Plan</h5>
-                            <h1 class="display-5 mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                        <div class="p-4 pt-0">
-                            <p><i class="fa fa-check text-success me-3"></i>HTML5 & CSS3</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Bootstrap v5</p>
-                            <p><i class="fa fa-check text-success me-3"></i>FontAwesome Icons</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Responsive Layout</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Cross-browser Support</p>
-                            <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span >Order Now</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="price-item">
-                        <div class="border-bottom p-4 mb-4">
-                            <h5 class="text-primary mb-1">Advanced Plan</h5>
-                            <h1 class="display-5 mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>149.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                        <div class="p-4 pt-0">
-                            <p><i class="fa fa-check text-success me-3"></i>HTML5 & CSS3</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Bootstrap v5</p>
-                            <p><i class="fa fa-check text-success me-3"></i>FontAwesome Icons</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Responsive Layout</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Cross-browser Support</p>
-                            <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span >Order Now</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
     </div> -->
     <div class="container-xxl py-5">
     <div class="container py-5">
@@ -467,111 +325,188 @@
     </div>
 </div>
 
-    <!-- Pricing End -->
+  <section class="quote-section py-5" style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);">
+    <h1 class="text-center">Contact Us</h1>
+    <div class="container">
+        
+        <div class="row align-items-center g-5">
+            <!-- Left Content -->
+            <div class="col-lg-6 col-12">
+                <div class="animated-badge mb-3">
+                    <span class="badge-text">REQUEST A CALLBACK</span>
+                    <span class="badge-pulse"></span>
+                </div>
+                
+                <h2 class="display-5 fw-bold mb-4" style="line-height: 1.2;">
+                    We will contact in <br>
+                    <span class="text-gradient">the shortest time</span>
+                </h2>
+                
+                <p class="text-muted mb-4 fs-5">
+                    Monday to Friday, 9am–5pm. Get a response within 24 hours.
+                </p>
 
-
-    <!-- Quote Start -->
-    <!-- <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="text-secondary text-uppercase mb-3">Get A Quote</h6>
-                    <h1 class="mb-5">Request A Free Qoute!</h1>
-                    <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                <!-- Contact Info Card -->
+                <div class="contact-card p-4 rounded-4 shadow-sm border-0 mt-4" style="max-width: 400px;">
                     <div class="d-flex align-items-center">
-                        <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
-                        <div class="ps-4">
-                            <h6>Call for any query!</h6>
-                            <h3 class="text-primary m-0">+012 345 6789</h3>
+                        <div class="contact-icon me-4">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-muted mb-1">Call for any query!</p>
+                            <h3 class="fw-bold mb-0" style="color: #dc3545;">+012 345 6789</h3>
+                        </div>
+                    </div>
+                    <div class="mt-3 d-flex gap-3">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope me-2" style="color: #dc3545;"></i>
+                            <span>support@example.com</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock me-2" style="color: #dc3545;"></i>
+                            <span>24/7 Support</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Select A Freight</option>
-                                        <option value="1">Freight 1</option>
-                                        <option value="2">Freight 2</option>
-                                        <option value="3">Freight 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Note"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+
+                <!-- Stats -->
+                <div class="stats-grid mt-4">
+                    <div class="stat-item">
+                        <div class="stat-value" style="color: #dc3545;">24h</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" style="color: #dc3545;">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" style="color: #dc3545;">5min</div>
+                        <div class="stat-label">Call Back Promise</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> -->
-    <section class="quote-section" style="padding:60px 0;">
-    <div class="container">
-    <div class="row align-items-center g-4">
-        <div class="col-lg-6 col-12">
-            <h5 style="color:#00AEEF; font-size:14px; letter-spacing:1px;">REQUEST A CALLBACK</h5>
-            <h2 style="font-size:38px; font-weight:800; margin-bottom:20px;">
-                We will contact in<br> the shortest time.
-            </h2>
-            <p style="color:#666; margin-bottom:30px;">
-                Monday to Friday, 9am–5pm.
-            </p>
 
-            <div style="display:flex; align-items:center; margin-top:30px;">
-                <div style="background:#ff4747; padding:18px; border-radius:4px; margin-right:15px;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" width="40">
-                </div>
-                <div>
-                    <h4 style="margin:0; font-size:16px;">Call for any query!</h4>
-                    <h3 style="margin:0; color:#ff4747; font-size:26px;">+012 345 6789</h3>
+            <!-- Right Form -->
+            <div class="col-lg-6 col-12">
+                <div class="contact-form-wrapper p-4 p-lg-5 rounded-4 shadow-lg border-0" 
+                     style="background: linear-gradient(135deg, #fff 0%, #fff 100%); border: 1px solid rgba(220, 53, 69, 0.1) !important;">
+                    
+                    <div class="form-header mb-4">
+                        <h3 class="fw-bold" style="color: #212529;">
+                            <i class="fas fa-paper-plane me-2" style="color: #dc3545;"></i>
+                            Send Your Message
+                        </h3>
+                        <p class="text-muted">Fill out the form below and we'll get back to you promptly</p>
+                    </div>
+
+                    <!-- Display success/error messages from session -->
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Please correct the errors below.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <form action="/savecontact" method="POST" id="contactForm">
+                        @csrf
+                        
+                        <!-- Name Field -->
+                        <div class="mb-4">
+                            <label for="Name" class="form-label fw-semibold">
+                                <i class="fas fa-user me-2" style="color: #dc3545;"></i>
+                                Full Name *
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0">
+                                    <i class="fas fa-user text-muted"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control border-start-0 @error('Name') is-invalid @enderror" 
+                                       id="Name" 
+                                       name="Name" 
+                                       placeholder="Enter your full name"
+                                       value="{{ old('Name') }}"
+                                       required>
+                                @error('Name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="mb-4">
+                            <label for="Email" class="form-label fw-semibold">
+                                <i class="fas fa-envelope me-2" style="color: #dc3545;"></i>
+                                Email Address *
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0">
+                                    <i class="fas fa-envelope text-muted"></i>
+                                </span>
+                                <input type="email" 
+                                       class="form-control border-start-0 @error('Email') is-invalid @enderror" 
+                                       id="Email" 
+                                       name="Email" 
+                                       placeholder="Enter your email address"
+                                       value="{{ old('Email') }}"
+                                       required>
+                                @error('Email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="mb-4">
+                            <label for="Message" class="form-label fw-semibold">
+                                <i class="fas fa-comment-dots me-2" style="color: #dc3545;"></i>
+                                Your Message *
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 align-items-start pt-3">
+                                    <i class="fas fa-edit text-muted"></i>
+                                </span>
+                                <textarea class="form-control border-start-0 @error('Message') is-invalid @enderror" 
+                                          id="Message" 
+                                          name="Message" 
+                                          rows="5" 
+                                          placeholder="Tell us how we can help you..."
+                                          required>{{ old('Message') }}</textarea>
+                                @error('Message')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-text text-end mt-1">
+                                <span id="charCount">0</span>/500 characters
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" 
+                                    class="btn btn-lg fw-bold shadow submit-btn"
+                                    style="background: linear-gradient(135deg, #dc3545, #c82333); color: #fff; border: none; padding: 16px;">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        
-        <div class="col-lg-6 col-12 bg-light p-4 rounded">
-            <form>
-               <div class="row g-3 mb-3">
-    <div class="col-md-6 col-12">
-        <input type="text" class="form-control" placeholder="Name">
-    </div>
-    <div class="col-md-6 col-12">
-        <input type="email" class="form-control" placeholder="Email">
-    </div>
-</div>
-
-                <div style="margin-bottom:20px;">
-                    <textarea placeholder="Message" 
-                        style="width:100%; padding:14px; border:1px solid #ddd; border-radius:4px; height:120px;"></textarea>
-                </div>
-
-                <button type="submit" 
-                    style="width:100%; padding:15px; background:#ff4747; color:#fff; border:none; border-radius:4px; font-size:18px;">
-                    Send Message
-                </button>
-            </form>
-        </div>
-
     </div>
 </section>
-
-    <!-- Quote End -->
-
 
     <!-- Team Start -->
     <div class="container-xxl py-5">

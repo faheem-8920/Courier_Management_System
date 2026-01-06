@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Welcome | Courier Management System</title>
-      <link rel="icon" type="image/x-icon" href="/img/cms-favicon.ico">
+      <link rel="icon" type="image/x-icon" href="/img/cms_favicon.png">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
