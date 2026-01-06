@@ -85,6 +85,9 @@ Route::get('/testimonial', function () {
 Route::get('/addcourier', function () {
     return view('addcourier');
 });
+Route::get('/trackparcel', function () {
+    return view('trackparcel');
+});
 
 Route::post('/savecontact', [AdminController::class,'store']);
 
@@ -205,6 +208,7 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::post('/rider/order/{id}/delivered', [RiderController::class, 'deliveredorder'])
      ->name('rider.delivered');
 
+<<<<<<< HEAD
     Route::get('/delivery', [RiderController::class, 'myShipments']); 
     
 
@@ -213,6 +217,22 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
 
  
    
+=======
+    // Route::get('/data', [RiderController::class, 'index'])
+    //     ->name('rider.index');
+    // Route::get('/rider', [RiderController::class, 'index'])
+    //     ->middleware('rider')
+    //     ->name('rider.index');
+
+});
+
+
+Route::get('/delivery', [RiderController::class, 'myShipments'])
+     ->middleware('auth');
+
+     
+
+>>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
 
 Route::get('/rider', function () {
         return view('Rider.index');
@@ -246,7 +266,19 @@ Route::get('/riders/locations', [TrackRiderLocationController::class, 'getLocati
 
 Route::post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
 
+<<<<<<< HEAD
 
 
 
 
+=======
+Route::get('/rider', [RiderController::class, 'index']);
+
+Route::get('/pickup', [RiderController::class, 'pickup']);
+    
+Route::post('/track-parcel', [UserController::class, 'track'])->name('track.shipment');
+
+
+
+   
+>>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19

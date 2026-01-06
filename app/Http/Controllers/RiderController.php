@@ -76,6 +76,7 @@ $order->save();
     return back()->with('success', 'Order delivered successfully and sender has been notified.');
 }
 
+<<<<<<< HEAD
 public function showriderdetails($id)
 {
     $rider = Rider::findOrFail($id);
@@ -132,6 +133,42 @@ $performance = $totalShipments > 0
 }
 
 
+=======
+public function index()
+{
+    $shipments = Shipment::where('AssignedRiderId', auth()->id())
+                    ->latest()
+                    ->get();
+   
+
+    return view('Rider.index', compact('shipments'));
+    
+}
+
+public function pickup()
+{
+    $pickups = Shipment::where('AssignedRiderId', auth()->id())
+                ->where('Status', 'Pickup')
+                ->latest()
+                ->get();
+
+    return view('Rider.pickup', compact('pickups'));
+}
+
+
+public function updateLocation(Request $request)
+{
+    $rider = Rider::where('UserId', auth()->id())->first();
+
+    RiderLocation::create([
+        'rider_id' => $rider->id,
+        'latitude' => $request->latitude,
+        'longitude' => $request->longitude,
+    ]);
+
+    return response()->json(['status' => 'success']);
+}
+>>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
 
 
 
