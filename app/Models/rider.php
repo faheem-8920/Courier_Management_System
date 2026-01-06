@@ -14,6 +14,12 @@ class rider extends Model
         'AdminNotes', 'VehicleInspected', 'TermsAccepted', 'user_id'
     ];
 
+protected $casts = [
+    'DateOfBirth' => 'date',
+    'HireDate' => 'date',
+];
+
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -22,5 +28,10 @@ class rider extends Model
 {
     return $this->hasOne(RiderLocation::class);
 }
+public function shipments()
+{
+    return $this->hasMany(Shipment::class, 'AssignedRiderId', 'UserId');
+}
+
 
 }

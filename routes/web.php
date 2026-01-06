@@ -7,37 +7,56 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Middleware\Usermiddleware;
-
-
 use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\Googlecontroller;
-
 use App\Mail\ParcelDeliveredMail;
 use App\Http\Controllers\TrackRiderLocationController;
 
-
-
-// Controller routes
-Route::post('/uploadcourier',[UserController::class,'savecourier']);
-Route::post('/saverider',[AdminController::class,'saverider']);
 Route::get('/mydashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
-// User routes
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/usercouriers',[UserController::class,'UserCouriers']);
 
-Route::get('/usercourierdetails/{id}',[UserController::class,'courierdetails']);
+
 
 
 Route::get('/index', function () {
     return view('index');
 });
+
+
+// Admin panel routes
+// Route::get('/admindashboard', function () {
+//     return view('admin.dashboard');
+// });
+
+
+// Role-based dashboard redirect after login
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        $role = Auth::user()->role;
+
+        if ($role === 'admin') return redirect('/admindashboard');
+        if ($role === 'rider') return redirect('/rider');
+        if ($role === 'user') return redirect('/index');
+
+        abort(403, 'Unauthorized');
+    })->name('dashboard');
+});
+
+
+// User routes (protected)
+Route::middleware(['auth', UserMiddleware::class])->group(function () {
+    Route::get('/user', function () {
+        return view('index');
+    });
 Route::get('/feature', function () {
     return view('feature');
 });
@@ -70,70 +89,91 @@ Route::get('/trackparcel', function () {
     return view('trackparcel');
 });
 
-Route::get('/addrider', function () {
-    return view('addrider');
-});
+Route::post('/savecontact', [AdminController::class,'store']);
 
 
-// Admin panel routes
-// Route::get('/admindashboard', function () {
-//     return view('admin.dashboard');
-// });
 
 
-// Role-based dashboard redirect after login
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        $role = Auth::user()->id;
 
-        if ($role === 'admin') return redirect('/admindashboard');
-        if ($role === 'rider') return redirect('/rider');
-        if ($role === 'user') return redirect('/index');
+        // CoURIER ROUTES
+Route::post('/uploadcourier',[UserController::class,'savecourier']);
 
-        abort(403, 'Unauthorized');
-    })->name('dashboard');
-});
+Route::get('/downloadcourierdetails/{id}',[UserController::class,'DownloadCourierPdf']);
+
+Route::get('/usercouriers',[UserController::class,'UserCouriers']);
+
+Route::get('/usercourierdetails/{id}',[UserController::class,'courierdetails']);
 
 
-// User routes (protected)
-Route::middleware(['auth', UserMiddleware::class])->group(function () {
-    Route::get('/user', function () {
-        return view('index');
+
+
     })->name('index');
-});
 
 
 // Admin routes (protected)
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
  
+   Route::get('/addrider', function () {
+    return view('addrider');
+});
+
     Route::get('/riders', function () {
         return view('admin.riders');
     });
-    Route::get('/shipments', function () {
+
+Route::post('/saverider',[AdminController::class,'saverider']);
+
+    Route::get('/riders',[AdminController::class,'showriders']);
+
+    Route::get('/getriderdetails/{id}',[AdminController::class,'getriderdetails']);
+Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
+
+   Route::get('/showriderdetails/{id}', [RiderController::class, 'showriderdetails']);
+
+    Route::post('/sendridermessage', [AdminController::class, 'sendRiderMessage'])->name('send.rider.message');
+
+
+    Route::post('/delete/{id}', [AdminController::class, 'deleterider']);
+
+
+// Route::get('/dashboard', [AdminController::class, 'showsadmin']);
+
+ Route::get('/shipments', function () {
         return view('admin.shipments');
     });
+
+Route::get('/shipments', [AdminController::class,'showshipments']);
+
+Route::post('/rejectshipment/{id}', [AdminController::class, 'rejectShipment'])->name('rejectshipment');
+
+
     Route::get('/users', function () {
         return view('admin.users');
     });
-Route::get('/getriderdetails/{id}',[AdminController::class,'getriderdetails']);
-Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
-
-// Route::get('/dashboard', [AdminController::class, 'showsadmin']);
-    Route::get('/riders',[AdminController::class,'showriders']);
 
 
-Route::get('/riders',[AdminController::class,'showriders']);
 
-Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
 Route::get('/admindashboard', [AdminController::class, 'dashboard']);
 
+ Route::get('/admindashboard', [AdminController::class, 'myadmindashboard'])->name('admin.dashboard');
 
-Route::post('/delete/{id}', [AdminController::class, 'deleterider']);
+
+// contact routes
+
+Route::get('/showcontacts', [AdminController::class,'showcontacts']);
+Route::post('/reply/{id}', [AdminController::class,'reply']);
+Route::post('/deletecontact/{id}', [AdminController::class, 'deletecontact']);
+
+
+
+
+Route::get('/exporttoexcel',[AdminController::class,('exporttoexcel')]);
+
+Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
+
+Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
+
 
 
 
@@ -142,14 +182,9 @@ Route::post('/delete/{id}', [AdminController::class, 'deleterider']);
 // Rider routes (protected)
 Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::get('/rider', function () {
-        return view('Rider.index');
+        return view('Rider.index');});
 
-
-
-    })->name('Rider.index');
-    
-
- Route::get('/earning', function () {
+    Route::get('/earning', function () {
         return view('Rider.earning');
     });
     Route::get('/delivery', function () {
@@ -165,8 +200,7 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
         return view('Rider.support');
     });
 
-
-    Route::post('/rider/order/{id}/accept', [RiderController::class, 'acceptorder'])->name('rider.accept');
+     Route::post('/rider/order/{id}/accept', [RiderController::class, 'acceptorder'])->name('rider.accept');
 
     Route::post('/rider/order/{id}/transit', [RiderController::class, 'transitorder'])
         ->name('rider.transit');
@@ -174,6 +208,16 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::post('/rider/order/{id}/delivered', [RiderController::class, 'deliveredorder'])
      ->name('rider.delivered');
 
+<<<<<<< HEAD
+    Route::get('/delivery', [RiderController::class, 'myShipments']); 
+    
+
+    });
+    
+
+ 
+   
+=======
     // Route::get('/data', [RiderController::class, 'index'])
     //     ->name('rider.index');
     // Route::get('/rider', [RiderController::class, 'index'])
@@ -188,21 +232,19 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
      
 
+>>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
 
 Route::get('/rider', function () {
         return view('Rider.index');
     })->name('Rider.index');
 
 
-Route::get('/exporttoexcel',[AdminController::class,('exporttoexcel')]);
 
-Route::get('/exporttoexcel2',[AdminController::class,('exporttoexcel2')]);
 
-Route::get('/exporttoexcel3',[AdminController::class,('exporttoexcel3')]);
+
 
 
  
- Route::get('/admindashboard', [AdminController::class, 'myadmindashboard'])->name('admin.dashboard');
 
 
 Route::get('auth/google', [Googlecontroller::class, 'googlepage']);
@@ -220,12 +262,16 @@ Route::get('/riders/map', [TrackRiderLocationController::class, 'showMap'])->nam
 // Get JSON of all riders
 Route::get('/riders/locations', [TrackRiderLocationController::class, 'getLocations'])->name('riders.locations');
 
-use App\Http\Controllers\ShipmentController;
 
-Route::post('/rejectshipment/{id}', [AdminController::class, 'rejectShipment'])->name('rejectshipment');
 
 Route::post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
 
+<<<<<<< HEAD
+
+
+
+
+=======
 Route::get('/rider', [RiderController::class, 'index']);
 
 Route::get('/pickup', [RiderController::class, 'pickup']);
@@ -234,5 +280,10 @@ Route::post('/track-parcel', [UserController::class, 'track'])->name('track.ship
 
 
 
+<<<<<<< HEAD
 
    
+=======
+   
+>>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
+>>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7

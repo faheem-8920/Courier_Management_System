@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
      <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -311,6 +311,13 @@
                     <span class="nav-text">Add Rider</span>
                 </a>
             </li>
+            <li class="nav-item">
+    <a class="nav-link show-contacts-link" href="/showcontacts">
+        <i class="fas fa-fw fa-envelope-open-text show-contacts-icon"></i>
+        <span class="nav-text">Contact Messages</span>
+    </a>
+</li>
+
 
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -395,6 +402,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>

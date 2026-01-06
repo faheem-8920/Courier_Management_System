@@ -123,10 +123,13 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <!-- Fact End -->
 
 
     <!-- Service Start -->
+=======
+>>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7
    
     <div class="container-xxl py-5">
     <div class="container py-5">
@@ -252,10 +255,15 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <!-- Feature End -->
 
 
     
+=======
+    
+    </div> -->
+>>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7
     <div class="container-xxl py-5">
     <div class="container py-5">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -331,8 +339,28 @@
     </div>
 </div>
 
-    <!-- Pricing End -->
+  <section class="quote-section py-5" style="background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);">
+    <h1 class="text-center">Contact Us</h1>
+    <div class="container">
+        
+        <div class="row align-items-center g-5">
+            <!-- Left Content -->
+            <div class="col-lg-6 col-12">
+                <div class="animated-badge mb-3">
+                    <span class="badge-text">REQUEST A CALLBACK</span>
+                    <span class="badge-pulse"></span>
+                </div>
+                
+                <h2 class="display-5 fw-bold mb-4" style="line-height: 1.2;">
+                    We will contact in <br>
+                    <span class="text-gradient">the shortest time</span>
+                </h2>
+                
+                <p class="text-muted mb-4 fs-5">
+                    Monday to Friday, 9am–5pm. Get a response within 24 hours.
+                </p>
 
+<<<<<<< HEAD
 
     <!-- Quote Start -->
     
@@ -347,47 +375,169 @@
             <p style="color:#666; margin-bottom:30px;">
                 Monday to Friday, 9am–5pm.
             </p>
-
-            <div style="display:flex; align-items:center; margin-top:30px;">
-                <div style="background:#ff4747; padding:18px; border-radius:4px; margin-right:15px;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" width="40">
+=======
+                <!-- Contact Info Card -->
+                <div class="contact-card p-4 rounded-4 shadow-sm border-0 mt-4" style="max-width: 400px;">
+                    <div class="d-flex align-items-center">
+                        <div class="contact-icon me-4">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-muted mb-1">Call for any query!</p>
+                            <h3 class="fw-bold mb-0" style="color: #dc3545;">+012 345 6789</h3>
+                        </div>
+                    </div>
+                    <div class="mt-3 d-flex gap-3">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope me-2" style="color: #dc3545;"></i>
+                            <span>support@example.com</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock me-2" style="color: #dc3545;"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h4 style="margin:0; font-size:16px;">Call for any query!</h4>
-                    <h3 style="margin:0; color:#ff4747; font-size:26px;">+012 345 6789</h3>
+
+                <!-- Stats -->
+                <div class="stats-grid mt-4">
+                    <div class="stat-item">
+                        <div class="stat-value" style="color: #dc3545;">24h</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" style="color: #dc3545;">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" style="color: #dc3545;">5min</div>
+                        <div class="stat-label">Call Back Promise</div>
+                    </div>
+                </div>
+            </div>
+>>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7
+
+            <!-- Right Form -->
+            <div class="col-lg-6 col-12">
+                <div class="contact-form-wrapper p-4 p-lg-5 rounded-4 shadow-lg border-0" 
+                     style="background: linear-gradient(135deg, #fff 0%, #fff 100%); border: 1px solid rgba(220, 53, 69, 0.1) !important;">
+                    
+                    <div class="form-header mb-4">
+                        <h3 class="fw-bold" style="color: #212529;">
+                            <i class="fas fa-paper-plane me-2" style="color: #dc3545;"></i>
+                            Send Your Message
+                        </h3>
+                        <p class="text-muted">Fill out the form below and we'll get back to you promptly</p>
+                    </div>
+
+                    <!-- Display success/error messages from session -->
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Please correct the errors below.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <form action="/savecontact" method="POST" id="contactForm">
+                        @csrf
+                        
+                        <!-- Name Field -->
+                        <div class="mb-4">
+                            <label for="Name" class="form-label fw-semibold">
+                                <i class="fas fa-user me-2" style="color: #dc3545;"></i>
+                                Full Name *
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0">
+                                    <i class="fas fa-user text-muted"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control border-start-0 @error('Name') is-invalid @enderror" 
+                                       id="Name" 
+                                       name="Name" 
+                                       placeholder="Enter your full name"
+                                       value="{{ old('Name') }}"
+                                       required>
+                                @error('Name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="mb-4">
+                            <label for="Email" class="form-label fw-semibold">
+                                <i class="fas fa-envelope me-2" style="color: #dc3545;"></i>
+                                Email Address *
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0">
+                                    <i class="fas fa-envelope text-muted"></i>
+                                </span>
+                                <input type="email" 
+                                       class="form-control border-start-0 @error('Email') is-invalid @enderror" 
+                                       id="Email" 
+                                       name="Email" 
+                                       placeholder="Enter your email address"
+                                       value="{{ old('Email') }}"
+                                       required>
+                                @error('Email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="mb-4">
+                            <label for="Message" class="form-label fw-semibold">
+                                <i class="fas fa-comment-dots me-2" style="color: #dc3545;"></i>
+                                Your Message *
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 align-items-start pt-3">
+                                    <i class="fas fa-edit text-muted"></i>
+                                </span>
+                                <textarea class="form-control border-start-0 @error('Message') is-invalid @enderror" 
+                                          id="Message" 
+                                          name="Message" 
+                                          rows="5" 
+                                          placeholder="Tell us how we can help you..."
+                                          required>{{ old('Message') }}</textarea>
+                                @error('Message')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-text text-end mt-1">
+                                <span id="charCount">0</span>/500 characters
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" 
+                                    class="btn btn-lg fw-bold shadow submit-btn"
+                                    style="background: linear-gradient(135deg, #dc3545, #c82333); color: #fff; border: none; padding: 16px;">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        
-        <div class="col-lg-6 col-12 bg-light p-4 rounded">
-            <form>
-               <div class="row g-3 mb-3">
-    <div class="col-md-6 col-12">
-        <input type="text" class="form-control" placeholder="Name">
-    </div>
-    <div class="col-md-6 col-12">
-        <input type="email" class="form-control" placeholder="Email">
-    </div>
-</div>
-
-                <div style="margin-bottom:20px;">
-                    <textarea placeholder="Message" 
-                        style="width:100%; padding:14px; border:1px solid #ddd; border-radius:4px; height:120px;"></textarea>
-                </div>
-
-                <button type="submit" 
-                    style="width:100%; padding:15px; background:#ff4747; color:#fff; border:none; border-radius:4px; font-size:18px;">
-                    Send Message
-                </button>
-            </form>
-        </div>
-
     </div>
 </section>
-
-    <!-- Quote End -->
-
 
     <!-- Team Start -->
     <div class="container-xxl py-5">

@@ -21,6 +21,6 @@ class ParcelDeliveredMail extends Mailable
     public function build()
     {
         return $this->subject('Your Parcel Has Been Delivered')
-                    ->view('parceldeliveredemail'); // Blade view for detailed email
+                    ->view('emails.parceldeliveredemail'); // Blade view for detailed email
     }
 }

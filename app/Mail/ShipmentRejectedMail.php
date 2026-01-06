@@ -26,6 +26,6 @@ class ShipmentRejectedMail extends Mailable
     public function build()
     {
         return $this->subject('Your Shipment Has Been Rejected')
-                    ->view('Parcelrejectedemail');
+                    ->view('emails.Parcelrejectedemail');
     }
 }

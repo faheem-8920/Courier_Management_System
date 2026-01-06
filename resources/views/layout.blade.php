@@ -63,7 +63,6 @@
                 <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
             </div>
 
-            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
 
             <!-- Auth Section -->
           @guest

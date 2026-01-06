@@ -43,7 +43,7 @@ class RiderCredentialsMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'admin.ridercredentials',
+            view: 'emails.ridercredentials',
         );
     }
 
