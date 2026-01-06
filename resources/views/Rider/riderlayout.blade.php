@@ -54,8 +54,8 @@
                 <a href="{{ url('/rider') }}" class="nav-item nav-link active">Home</a>
                 <a href="{{ url('/delivery') }}" class="nav-item nav-link">Deliveries</a>
                 <a href="{{ url('/pickup') }}" class="nav-item nav-link">Pickups</a>
-                <a href="{{ url('/earning') }}" class="nav-item nav-link">Earnings</a>
-                <a href="{{ url('/support') }}" class="nav-item nav-link">Support</a>
+                <!-- <a href="{{ url('/earning') }}" class="nav-item nav-link">Earnings</a> -->
+                <!-- <a href="{{ url('/support') }}" class="nav-item nav-link">Support</a> -->
                 
             </div>
              @guest

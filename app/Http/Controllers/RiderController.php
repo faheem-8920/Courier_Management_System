@@ -90,7 +90,7 @@ public function index()
 public function pickup()
 {
     $pickups = Shipment::where('AssignedRiderId', auth()->id())
-                ->where('Status', 'Pickup')
+                ->where('Status', 'Pickedup')
                 ->latest()
                 ->get();
 
