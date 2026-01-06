@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Rider - SwiftCourier</title>
+    <title>Add Rider </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -896,7 +896,7 @@
         <div class="header">
             <div class="logo">
                 <i class="fas fa-shipping-fast logo-icon"></i>
-                <div class="logo-text">SwiftCourier</div>
+                <div class="logo-text">CMS</div>
             </div>
             <h1>Add New Rider to System</h1>
             <p>Complete all required fields to register a new delivery rider. All information will be securely stored in our courier management system.</p>
@@ -1246,7 +1246,7 @@
         <div class="success-message" id="successMessage">
             <i class="fas fa-check-circle success-icon"></i>
             <h2>Rider Successfully Registered!</h2>
-            <p>The new rider has been added to the SwiftCourier Management System. Login credentials and welcome package have been generated.</p>
+            <p>The new rider has been added to the Courier Management System. Login credentials and welcome package have been generated.</p>
             <div class="rider-name-display" id="generatedName">Rider Name</div>
             <p>A confirmation email has been sent to the rider with login credentials and onboarding instructions.</p>
             <button type="button" id="addAnother" class="btn btn-next" style="margin-top: 20px; padding: 12px 25px;">
