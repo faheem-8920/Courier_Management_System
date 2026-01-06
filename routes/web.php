@@ -8,9 +8,14 @@ use App\Http\Middleware\Adminmiddleware;
 use App\Http\Middleware\Ridermiddleware;
 use App\Http\Middleware\Usermiddleware;
 
+
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Googlecontroller;
+
 use App\Mail\ParcelDeliveredMail;
 use App\Http\Controllers\TrackRiderLocationController;
+
 
 
 // Controller routes
@@ -61,6 +66,9 @@ Route::get('/testimonial', function () {
 Route::get('/addcourier', function () {
     return view('addcourier');
 });
+Route::get('/trackparcel', function () {
+    return view('trackparcel');
+});
 
 Route::get('/addrider', function () {
     return view('addrider');
@@ -80,7 +88,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $role = auth()->user()->role;
+        $role = Auth::user()->id;
 
         if ($role === 'admin') return redirect('/admindashboard');
         if ($role === 'rider') return redirect('/rider');
@@ -114,7 +122,12 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 Route::get('/getriderdetails/{id}',[AdminController::class,'getriderdetails']);
 Route::get('/updateriderdetails/{id}',[AdminController::class,'updateriderdetails']);
 
+// Route::get('/dashboard', [AdminController::class, 'showsadmin']);
+    Route::get('/riders',[AdminController::class,'showriders']);
+
+
 Route::get('/riders',[AdminController::class,'showriders']);
+
 Route::get('/shipments', [AdminController::class,'showshipments']);
 Route::get('/users',[AdminController::class,'showuserrecords']);
 Route::get('/admindashboard', [AdminController::class, 'dashboard']);
@@ -161,11 +174,20 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::post('/rider/order/{id}/delivered', [RiderController::class, 'deliveredorder'])
      ->name('rider.delivered');
 
-
+    // Route::get('/data', [RiderController::class, 'index'])
+    //     ->name('rider.index');
+    // Route::get('/rider', [RiderController::class, 'index'])
+    //     ->middleware('rider')
+    //     ->name('rider.index');
 
 });
+
+
 Route::get('/delivery', [RiderController::class, 'myShipments'])
-     ->middleware('auth'); 
+     ->middleware('auth');
+
+     
+
 
 Route::get('/rider', function () {
         return view('Rider.index');
@@ -203,3 +225,13 @@ use App\Http\Controllers\ShipmentController;
 Route::post('/rejectshipment/{id}', [AdminController::class, 'rejectShipment'])->name('rejectshipment');
 
 Route::post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
+
+Route::get('/rider', [RiderController::class, 'index']);
+
+Route::get('/pickup', [RiderController::class, 'pickup']);
+    
+Route::post('/track-parcel', [UserController::class, 'track'])->name('track.shipment');
+
+
+
+   

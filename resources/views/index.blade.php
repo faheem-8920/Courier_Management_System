@@ -32,7 +32,7 @@
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Stay updated from booking to delivery</h5>
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Real-Time <span class="text-primary">Parcel Tracking</span></h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Track Parcel</a>
+                                <a href="{{ url('/trackparcel') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Track Parcel</a>
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Support</a>
                             </div>
                         </div>

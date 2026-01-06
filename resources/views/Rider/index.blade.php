@@ -156,7 +156,127 @@
 </div>
 
 
+<!-- Recent Deliveries -->
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h2>Recent Deliveries</h2>
+        <p class="text-muted">Latest assigned and completed shipments</p>
+    </div>
 
+    <div class="table-responsive shadow rounded bg-white p-4">
+        <table class="table align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Shipment ID</th>
+                    <th>Receiver</th>
+                    <th>Zone</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @forelse($shipments as $shipment)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+
+                    <td>
+                        <strong>#{{ str_pad($shipment->id, 6, '0', STR_PAD_LEFT) }}</strong>
+                    </td>
+
+                    <td>{{ $shipment->ReceiverName }}</td>
+
+                    <td>{{ $shipment->DeliveryZone }}</td>
+
+                    <td>
+                        <span class="badge 
+                            @if($shipment->Status == 'Delivered') bg-success
+                            @elseif($shipment->Status == 'Pending') bg-warning
+                            @elseif($shipment->Status == 'InTransit') bg-info
+                            @else bg-purple @endif">
+                            {{ $shipment->Status }}
+                        </span>
+                    </td>
+
+                    <td>{{ $shipment->created_at->format('d M Y') }}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4">
+                        No recent deliveries found
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+
+        @if($shipments->count() > 5)
+        <div class="text-end mt-3">
+            <a href="{{ url('/delivery') }}" class="btn btn-sm btn-outline-danger">
+                View All Deliveries
+            </a>
+        </div>
+        @endif
+    </div>
+</div>
+
+
+
+<!-- Performance -->
+<div class="container pb-5">
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="bg-white shadow rounded p-4">
+                <h5 class="mb-3">Delivery Performance</h5>
+
+                <label>Completed</label>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width:70%">70%</div>
+                </div>
+
+                <label>Pending</label>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" style="width:30%">30%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="bg-white shadow rounded p-4">
+                <h5 class="mb-3">Quick Actions</h5>
+
+                <a href="{{ url('/delivery') }}" class="btn btn-primary w-100 mb-2">
+                    View Deliveries
+                </a>
+
+                <a href="{{ url('/pickup') }}" class="btn btn-outline-success w-100 mb-2">
+                    Pickup Requests
+                </a>
+
+                <a href="{{ url('/support') }}" class="btn btn-outline-dark w-100">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+navigator.geolocation.watchPosition(function(position) {
+
+    $.post("/rider/update-location", {
+        _token: "{{ csrf_token() }}",
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+    });
+
+});
+</script>
 
 
 
