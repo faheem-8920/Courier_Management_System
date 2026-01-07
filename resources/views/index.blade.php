@@ -123,13 +123,13 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
+
     <!-- Fact End -->
 
 
     <!-- Service Start -->
-=======
->>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7
+
+
    
     <div class="container-xxl py-5">
     <div class="container py-5">
@@ -255,15 +255,15 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
+
     <!-- Feature End -->
 
 
     
-=======
+
     
-    </div> -->
->>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7
+    </div>
+
     <div class="container-xxl py-5">
     <div class="container py-5">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -359,8 +359,8 @@
                 <p class="text-muted mb-4 fs-5">
                     Monday to Friday, 9am–5pm. Get a response within 24 hours.
                 </p>
+</div>
 
-<<<<<<< HEAD
 
     <!-- Quote Start -->
     
@@ -375,7 +375,7 @@
             <p style="color:#666; margin-bottom:30px;">
                 Monday to Friday, 9am–5pm.
             </p>
-=======
+
                 <!-- Contact Info Card -->
                 <div class="contact-card p-4 rounded-4 shadow-sm border-0 mt-4" style="max-width: 400px;">
                     <div class="d-flex align-items-center">
@@ -417,7 +417,7 @@
                     </div>
                 </div>
             </div>
->>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7
+
 
             <!-- Right Form -->
             <div class="col-lg-6 col-12">
@@ -431,7 +431,7 @@
                         </h3>
                         <p class="text-muted">Fill out the form below and we'll get back to you promptly</p>
                     </div>
-
+                    
                     <!-- Display success/error messages from session -->
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -496,8 +496,8 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
-
+                        
+</div>
                         <!-- Message Field -->
                         <div class="mb-4">
                             <label for="Message" class="form-label fw-semibold">
@@ -537,6 +537,7 @@
             </div>
         </div>
     </div>
+</div>
 </section>
 
     <!-- Team Start -->

@@ -76,7 +76,7 @@ $order->save();
     return back()->with('success', 'Order delivered successfully and sender has been notified.');
 }
 
-<<<<<<< HEAD
+
 public function showriderdetails($id)
 {
     $rider = Rider::findOrFail($id);
@@ -133,7 +133,7 @@ $performance = $totalShipments > 0
 }
 
 
-=======
+
 public function index()
 {
     $shipments = Shipment::where('AssignedRiderId', auth()->id())
@@ -168,7 +168,7 @@ public function updateLocation(Request $request)
 
     return response()->json(['status' => 'success']);
 }
->>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
+
 
 
 

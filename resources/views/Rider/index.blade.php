@@ -18,7 +18,7 @@
                                 <h1 class="display-3 text-white animated slideInDown mb-4">Manage Your <span class="text-primary">Deliveries</span>Easily</h1>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">View assigned parcels, check delivery routes, and update delivery status in real time.</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Assigned Orders</a>
-                                <a href="{{ url('/profile') }}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">My Profile</a>
+                                <a href="{{ url('/user/profile') }}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">My Profile</a>
                             </div>
                         </div>
                     </div> 

@@ -208,23 +208,18 @@ Route::middleware(['auth', RiderMiddleware::class])->group(function () {
     Route::post('/rider/order/{id}/delivered', [RiderController::class, 'deliveredorder'])
      ->name('rider.delivered');
 
-<<<<<<< HEAD
     Route::get('/delivery', [RiderController::class, 'myShipments']); 
     
 
     });
     
 
- 
-   
-=======
     // Route::get('/data', [RiderController::class, 'index'])
     //     ->name('rider.index');
     // Route::get('/rider', [RiderController::class, 'index'])
     //     ->middleware('rider')
     //     ->name('rider.index');
 
-});
 
 
 Route::get('/delivery', [RiderController::class, 'myShipments'])
@@ -232,7 +227,7 @@ Route::get('/delivery', [RiderController::class, 'myShipments'])
 
      
 
->>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
+
 
 Route::get('/rider', function () {
         return view('Rider.index');
@@ -266,12 +261,11 @@ Route::get('/riders/locations', [TrackRiderLocationController::class, 'getLocati
 
 Route::post('/rider/update-location', [TrackRiderLocationController::class, 'updateLocation'])->name('rider.updateLocation');
 
-<<<<<<< HEAD
 
 
 
 
-=======
+
 Route::get('/rider', [RiderController::class, 'index']);
 
 Route::get('/pickup', [RiderController::class, 'pickup']);
@@ -280,10 +274,3 @@ Route::post('/track-parcel', [UserController::class, 'track'])->name('track.ship
 
 
 
-<<<<<<< HEAD
-
-   
-=======
-   
->>>>>>> 524f92bce2bd02e7b33d69e95ed0183b72c84a19
->>>>>>> 55b6da1ef09f17fc2ceb9a0f95695c64bceb64e7

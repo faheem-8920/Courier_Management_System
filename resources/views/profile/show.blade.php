@@ -55,14 +55,14 @@
                             
                             <div class="row mb-4">
                                 <div class="col-6">
-                                    <div class="text-center p-3 bg-danger bg-opacity-5 rounded-3">
+                                    <div class="text-center p-3 bg-danger bg-opacity-2 rounded-3">
                                         <i class="fas fa-calendar-alt text-white fs-4 d-block mb-2"></i>
                                         <small class="text-white d-block">Joined</small>
                                         <span class="fw-bold text-white">{{ Auth::user()->created_at->format('M Y') }}</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-center p-3 bg-danger bg-opacity-5 rounded-3">
+                                    <div class="text-center p-3 bg-danger bg-opacity-2   rounded-3">
                                         <i class="fas fa-clock text-white fs-4 d-block mb-2"></i>
                                         <small class="text-white d-block">Last Active</small>
                                         <span class="fw-bold text-white">{{ now()->format('h:i A') }}</span>
